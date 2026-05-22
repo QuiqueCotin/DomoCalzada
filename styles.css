@@ -1125,3 +1125,116 @@ svg#zones-svg path[stroke="#f59e0b"].active-cable {
     animation: dash 3s linear infinite;
 }
 
+/* =========================================================================
+   INTERACTIVE HVAC FLOOR PLAN STYLES
+   ========================================================================= */
+.hvac-duct {
+    transition: stroke-width var(--transition-fast) ease, stroke var(--transition-fast) ease, opacity var(--transition-fast) ease, filter var(--transition-fast) ease;
+    opacity: 0.22;
+    stroke-linecap: round;
+}
+
+.hvac-duct.active-cable {
+    stroke-width: 7px !important;
+    opacity: 1.0 !important;
+    filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.95)) !important;
+}
+
+/* Red air flow for heating if active */
+.hvac-duct.active-cable.duct-heat {
+    filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.95)) !important;
+}
+
+.hvac-cable {
+    transition: stroke-width var(--transition-fast) ease, stroke var(--transition-fast) ease, opacity var(--transition-fast) ease, filter var(--transition-fast) ease;
+    opacity: 0.22;
+}
+
+.hvac-cable.active-cable {
+    stroke-width: 3.5px !important;
+    opacity: 1.0 !important;
+    filter: drop-shadow(0 0 5px rgba(124, 58, 237, 0.95)) !important;
+}
+
+.hvac-rf {
+    transition: stroke-width var(--transition-fast) ease, stroke var(--transition-fast) ease, opacity var(--transition-fast) ease, filter var(--transition-fast) ease;
+    opacity: 0.15;
+}
+
+.hvac-rf.active-cable {
+    stroke-width: 2.5px !important;
+    opacity: 0.95 !important;
+    filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.95)) !important;
+}
+
+/* Non-jitter climate node styling */
+.climate-node {
+    cursor: pointer;
+}
+
+.climate-node circle {
+    transition: fill var(--transition-fast), stroke var(--transition-fast), r var(--transition-fast);
+}
+
+.climate-node:hover circle {
+    fill: var(--accent-blue) !important;
+    stroke: #ffffff !important;
+    r: 13px !important; /* Enlarge circle cleanly without transform scaling */
+}
+
+/* Custom hover colors for specific climate nodes */
+.climate-node.node-machine rect {
+    transition: fill var(--transition-fast), stroke var(--transition-fast), stroke-width var(--transition-fast);
+}
+
+.climate-node.node-machine:hover rect {
+    stroke: var(--accent-blue) !important;
+    stroke-width: 2px !important;
+}
+
+.climate-node.node-control:hover circle {
+    fill: var(--accent-purple) !important;
+}
+
+.climate-node.node-safety:hover circle {
+    fill: var(--accent-green) !important;
+}
+
+.climate-node.node-grille:hover circle {
+    fill: #f59e0b !important;
+    r: 12px !important;
+}
+
+/* Flow animation on climate ducts and control cables */
+svg#hvac-svg path[stroke="var(--accent-blue)"].active-cable {
+    stroke-dasharray: 10, 10;
+    animation: dash 2.5s linear infinite;
+}
+
+svg#hvac-svg path[stroke="var(--accent-purple)"].active-cable {
+    stroke-dasharray: 6, 6;
+    animation: dash 3.5s linear infinite;
+}
+
+svg#hvac-svg path[stroke="#10b981"].active-cable {
+    stroke-dasharray: 6, 6;
+    animation: dash 4s linear infinite;
+}
+
+svg#hvac-svg path[stroke="#ef4444"].active-cable {
+    stroke-dasharray: 10, 10;
+    animation: dash 2.5s linear infinite;
+}
+
+/* Dimmed states for focused visualization in HVAC tab */
+.climate-node {
+    transition: opacity var(--transition-fast) ease;
+}
+
+.climate-node.dimmed {
+    opacity: 0.15 !important;
+}
+
+.hvac-duct.dimmed, .hvac-cable.dimmed, .hvac-rf.dimmed {
+    opacity: 0.04 !important;
+}
