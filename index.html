@@ -1174,7 +1174,453 @@
                 <h2>Zonificación Climatización por Conductos (Airzone)</h2>
                 <p class="tab-desc">Tu vivienda cuenta con 2 máquinas exteriores en el tejado y 2 interiores en los falsos techos de los baños. El sistema Airzone controla la temperatura de forma independiente en cada estancia.</p>
 
-                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+                <div class="card-grid" style="grid-template-columns: 3fr 1fr; margin-bottom: 1.5rem;">
+                    <!-- COLUMNA IZQUIERDA: Plano HVAC Interactivo -->
+                    <div class="card accent-blue" style="padding: 1rem;">
+                        <div class="svg-container">
+                            <svg viewBox="0 0 1000 620" width="100%" height="100%" id="hvac-svg" style="border-radius: 0.75rem; user-select: none;">
+                                <defs>
+                                    <!-- Arrow marker for pipes -->
+                                    <marker id="hvac-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                        <path d="M 0 2 L 6 5 L 0 8 z" fill="var(--text-muted)" />
+                                    </marker>
+                                    <!-- Gradients -->
+                                    <linearGradient id="logo-gradient-hvac" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="var(--accent-blue)" />
+                                        <stop offset="100%" stop-color="var(--accent-purple)" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- CAD Blueprint style grid background -->
+                                <rect x="5" y="5" width="990" height="610" rx="15" fill="var(--svg-bg)" stroke="var(--border-color)" stroke-width="2.5" />
+                                <g opacity="0.04" stroke="var(--text-primary)" stroke-width="0.5">
+                                    <line x1="50" y1="5" x2="50" y2="615" />
+                                    <line x1="150" y1="5" x2="150" y2="615" />
+                                    <line x1="250" y1="5" x2="250" y2="615" />
+                                    <line x1="350" y1="5" x2="350" y2="615" />
+                                    <line x1="450" y1="5" x2="450" y2="615" />
+                                    <line x1="550" y1="5" x2="550" y2="615" />
+                                    <line x1="650" y1="5" x2="650" y2="615" />
+                                    <line x1="750" y1="5" x2="750" y2="615" />
+                                    <line x1="850" y1="5" x2="850" y2="615" />
+                                    <line x1="950" y1="5" x2="950" y2="615" />
+                                    <line x1="5" y1="100" x2="995" y2="100" />
+                                    <line x1="5" y1="200" x2="995" y2="200" />
+                                    <line x1="5" y1="300" x2="995" y2="300" />
+                                    <line x1="5" y1="400" x2="995" y2="400" />
+                                    <line x1="5" y1="500" x2="995" y2="500" />
+                                </g>
+
+                                <!-- PLANTA BAJA (LEFT) -->
+                                <text x="240" y="125" fill="var(--accent-blue)" font-size="16" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.1em">PLANTA BAJA</text>
+                                
+                                <!-- Outer Walls PB -->
+                                <rect x="50" y="150" width="380" height="380" rx="8" fill="none" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                
+                                <!-- Inner Divisions PB -->
+                                <!-- Left column wall (separates Bathroom 1 & Bedroom PB from stairs/hallway) -->
+                                <line x1="190" y1="150" x2="190" y2="530" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Bathroom 1 and Bedroom PB -->
+                                <line x1="50" y1="250" x2="190" y2="250" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Middle column wall (separates stairs/hallway from kitchen/salon) -->
+                                <line x1="270" y1="150" x2="270" y2="530" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Stairs and Pasillo PB -->
+                                <line x1="190" y1="320" x2="270" y2="320" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Kitchen and Salón PB -->
+                                <line x1="270" y1="280" x2="430" y2="280" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                
+                                <!-- Bathroom 1 PB (Falso techo técnico) -->
+                                <rect x="50" y="150" width="140" height="100" fill="rgba(148, 163, 184, 0.04)" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+
+                                <!-- Escaleras PB Steps -->
+                                <g stroke="var(--text-muted)" stroke-width="1" opacity="0.4">
+                                    <line x1="190" y1="170" x2="270" y2="170" />
+                                    <line x1="190" y1="190" x2="270" y2="190" />
+                                    <line x1="190" y1="210" x2="270" y2="210" />
+                                    <line x1="190" y1="230" x2="270" y2="230" />
+                                    <line x1="190" y1="250" x2="270" y2="250" />
+                                    <line x1="190" y1="270" x2="270" y2="270" />
+                                    <line x1="190" y1="290" x2="270" y2="290" />
+                                    <line x1="190" y1="310" x2="270" y2="310" />
+                                </g>
+                                <!-- Escaleras PB Direction Arrow -->
+                                <path d="M 230 305 L 230 185" stroke="var(--accent-blue)" stroke-width="1.5" marker-end="url(#hvac-arrow)" opacity="0.7" fill="none" />
+                                <circle cx="230" cy="305" r="3" fill="var(--accent-blue)" opacity="0.7" />
+
+                                <!-- Room Labels PB -->
+                                <text x="120" y="195" fill="var(--text-muted)" font-size="11" font-weight="700" font-family="Outfit" text-anchor="middle">BAÑO 1</text>
+                                <text x="120" y="210" fill="var(--text-muted)" font-size="7.5" font-weight="600" text-anchor="middle" opacity="0.75">(TECHO TÉCNICO)</text>
+                                <text x="120" y="380" fill="var(--text-secondary)" font-size="12" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">DORMITORIO PB</text>
+                                <text x="230" y="162" fill="var(--text-muted)" font-size="9" font-weight="700" font-family="Outfit" text-anchor="middle" opacity="0.8">ESCALERAS</text>
+                                <text x="230" y="505" fill="var(--text-secondary)" font-size="11" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">PASILLO</text>
+                                <text x="350" y="210" fill="var(--text-secondary)" font-size="14" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">COCINA</text>
+                                <text x="350" y="415" fill="var(--text-secondary)" font-size="16" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.08em">SALÓN</text>
+
+                                <!-- PLANTA ALTA (RIGHT) -->
+                                <text x="740" y="125" fill="var(--accent-purple)" font-size="16" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.1em">PLANTA ALTA</text>
+                                
+                                <!-- Outer Walls PA -->
+                                <rect x="550" y="150" width="380" height="380" rx="8" fill="none" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                
+                                <!-- Inner Divisions PA -->
+                                <!-- Left column wall (separates Bathroom 2 & Dormitorio 2 from stairs/distributor) -->
+                                <line x1="690" y1="150" x2="690" y2="530" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Bathroom 2 and Dormitorio 2 -->
+                                <line x1="550" y1="250" x2="690" y2="250" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Middle column wall (separates stairs/distributor from bedrooms 3/principal) -->
+                                <line x1="770" y1="150" x2="770" y2="530" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Stairs and Distribuidor PA -->
+                                <line x1="690" y1="320" x2="770" y2="320" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                <!-- Separation between Dormitorio 3 and Dormitorio Principal PA -->
+                                <line x1="770" y1="320" x2="930" y2="320" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+                                
+                                <!-- Bathroom 2 PA (Falso techo técnico) -->
+                                <rect x="550" y="150" width="140" height="100" fill="rgba(148, 163, 184, 0.04)" stroke="var(--text-muted)" stroke-width="2" opacity="0.8" />
+
+                                <!-- Escaleras PA Steps -->
+                                <g stroke="var(--text-muted)" stroke-width="1" opacity="0.4">
+                                    <line x1="690" y1="170" x2="770" y2="170" />
+                                    <line x1="690" y1="190" x2="770" y2="190" />
+                                    <line x1="690" y1="210" x2="770" y2="210" />
+                                    <line x1="690" y1="230" x2="770" y2="230" />
+                                    <line x1="690" y1="250" x2="770" y2="250" />
+                                    <line x1="690" y1="270" x2="770" y2="270" />
+                                    <line x1="690" y1="290" x2="770" y2="290" />
+                                    <line x1="690" y1="310" x2="770" y2="310" />
+                                </g>
+                                <!-- Escaleras PA Direction Arrow -->
+                                <path d="M 730 185 L 730 305" stroke="var(--accent-purple)" stroke-width="1.5" marker-end="url(#hvac-arrow)" opacity="0.7" fill="none" />
+                                <circle cx="730" cy="185" r="3" fill="var(--accent-purple)" opacity="0.7" />
+
+                                <!-- Room Labels PA -->
+                                <text x="620" y="195" fill="var(--text-muted)" font-size="11" font-weight="700" font-family="Outfit" text-anchor="middle">BAÑO 2</text>
+                                <text x="620" y="210" fill="var(--text-muted)" font-size="7.5" font-weight="600" text-anchor="middle" opacity="0.75">(TECHO TÉCNICO)</text>
+                                <text x="620" y="380" fill="var(--text-secondary)" font-size="12" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">DORMITORIO 2</text>
+                                <text x="730" y="162" fill="var(--text-muted)" font-size="9" font-weight="700" font-family="Outfit" text-anchor="middle" opacity="0.8">ESCALERAS</text>
+                                <text x="730" y="505" fill="var(--text-secondary)" font-size="11" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">DISTRIBUIDOR</text>
+                                <text x="850" y="210" fill="var(--text-secondary)" font-size="12" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">DORMITORIO 3</text>
+                                <text x="850" y="415" fill="var(--text-secondary)" font-size="13" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">DORMITORIO PRINCIPAL</text>
+
+                                <!-- TEJADO / OUTDOOR UNITS -->
+                                <rect x="440" y="20" width="120" height="60" rx="6" fill="var(--bg-tertiary)" stroke="var(--text-muted)" stroke-width="1.2" stroke-dasharray="3,3" />
+                                <text x="500" y="34" fill="var(--text-muted)" font-size="7.5" font-weight="800" font-family="Outfit" text-anchor="middle" letter-spacing="0.05em">TEJADO (EXTERIORES)</text>
+
+                                <!-- PIPES & DUCTS -->
+                                <!-- Refrigerant Copper Pipes (UE to UI) -->
+                                <path d="M 470 60 L 470 95 L 130 95 L 130 200 L 200 200" class="hvac-duct" stroke="#ea580c" stroke-width="3" fill="none" data-from="ue-1" data-to="ui-1" marker-end="url(#hvac-arrow)" />
+                                <path d="M 530 60 L 530 95 L 625 95 L 625 200 L 700 200" class="hvac-duct" stroke="#ea580c" stroke-width="3" fill="none" data-from="ue-2" data-to="ui-2" marker-end="url(#hvac-arrow)" />
+
+                                <!-- Impulsión de Aire (Airflow ducts) -->
+                                <!-- Planta Baja -->
+                                <path d="M 260 345 V 210 H 340" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-1" data-to="grille-cocina" />
+                                <path d="M 260 360 H 340" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-1" data-to="grille-salon" />
+                                <path d="M 350 370 V 450" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-1" data-to="grille-salon" opacity="0.7" />
+                                <path d="M 200 352 H 130 V 390" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" opacity="0.6" />
+                                
+                                <!-- Planta Alta -->
+                                <path d="M 700 352 H 620 V 390" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-2" data-to="grille-dorm2" />
+                                <path d="M 760 345 V 230 H 840" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-2" data-to="grille-dorm3" />
+                                <path d="M 760 360 H 840 V 420" class="hvac-duct" stroke="var(--accent-blue)" stroke-width="5" fill="none" data-from="ui-2" data-to="grille-principal" />
+
+                                <!-- Modbus Control Bus (Purple Domo cabling) -->
+                                <path d="M 478 320 H 230 V 340" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="2" stroke-dasharray="5,4" fill="none" data-from="airzone-hub" data-to="ui-1" />
+                                <path d="M 478 320 H 730 V 340" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="2" stroke-dasharray="5,4" fill="none" data-from="airzone-hub" data-to="ui-2" />
+                                <line x1="478" y1="320" x2="507" y2="320" class="hvac-cable" stroke="var(--accent-blue)" stroke-width="2.5" fill="none" data-from="airzone-hub" data-to="homey-pro" />
+
+                                <!-- Termostatos Think (Domo Bus lines) -->
+                                <path d="M 285 232 H 230 V 340" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" data-from="thermostat-cocina" data-to="ui-1" />
+                                <path d="M 285 392 H 230 V 365" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" data-from="thermostat-salon" data-to="ui-1" />
+                                <path d="M 680 392 H 730 V 365" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" data-from="thermostat-dorm2" data-to="ui-2" />
+                                <path d="M 785 252 H 730 V 340" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" data-from="thermostat-dorm3" data-to="ui-2" />
+                                <path d="M 785 392 H 730 V 365" class="hvac-cable" stroke="var(--accent-purple)" stroke-width="1.5" stroke-dasharray="4,4" fill="none" data-from="thermostat-principal" data-to="ui-2" />
+
+                                <!-- Zigbee Wireless Mesh (Green dash links) -->
+                                <path d="M 520 320 L 430 448" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-window-salon" />
+                                <path d="M 520 320 L 350 150" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-window-cocina" />
+                                <path d="M 520 320 L 930 448" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-window-principal" />
+                                <path d="M 520 320 L 550 448" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-window-dorm2" />
+                                <path d="M 520 320 L 850 150" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-window-dorm3" />
+                                <path d="M 520 320 L 350 410" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-smoke-salon" />
+                                <path d="M 520 320 L 730 450" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-smoke-pasillo" />
+                                <path d="M 520 320 L 380 500" class="hvac-rf" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,4" fill="none" data-from="homey-pro" data-to="sensor-radar-salon" />
+
+                                <!-- INTERACTIVE CLIMATE NODES -->
+                                <!-- UE-1 (Outdoor Unit PB) -->
+                                <g class="climate-node node-machine" data-id="ue-1">
+                                    <rect x="450" y="45" width="40" height="25" rx="3" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.5" />
+                                    <circle cx="462" cy="57" r="6" fill="none" stroke="var(--text-muted)" stroke-width="1" />
+                                    <path d="M 462 53 L 462 61 M 458 57 L 466 57" stroke="var(--text-muted)" stroke-width="1.2" />
+                                    <text x="480" y="60" fill="var(--text-primary)" font-size="7" font-weight="800" font-family="Outfit">UE-1</text>
+                                </g>
+
+                                <!-- UE-2 (Outdoor Unit PA) -->
+                                <g class="climate-node node-machine" data-id="ue-2">
+                                    <rect x="510" y="45" width="40" height="25" rx="3" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.5" />
+                                    <circle cx="522" cy="57" r="6" fill="none" stroke="var(--text-muted)" stroke-width="1" />
+                                    <path d="M 522 53 L 522 61 M 518 57 L 526 57" stroke="var(--text-muted)" stroke-width="1.2" />
+                                    <text x="540" y="60" fill="var(--text-primary)" font-size="7" font-weight="800" font-family="Outfit">UE-2</text>
+                                </g>
+
+                                <!-- UI-1 (Indoor Unit PB - Pasillo) -->
+                                <g class="climate-node node-machine" data-id="ui-1">
+                                    <rect x="200" y="340" width="60" height="25" rx="4" fill="var(--bg-secondary)" stroke="var(--text-primary)" stroke-width="1.8" />
+                                    <line x1="210" y1="340" x2="210" y2="365" stroke="var(--border-color)" stroke-width="1" />
+                                    <line x1="250" y1="340" x2="250" y2="365" stroke="var(--border-color)" stroke-width="1" />
+                                    <path d="M 225 352.5 L 235 352.5 M 230 347.5 L 230 357.5" stroke="var(--accent-blue)" stroke-width="1" />
+                                    <text x="230" y="361" fill="var(--text-primary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="middle">UI-1 (PB)</text>
+                                </g>
+
+                                <!-- UI-2 (Indoor Unit PA - Distribuidor) -->
+                                <g class="climate-node node-machine" data-id="ui-2">
+                                    <rect x="700" y="340" width="60" height="25" rx="4" fill="var(--bg-secondary)" stroke="var(--text-primary)" stroke-width="1.8" />
+                                    <line x1="710" y1="340" x2="710" y2="365" stroke="var(--border-color)" stroke-width="1" />
+                                    <line x1="750" y1="340" x2="750" y2="365" stroke="var(--border-color)" stroke-width="1" />
+                                    <path d="M 725 352.5 L 735 352.5 M 730 352.5 L 730 357.5" stroke="var(--accent-blue)" stroke-width="1" />
+                                    <text x="730" y="361" fill="var(--text-primary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="middle">UI-2 (PA)</text>
+                                </g>
+
+                                <!-- Compuertas Rint (Motorized Grilles) -->
+                                <!-- Grille Salón -->
+                                <g class="climate-node node-grille" data-id="grille-salon">
+                                    <circle cx="350" cy="360" r="10" fill="var(--bg-secondary)" stroke="#d97706" stroke-width="1.5" />
+                                    <path d="M 345 360 H 355 M 350 355 V 365 M 346.5 356.5 L 353.5 363.5 M 346.5 363.5 L 353.5 356.5" stroke="#d97706" stroke-width="1" />
+                                    <text x="350" y="345" fill="var(--text-secondary)" font-size="8" font-weight="700" font-family="Outfit" text-anchor="middle">Rint Salón</text>
+                                </g>
+
+                                <!-- Salón Grille 2 (Decorative/Static) -->
+                                <g>
+                                    <circle cx="350" cy="460" r="8" fill="var(--bg-secondary)" stroke="var(--text-muted)" stroke-width="1.2" opacity="0.6" />
+                                    <path d="M 346 460 H 354 M 350 456 V 464" stroke="var(--text-muted)" stroke-width="0.8" opacity="0.6" />
+                                    <text x="350" y="475" fill="var(--text-muted)" font-size="7" font-weight="600" font-family="Outfit" text-anchor="middle" opacity="0.6">Rint Salón (Aux)</text>
+                                </g>
+
+                                <!-- Dormitorio PB Grille (Static/Passive) -->
+                                <g>
+                                    <circle cx="120" cy="400" r="8" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.2" opacity="0.8" />
+                                    <path d="M 116 400 H 124 M 120 396 V 404" stroke="#10b981" stroke-width="0.8" opacity="0.8" />
+                                    <text x="120" y="415" fill="var(--text-muted)" font-size="7" font-weight="600" font-family="Outfit" text-anchor="middle" opacity="0.8">Rint Dorm (PB)</text>
+                                </g>
+
+                                <!-- Grille Cocina -->
+                                <g class="climate-node node-grille" data-id="grille-cocina">
+                                    <circle cx="350" cy="210" r="10" fill="var(--bg-secondary)" stroke="#d97706" stroke-width="1.5" />
+                                    <path d="M 345 210 H 355 M 350 205 V 215 M 346.5 206.5 L 353.5 213.5 M 346.5 213.5 L 353.5 206.5" stroke="#d97706" stroke-width="1" />
+                                    <text x="350" y="195" fill="var(--text-secondary)" font-size="8" font-weight="700" font-family="Outfit" text-anchor="middle">Rint Cocina</text>
+                                </g>
+
+                                <!-- Grille Principal -->
+                                <g class="climate-node node-grille" data-id="grille-principal">
+                                    <circle cx="850" cy="430" r="10" fill="var(--bg-secondary)" stroke="#d97706" stroke-width="1.5" />
+                                    <path d="M 845 430 H 855 M 850 425 V 435 M 846.5 426.5 L 853.5 433.5 M 846.5 433.5 L 853.5 426.5" stroke="#d97706" stroke-width="1" />
+                                    <text x="850" y="415" fill="var(--text-secondary)" font-size="8" font-weight="700" font-family="Outfit" text-anchor="middle">Rint Principal</text>
+                                </g>
+
+                                <!-- Grille Dorm 2 -->
+                                <g class="climate-node node-grille" data-id="grille-dorm2">
+                                    <circle cx="620" cy="400" r="10" fill="var(--bg-secondary)" stroke="#d97706" stroke-width="1.5" />
+                                    <path d="M 615 400 H 625 M 620 395 V 405 M 616.5 396.5 L 623.5 403.5 M 616.5 403.5 L 623.5 396.5" stroke="#d97706" stroke-width="1" />
+                                    <text x="620" y="385" fill="var(--text-secondary)" font-size="8" font-weight="700" font-family="Outfit" text-anchor="middle">Rint Dorm 2</text>
+                                </g>
+
+                                <!-- Grille Dorm 3 -->
+                                <g class="climate-node node-grille" data-id="grille-dorm3">
+                                    <circle cx="850" cy="230" r="10" fill="var(--bg-secondary)" stroke="#d97706" stroke-width="1.5" />
+                                    <path d="M 845 230 H 855 M 850 225 V 235 M 846.5 226.5 L 853.5 233.5 M 846.5 233.5 L 853.5 226.5" stroke="#d97706" stroke-width="1" />
+                                    <text x="850" y="215" fill="var(--text-secondary)" font-size="8" font-weight="700" font-family="Outfit" text-anchor="middle">Rint Dorm 3</text>
+                                </g>
+
+                                <!-- Termostatos Think -->
+                                <!-- Thermostat Salón -->
+                                <g class="climate-node node-control" data-id="thermostat-salon">
+                                    <rect x="285" y="380" width="20" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--accent-purple)" stroke-width="1.5" />
+                                    <rect x="288" y="383" width="14" height="10" fill="var(--bg-tertiary)" />
+                                    <text x="295" y="390" fill="var(--text-primary)" font-size="6" font-weight="800" text-anchor="middle">21°</text>
+                                    <circle cx="295" cy="399" r="2" fill="var(--text-muted)" />
+                                    <text x="295" y="415" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Think Salón</text>
+                                </g>
+
+                                <!-- Thermostat Cocina -->
+                                <g class="climate-node node-control" data-id="thermostat-cocina">
+                                    <rect x="285" y="220" width="20" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--accent-purple)" stroke-width="1.5" />
+                                    <rect x="288" y="223" width="14" height="10" fill="var(--bg-tertiary)" />
+                                    <text x="295" y="230" fill="var(--text-primary)" font-size="6" font-weight="800" text-anchor="middle">20°</text>
+                                    <circle cx="295" cy="239" r="2" fill="var(--text-muted)" />
+                                    <text x="295" y="255" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Think Cocina</text>
+                                </g>
+
+                                <!-- Thermostat Principal -->
+                                <g class="climate-node node-control" data-id="thermostat-principal">
+                                    <rect x="785" y="380" width="20" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--accent-purple)" stroke-width="1.5" />
+                                    <rect x="788" y="383" width="14" height="10" fill="var(--bg-tertiary)" />
+                                    <text x="795" y="390" fill="var(--text-primary)" font-size="6" font-weight="800" text-anchor="middle">22°</text>
+                                    <circle cx="795" cy="399" r="2" fill="var(--text-muted)" />
+                                    <text x="795" y="415" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Think Principal</text>
+                                </g>
+
+                                <!-- Thermostat Dorm 2 -->
+                                <g class="climate-node node-control" data-id="thermostat-dorm2">
+                                    <rect x="660" y="380" width="20" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--accent-purple)" stroke-width="1.5" />
+                                    <rect x="663" y="383" width="14" height="10" fill="var(--bg-tertiary)" />
+                                    <text x="670" y="390" fill="var(--text-primary)" font-size="6" font-weight="800" text-anchor="middle">21°</text>
+                                    <circle cx="670" cy="399" r="2" fill="var(--text-muted)" />
+                                    <text x="670" y="415" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Think D2</text>
+                                </g>
+
+                                <!-- Thermostat Dorm 3 -->
+                                <g class="climate-node node-control" data-id="thermostat-dorm3">
+                                    <rect x="785" y="240" width="20" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--accent-purple)" stroke-width="1.5" />
+                                    <rect x="788" y="243" width="14" height="10" fill="var(--bg-tertiary)" />
+                                    <text x="795" y="250" fill="var(--text-primary)" font-size="6" font-weight="800" text-anchor="middle">21°</text>
+                                    <circle cx="795" cy="259" r="2" fill="var(--text-muted)" />
+                                    <text x="795" y="275" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Think D3</text>
+                                </g>
+
+                                <!-- Control Brains -->
+                                <!-- Airzone Webserver HUB -->
+                                <g class="climate-node node-control" data-id="airzone-hub">
+                                    <rect x="465" y="307" width="26" height="26" rx="5" fill="var(--accent-glow)" stroke="var(--accent-purple)" stroke-width="1.8" />
+                                    <rect x="471" y="313" width="14" height="14" rx="2" fill="var(--accent-purple)" />
+                                    <text x="478" y="322" fill="#ffffff" font-size="6" font-weight="900" font-family="Outfit" text-anchor="middle">AZ</text>
+                                    <text x="478" y="342" fill="var(--text-secondary)" font-size="7.5" font-weight="800" font-family="Outfit" text-anchor="middle">Webserver</text>
+                                </g>
+
+                                <!-- Homey Pro -->
+                                <g class="climate-node node-control" data-id="homey-pro">
+                                    <circle cx="520" cy="320" r="13" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.5" />
+                                    <circle cx="520" cy="320" r="10" fill="none" stroke="url(#logo-gradient-hvac)" stroke-width="2" />
+                                    <circle cx="520" cy="320" r="5" fill="var(--text-primary)" />
+                                    <text x="520" y="342" fill="var(--text-secondary)" font-size="8" font-weight="800" font-family="Outfit" text-anchor="middle">Homey Pro</text>
+                                </g>
+
+                                <!-- Safety Devices -->
+                                <!-- Window Sensor Salón (Aqara) -->
+                                <g class="climate-node node-safety" data-id="sensor-window-salon">
+                                    <rect x="425" y="440" width="10" height="16" rx="3" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="430" y1="440" x2="430" y2="456" stroke="#10b981" stroke-width="1" />
+                                    <text x="415" y="450" fill="var(--text-secondary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="end">Ventana</text>
+                                </g>
+
+                                <!-- Window Sensor Cocina (Aqara) -->
+                                <g class="climate-node node-safety" data-id="sensor-window-cocina">
+                                    <rect x="342" y="145" width="16" height="10" rx="3" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="342" y1="150" x2="358" y2="150" stroke="#10b981" stroke-width="1" />
+                                    <text x="350" y="139" fill="var(--text-secondary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="middle">Ventana</text>
+                                </g>
+
+                                <!-- Window Sensor Principal (Aqara) -->
+                                <g class="climate-node node-safety" data-id="sensor-window-principal">
+                                    <rect x="925" y="440" width="10" height="16" rx="3" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="930" y1="440" x2="930" y2="456" stroke="#10b981" stroke-width="1" />
+                                    <text x="915" y="450" fill="var(--text-secondary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="end">Ventana</text>
+                                </g>
+
+                                <!-- Window Sensor Dorm 2 (Aqara) -->
+                                <g class="climate-node node-safety" data-id="sensor-window-dorm2">
+                                    <rect x="545" y="440" width="10" height="16" rx="3" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="550" y1="440" x2="550" y2="456" stroke="#10b981" stroke-width="1" />
+                                    <text x="560" y="450" fill="var(--text-secondary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="start">Ventana</text>
+                                </g>
+
+                                <!-- Window Sensor Dorm 3 (Aqara) -->
+                                <g class="climate-node node-safety" data-id="sensor-window-dorm3">
+                                    <rect x="842" y="145" width="16" height="10" rx="3" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <line x1="842" y1="150" x2="858" y2="150" stroke="#10b981" stroke-width="1" />
+                                    <text x="850" y="139" fill="var(--text-secondary)" font-size="7" font-weight="800" font-family="Outfit" text-anchor="middle">Ventana</text>
+                                </g>
+
+                                <!-- Radar mmWave Aqara FP2 (Salón) -->
+                                <g class="climate-node node-safety" data-id="sensor-radar-salon">
+                                    <circle cx="380" cy="500" r="7" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <path d="M 375 500 A 5 5 0 0 1 385 500" fill="none" stroke="#10b981" stroke-width="1" />
+                                    <text x="380" y="490" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Radar FP2</text>
+                                </g>
+
+                                <!-- Smoke Detector Salón -->
+                                <g class="climate-node node-safety" data-id="sensor-smoke-salon">
+                                    <circle cx="350" cy="410" r="8" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <path d="M 347 413 C 347 413 349 411 350 407 C 351 411 353 413 353 413 Z" fill="#10b981" stroke="none" />
+                                    <text x="350" y="425" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Humo Salón</text>
+                                </g>
+
+                                <!-- Smoke Detector Pasillo -->
+                                <g class="climate-node node-safety" data-id="sensor-smoke-pasillo">
+                                    <circle cx="730" cy="450" r="8" fill="var(--bg-secondary)" stroke="#10b981" stroke-width="1.5" />
+                                    <path d="M 727 453 C 727 453 729 451 730 447 C 731 451 733 453 733 453 Z" fill="#10b981" stroke="none" />
+                                    <text x="730" y="465" fill="var(--text-secondary)" font-size="7" font-weight="700" font-family="Outfit" text-anchor="middle">Humo Pasillo</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- COLUMNA DERECHA: Panel Dinámico de Especificaciones -->
+                    <div class="card accent-purple" id="climate-details-card">
+                        <div class="card-title-bar">
+                            <h3>Especificaciones Clima</h3>
+                            <div class="card-icon" id="climate-icon-status">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            </div>
+                        </div>
+                        <div id="climate-details-content">
+                            <h4 id="climate-details-title" style="color: var(--text-primary); font-family: 'Outfit'; font-size: 1.15rem; margin-bottom: 0.5rem;">Selecciona un dispositivo</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;" id="climate-details-desc">
+                                Haz clic o pasa el cursor sobre cualquiera de los equipos de climatización, rejillas, termostatos o sensores del plano interactivo para analizar sus características técnicas, tipo de alimentación y lógica domótica integrada.
+                            </p>
+                            <div id="climate-details-specs" style="display: none; background: var(--bg-tertiary); padding: 0.75rem; border-radius: 0.5rem; font-size: 0.8rem; line-height: 1.5; color: var(--text-primary);">
+                                <strong>Ubicación:</strong> <span id="climate-spec-loc">--</span><br>
+                                <strong>Alimentación:</strong> <span id="climate-spec-pwr">--</span><br>
+                                <strong>Conectividad:</strong> <span id="climate-spec-net">--</span><br>
+                                <strong>Rol Lógico:</strong> <span id="climate-spec-fun">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leyendas y Lógicas de Control -->
+                <div class="card legend-card" style="margin-top: 1rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h3 style="font-family: 'Outfit'; font-size: 1.1rem; margin-bottom: 0.75rem;">Leyenda del Plano de Clima</h3>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <span style="display: inline-block; width: 35px; height: 6px; background-color: var(--accent-blue); border-radius: 3px;"></span>
+                                    <span>Conducto de Aire Climatizado (Impulsión Activa)</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <span style="display: inline-block; width: 35px; height: 3.5px; background-color: #ea580c; border-radius: 2px;"></span>
+                                    <span>Tuberías de Gas Refrigerante (Cobre del Tejado a Baños)</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <span style="display: inline-block; width: 35px; height: 3.5px; background-color: var(--accent-purple); stroke-dasharray: 4,4; border-radius: 2px;"></span>
+                                    <span>Bus de Control Cableado Local (Modbus / Domo Airzone)</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <span style="display: inline-block; width: 35px; height: 3.5px; background-color: #10b981; stroke-dasharray: 4,4; border-radius: 2px;"></span>
+                                    <span>Señal Inalámbrica Mesh de Seguridad (Zigbee 3.0)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Outfit'; font-size: 1.1rem; margin-bottom: 0.75rem;">Lógicas de Seguridad e Integración Activa</h3>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.85rem;">
+                                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                                    <span style="color: var(--accent-purple); font-weight: bold;">•</span>
+                                    <span><strong>Enclavamiento de Ventanas:</strong> Los sensores magnéticos Aqara notifican aperturas. Homey ejecuta un retardo de 60 segundos antes de apagar la climatización del salón/habitación, evitando picos en el compresor.</span>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                                    <span style="color: var(--accent-green); font-weight: bold;">•</span>
+                                    <span><strong>Confinamiento por Incendios:</strong> Ante humo/CO detectado por sensores Zigbee, Homey detiene los climatizadores y cierra todas las rejillas Rint al 0% en milisegundos, bloqueando la dispersión de humo tóxico.</span>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                                    <span style="color: var(--accent-blue); font-weight: bold;">•</span>
+                                    <span><strong>Excedentes Fotovoltaicos:</strong> El termo de ACS (3kW) actúa como batería térmica. Shelly Pro 1 comanda un contactor industrial de 25A y Shelly Pro EM-50 mide la carga, regulado por Homey para absorber excedentes.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjetas Técnicas de Climatización -->
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); margin-top: 1rem; margin-bottom: 1.5rem;">
                     <div class="card accent-blue">
                         <h3>Funcionamiento Físico de Conductos</h3>
                         <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
@@ -1187,7 +1633,7 @@
                             <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem;">
                                 <h4 style="color: var(--text-primary); font-family: 'Outfit'; margin-bottom: 0.25rem;">2. Módulo de Integración Domo</h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    El **Airzone Webserver HUB** se conecta físicamente al **puerto Domo** de la placa principal de la máquina exterior/interior, garantizando comunicación local bidireccional inverter y modulando el compresor.
+                                    El <strong>Airzone Webserver HUB</strong> se conecta físicamente al <strong>puerto Domo</strong> de la placa principal de la máquina exterior/interior, garantizando comunicación local bidireccional inverter y modulando el compresor.
                                 </p>
                             </div>
                             <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem;">
@@ -1207,7 +1653,7 @@
                                     <span style="color: var(--accent-purple)">•</span> Conexión 100% Local (HTTP/JSON API)
                                 </h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    La integración con Homey Pro se realiza a través de la **API Local (HTTP/JSON)** de Airzone, eliminando por completo la dependencia de servidores cloud externos y asegurando funcionamiento offline.
+                                    La integración con Homey Pro se realiza a través de la <strong>API Local (HTTP/JSON)</strong> de Airzone, eliminando por completo la dependencia de servidores cloud externos y asegurando funcionamiento offline.
                                 </p>
                             </div>
                             <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem;">
@@ -1215,7 +1661,7 @@
                                     <span style="color: var(--accent-purple)">•</span> Histéresis de Ventanas (Filtro 60s)
                                 </h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    Los sensores magnéticos Aqara en las ventanas notifican la apertura a Homey. La regla ejecuta un enclavamiento con **retraso de 60 segundos** antes de apagar el clima de la estancia, evitando ciclos cortos y fatiga en el compresor por aperturas transitorias.
+                                    Los sensores magnéticos Aqara en las ventanas notifican la apertura a Homey. La regla ejecuta un enclavamiento con <strong>retraso de 60 segundos</strong> antes de apagar el clima de la estancia, evitando ciclos cortos y fatiga en el compresor por aperturas transitorias.
                                 </p>
                             </div>
                             <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem;">
@@ -1223,7 +1669,7 @@
                                     <span style="color: var(--accent-purple)">•</span> Excedentes Solares y Batería Térmica
                                 </h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    El termo ACS (3kW) se utiliza como batería térmica. Un relé **Shelly Pro 1** activa un **contactor industrial de 25A** (carga inductiva), cerrando el bucle con un **Shelly Pro EM-50** (pinza amperométrica) para un control de excedentes hiperpreciso.
+                                    El termo ACS (3kW) se utiliza como batería térmica. Un relé <strong>Shelly Pro 1</strong> activa un <strong>contactor industrial de 25A</strong> (carga inductiva), cerrando el bucle con un <strong>Shelly Pro EM-50</strong> (pinza amperométrica) para un control de excedentes hiperpreciso.
                                 </p>
                             </div>
                         </div>

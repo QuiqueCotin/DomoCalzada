@@ -705,4 +705,349 @@ document.addEventListener('DOMContentLoaded', () => {
             zonesSvg.classList.add('view-hidden');
         });
     }
+
+    // 8. Interactive HVAC Floor Plan and Sidebar specs
+    const climateNodes = document.querySelectorAll('.climate-node');
+    const climatePaths = document.querySelectorAll('#hvac-svg .hvac-duct, #hvac-svg .hvac-cable, #hvac-svg .hvac-rf');
+    const climateDetailsTitle = document.getElementById('climate-details-title');
+    const climateDetailsDesc = document.getElementById('climate-details-desc');
+    const climateDetailsSpecs = document.getElementById('climate-details-specs');
+    const climateSpecLoc = document.getElementById('climate-spec-loc');
+    const climateSpecPwr = document.getElementById('climate-spec-pwr');
+    const climateSpecNet = document.getElementById('climate-spec-net');
+    const climateSpecFun = document.getElementById('climate-spec-fun');
+
+    const climateData = {
+        "ue-1": {
+            title: "Unidad Exterior 1 (UE-1) - Planta Baja",
+            desc: "Bomba de calor exterior de aerotermia dedicada a la planta baja. Se encarga del ciclo termodinámico para suministrar refrigeración o calefacción a la unidad interior (UI-1) a través de tuberías de gas refrigerante de cobre.",
+            loc: "Tejado (Planta Alta, zona exterior)",
+            pwr: "Alimentación trifásica 400V AC desde el cuadro de protecciones clima.",
+            net: "Control analógico por interconexión directa con la UI-1 (bus de señal de maniobra de 2 hilos).",
+            fun: "Generación térmica (Frío/Calor) de alta eficiencia para Salón y Cocina. Coordinado por la demanda de la UI-1."
+        },
+        "ue-2": {
+            title: "Unidad Exterior 2 (UE-2) - Planta Alta",
+            desc: "Bomba de calor exterior de aerotermia dedicada a la planta alta. Abastece a la unidad interior (UI-2) para climatizar los tres dormitorios y el distribuidor.",
+            loc: "Tejado (Planta Alta, zona exterior)",
+            pwr: "Alimentación trifásica 400V AC desde el cuadro de protecciones clima.",
+            net: "Control analógico por interconexión directa con la UI-2.",
+            fun: "Generación térmica para toda la planta alta. Regulado según la demanda agregada de los termostatos Think de las habitaciones."
+        },
+        "ui-1": {
+            title: "Unidad Interior 1 (UI-1) - Conductos Planta Baja",
+            desc: "Máquina interior de conductos de expansión directa de baja silueta, oculta en el falso techo del Baño 1. Distribuye aire acondicionado al Salón y la Cocina mediante conductos de fibra de vidrio y compuertas motorizadas.",
+            loc: "Falso Techo del Baño 1 (Planta Baja)",
+            pwr: "230V AC monofásico protegido por el diferencial general.",
+            net: "Bus Modbus cableado hacia Airzone Webserver HUB y pasarela local.",
+            fun: "Climatización por zonas de Planta Baja. Ajusta dinámicamente la velocidad del ventilador y la potencia térmica de la UE-1 según la apertura de las rejillas Rint."
+        },
+        "ui-2": {
+            title: "Unidad Interior 2 (UI-2) - Conductos Planta Alta",
+            desc: "Máquina interior de conductos de baja silueta, oculta en el falso techo del Baño 2. Climatiza los tres dormitorios (Dormitorio Principal, Dormitorio 2 y Dormitorio 3) de manera independiente.",
+            loc: "Falso Techo del Baño 2 (Planta Alta)",
+            pwr: "230V AC monofásico desde el cuadro secundario.",
+            net: "Bus Modbus cableado hacia Airzone Webserver HUB.",
+            fun: "Climatización independiente por zonas de Planta Alta. Ajusta caudal y temperatura basándose en las necesidades individuales de cada dormitorio."
+        },
+        "grille-salon": {
+            title: "Rejilla Proporcional Rint - Salón",
+            desc: "Compuerta motorizada inteligente del sistema Airzone. Regula el caudal de aire frío o caliente que entra al Salón abriendo o cerrando sus lamas de forma proporcional (0-100%) según la temperatura de consigna.",
+            loc: "Salón (Planta Baja, pared frontal)",
+            pwr: "Alimentada a 12V DC por bus físico desde el módulo de zonas Airzone.",
+            net: "Conexión por cable de control Airzone de 2 hilos.",
+            fun: "Control de flujo de aire en el Salón. Lógica de seguridad: si la ventana del Salón está abierta durante más de 60 segundos, la compuerta se cierra al 0% automáticamente para evitar pérdidas."
+        },
+        "grille-cocina": {
+            title: "Rejilla Proporcional Rint - Cocina",
+            desc: "Compuerta motorizada que regula la entrada de aire climatizado en la Cocina. Permite aislar térmicamente la cocina cuando se cocina o cuando la estancia no está ocupada.",
+            loc: "Cocina (Planta Baja, pared lateral)",
+            pwr: "12V DC desde el módulo de control Airzone.",
+            net: "Cableado de zona Airzone.",
+            fun: "Control de flujo de aire en Cocina. Cerrado automático de rejilla (0%) si se detecta humo para confinamiento de gases de combustión e incendios."
+        },
+        "grille-principal": {
+            title: "Rejilla Proporcional Rint - Dormitorio Principal",
+            desc: "Rejilla inteligente encargada de regular de forma precisa la temperatura en la suite principal. Su motor proporcional evita ruidos molestos durante la noche ajustando el flujo con suavidad.",
+            loc: "Dormitorio Principal (Planta Alta)",
+            pwr: "12V DC por bus físico Airzone.",
+            net: "Cable de control local.",
+            fun: "Climatización del Dormitorio Principal. Su compuerta se cierra de inmediato si el sensor magnético detecta la puerta del balcón abierta por más de 60 segundos."
+        },
+        "grille-dorm2": {
+            title: "Rejilla Proporcional Rint - Dormitorio 2",
+            desc: "Compuerta motorizada que regula de forma autónoma el aporte de aire climatizado en el segundo dormitorio, garantizando confort personalizado.",
+            loc: "Dormitorio 2 (Planta Alta)",
+            pwr: "12V DC por bus físico Airzone.",
+            net: "Cable de control local.",
+            fun: "Climatización de Dormitorio 2. Apagado automático por sensor de ventana Aqara tras el tiempo de histéresis regulado (60 segundos)."
+        },
+        "grille-dorm3": {
+            title: "Rejilla Proporcional Rint - Dormitorio 3",
+            desc: "Compuerta inteligente dedicada al tercer dormitorio. Permite suspender la climatización por completo en esta estancia si no está habitada.",
+            loc: "Dormitorio 3 (Planta Alta)",
+            pwr: "12V DC por bus físico Airzone.",
+            net: "Cable de control local.",
+            fun: "Climatización de Dormitorio 3. Automatización de cierre al abrir ventana o por falta de ocupación prolongada."
+        },
+        "thermostat-salon": {
+            title: "Termostato Airzone Think - Salón",
+            desc: "Termostato inteligente con pantalla de tinta electrónica de bajo consumo. Mide la temperatura y humedad del Salón y permite ajustar la consigna localmente o desde la app.",
+            loc: "Salón (Planta Baja, pared central)",
+            pwr: "Batería de litio de larga duración / Conexión por cable de bus.",
+            net: "Bus Domo cableado a la placa centralizadora Airzone.",
+            fun: "Interfaz de usuario e higrómetro del Salón. Envía la consigna y temperatura medida al cerebro Airzone para ajustar la apertura de la rejilla Rint."
+        },
+        "thermostat-cocina": {
+            title: "Termostato Airzone Think - Cocina",
+            desc: "Termostato dedicado a la zona de la Cocina. Proporciona control táctil local para ajustar el clima durante actividades de cocinado.",
+            loc: "Cocina (Planta Baja, acceso pasillo)",
+            pwr: "Batería de litio / Bus cableado.",
+            net: "Bus Domo de comunicación.",
+            fun: "Higrómetro e interfaz táctil para la Cocina. Coordina la temperatura óptima evitando choques térmicos con el resto de la planta."
+        },
+        "thermostat-principal": {
+            title: "Termostato Airzone Think - Dormitorio Principal",
+            desc: "Termostato de control local para la suite principal. Permite a los usuarios ajustar consignas nocturnas específicas para un descanso reparador.",
+            loc: "Dormitorio Principal (Planta Alta)",
+            pwr: "Batería / Bus cableado.",
+            net: "Bus Domo de comunicación.",
+            fun: "Control de clima de la suite principal. Lógica nocturna integrada en Homey Pro que atenúa la iluminación de la pantalla de tinta electrónica."
+        },
+        "thermostat-dorm2": {
+            title: "Termostato Airzone Think - Dormitorio 2",
+            desc: "Termostato dedicado al control local del segundo dormitorio, permitiendo perfiles de temperatura independientes.",
+            loc: "Dormitorio 2 (Planta Alta)",
+            pwr: "Batería / Bus cableado.",
+            net: "Bus Domo.",
+            fun: "Control de clima y consigna en Dormitorio 2."
+        },
+        "thermostat-dorm3": {
+            title: "Termostato Airzone Think - Dormitorio 3",
+            desc: "Termostato táctil para el tercer dormitorio. Ofrece control independiente y preciso de la zona.",
+            loc: "Dormitorio 3 (Planta Alta)",
+            pwr: "Batería / Bus cableado.",
+            net: "Bus Domo.",
+            fun: "Control de clima y consigna en Dormitorio 3."
+        },
+        "airzone-hub": {
+            title: "Airzone Webserver HUB (Domo Bus)",
+            desc: "El cerebro físico centralizado del sistema de climatización. Se conecta directamente a las máquinas interiores mediante Modbus para regular el ventilador y la caldera/aerotermia de forma proporcional, y expone una API local para la domótica.",
+            loc: "Distribuidor Planta Alta (Falso Techo)",
+            pwr: "12V DC suministrado por la fuente integrada de la placa Airzone.",
+            net: "Bus Modbus cableado hacia UI-1 y UI-2 + Red LAN cableada RJ45.",
+            fun: "Pasarela y lógica central de clima. Traduce las órdenes de Homey Pro a través de la API JSON de red local y gestiona el bus físico hacia termostatos y compuertas."
+        },
+        "homey-pro": {
+            title: "Homey Pro 2023 - Coordinador del Clima",
+            desc: "Servidor domótico principal. Integra el sistema de aerotermia y zonificación Airzone con el resto de la casa (sensores de ventanas, radar, detectores de humo y excedentes fotovoltaicos) para crear automatizaciones complejas de alta eficiencia.",
+            loc: "Salón (Planta Baja)",
+            pwr: "PoE Splitter a USB-C (Respaldado por el SAI de garaje).",
+            net: "WiFi local de alta velocidad, Zigbee Mesh, Z-Wave, Thread.",
+            fun: "Coordinador de automatizaciones. Reglas integradas: 1) Apagado de zona por ventana abierta (>60s). 2) Parada de ventiladores y cierre de rejillas (0%) si hay humo (confinamiento). 3) Encendido del clima con excedentes solares."
+        },
+        "sensor-window-salon": {
+            title: "Sensor de Ventana Aqara - Salón",
+            desc: "Sensor magnético inalámbrico ultra pequeño. Detecta si la ventana del Salón está abierta o cerrada y lo notifica al Homey Pro de forma instantánea.",
+            loc: "Ventana del Salón (Planta Baja)",
+            pwr: "Pila de botón CR2032 (Autonomía > 2 años).",
+            net: "Zigbee 3.0 inalámbrico a la malla Homey Pro.",
+            fun: "Sensor de seguridad y eficiencia. Lógica: si la ventana está abierta, activa un temporizador de 60s de histéresis tras el cual le indica a Homey Pro que cierre al 0% la rejilla del Salón."
+        },
+        "sensor-window-cocina": {
+            title: "Sensor de Ventana Aqara - Cocina",
+            desc: "Sensor magnético inalámbrico Aqara en la ventana de la Cocina.",
+            loc: "Ventana de la Cocina (Planta Baja)",
+            pwr: "Pila CR2032.",
+            net: "Zigbee 3.0.",
+            fun: "Cierre automático de la rejilla proporcional Rint de la Cocina si la ventana permanece abierta más de 60s para evitar derroche energético."
+        },
+        "sensor-window-principal": {
+            title: "Sensor Puerta de Balcón Aqara - Suite Principal",
+            desc: "Sensor magnético inalámbrico que monitoriza la puerta del balcón de la suite principal.",
+            loc: "Balcón Dormitorio Principal (Planta Alta)",
+            pwr: "Pila CR2032.",
+            net: "Zigbee 3.0.",
+            fun: "Apagado del clima en el Dormitorio Principal si se abre la puerta al exterior, aplicando la histéresis de 60 segundos."
+        },
+        "sensor-window-dorm2": {
+            title: "Sensor de Ventana Aqara - Dormitorio 2",
+            desc: "Sensor inalámbrico magnético en el segundo dormitorio.",
+            loc: "Ventana Dormitorio 2 (Planta Alta)",
+            pwr: "Pila CR2032.",
+            net: "Zigbee 3.0.",
+            fun: "Desactivación local de la compuerta de clima de la habitación 2 si se detecta apertura prolongada."
+        },
+        "sensor-window-dorm3": {
+            title: "Sensor de Ventana Aqara - Dormitorio 3",
+            desc: "Sensor inalámbrico magnético en el tercer dormitorio.",
+            loc: "Ventana Dormitorio 3 (Planta Alta)",
+            pwr: "Pila CR2032.",
+            net: "Zigbee 3.0.",
+            fun: "Desactivación local de la compuerta de clima de la habitación 3 en caso de apertura prolongada."
+        },
+        "sensor-radar-salon": {
+            title: "Sensor de Presencia mmWave Aqara FP2",
+            desc: "Radar de presencia por ondas milimétricas de alta precisión. Es capaz de rastrear múltiples zonas en el Salón, distinguiendo si hay personas sentadas en el sofá o en movimiento.",
+            loc: "Pared del Salón (Planta Baja)",
+            pwr: "Alimentación continua por cable Micro-USB 5V.",
+            net: "Conexión WiFi local directa a Homey Pro.",
+            fun: "Automatización por presencia. Si el Salón está vacío por más de 30 minutos y el clima está activo, Homey Pro reduce la consigna a modo ECO o cierra la rejilla si no hay nadie."
+        },
+        "sensor-smoke-salon": {
+            title: "Detector de Humo y CO Zigbee - Salón",
+            desc: "Sensor fotoeléctrico inteligente de humo y monóxido de carbono. Monitorea continuamente la calidad del aire del Salón para alertar en caso de fuego o combustión anómala.",
+            loc: "Techo del Salón (Planta Baja)",
+            pwr: "Pila de litio CR123A (Autonomía de 5 a 10 años).",
+            net: "Zigbee 3.0 inalámbrico a la malla.",
+            fun: "Lógica de seguridad crítica (Incendios). Al detectar humo, Homey Pro ejecuta un protocolo inmediato: detiene todos los ventiladores del clima y cierra todas las rejillas al 0% para aislar el oxígeno y evitar la propagación de humos tóxicos en la casa (confinamiento)."
+        },
+        "sensor-smoke-pasillo": {
+            title: "Detector de Humo y CO Zigbee - Pasillo Alta",
+            desc: "Sensor de humo inteligente instalado en el distribuidor superior para proteger los dormitorios.",
+            loc: "Distribuidor / Pasillo (Planta Alta)",
+            pwr: "Pila de litio CR123A.",
+            net: "Zigbee 3.0.",
+            fun: "Seguridad pasiva. Activa el apagado de la máquina UI-2 y el cierre de las compuertas de los dormitorios ante cualquier indicio de humo o monóxido de carbono."
+        }
+    };
+
+    let selectedClimateId = null;
+
+    function updateClimateDetails(id) {
+        const data = climateData[id];
+        if (!data) return;
+
+        climateDetailsTitle.textContent = data.title;
+        climateDetailsDesc.textContent = data.desc;
+        climateSpecLoc.textContent = data.loc;
+        climateSpecPwr.textContent = data.pwr;
+        climateSpecNet.textContent = data.net;
+        climateSpecFun.textContent = data.fun;
+        climateDetailsSpecs.style.display = 'block';
+    }
+
+    function highlightClimatePaths(nodeId) {
+        // Clear previous highlights and dimmed states
+        climatePaths.forEach(path => {
+            path.classList.remove('active-cable');
+            path.classList.remove('dimmed');
+        });
+        climateNodes.forEach(node => {
+            node.classList.remove('dimmed');
+        });
+
+        if (!nodeId) return;
+
+        let activePathCount = 0;
+        const connectedNodes = new Set();
+        connectedNodes.add(nodeId);
+
+        // Find connected paths and mark direct nodes
+        climatePaths.forEach(path => {
+            const from = path.getAttribute('data-from');
+            const to = path.getAttribute('data-to');
+
+            if (from === nodeId || to === nodeId) {
+                path.classList.add('active-cable');
+                activePathCount++;
+                if (from) connectedNodes.add(from);
+                if (to) connectedNodes.add(to);
+            }
+        });
+
+        // If we have active paths, dim all others to draw focus
+        if (activePathCount > 0) {
+            climatePaths.forEach(path => {
+                if (!path.classList.contains('active-cable')) {
+                    path.classList.add('dimmed');
+                }
+            });
+
+            climateNodes.forEach(node => {
+                const id = node.getAttribute('data-id');
+                if (!connectedNodes.has(id)) {
+                    node.classList.add('dimmed');
+                }
+            });
+        }
+    }
+
+    function resetClimateHighlight() {
+        climatePaths.forEach(path => {
+            path.classList.remove('active-cable');
+            path.classList.remove('dimmed');
+        });
+        climateNodes.forEach(node => {
+            node.classList.remove('dimmed');
+        });
+
+        climateDetailsTitle.textContent = "Selecciona un dispositivo";
+        climateDetailsDesc.textContent = "Haz clic o pasa el cursor sobre cualquiera de los equipos de climatización, rejillas, termostatos o sensores del plano interactivo para analizar sus características técnicas, tipo de alimentación y lógica domótica integrada.";
+        climateDetailsSpecs.style.display = 'none';
+        climateSpecLoc.textContent = "--";
+        climateSpecPwr.textContent = "--";
+        climateSpecNet.textContent = "--";
+        climateSpecFun.textContent = "--";
+    }
+
+    climateNodes.forEach(node => {
+        const id = node.getAttribute('data-id');
+
+        node.addEventListener('mouseenter', () => {
+            if (!selectedClimateId) {
+                updateClimateDetails(id);
+                highlightClimatePaths(id);
+            }
+        });
+
+        node.addEventListener('mouseleave', () => {
+            if (!selectedClimateId) {
+                resetClimateHighlight();
+            }
+        });
+
+        node.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            // Ripple pulse feedback: briefly pulse circle r attribute or rect outline
+            const circle = node.querySelector('circle');
+            if (circle) {
+                const prevR = circle.getAttribute('r') || '11';
+                circle.setAttribute('r', '16');
+                setTimeout(() => {
+                    circle.setAttribute('r', prevR);
+                }, 300);
+            } else {
+                const rect = node.querySelector('rect');
+                if (rect) {
+                    const prevStrokeWidth = rect.getAttribute('stroke-width') || '1.2';
+                    rect.setAttribute('stroke-width', '3');
+                    setTimeout(() => {
+                        rect.setAttribute('stroke-width', prevStrokeWidth);
+                    }, 300);
+                }
+            }
+
+            if (selectedClimateId === id) {
+                // Deselect
+                selectedClimateId = null;
+                resetClimateHighlight();
+            } else {
+                // Select
+                selectedClimateId = id;
+                updateClimateDetails(id);
+                highlightClimatePaths(id);
+            }
+        });
+    });
+
+    // Reset when clicking outside on the SVG background
+    const hvacSvg = document.getElementById('hvac-svg');
+    if (hvacSvg) {
+        hvacSvg.addEventListener('click', () => {
+            selectedClimateId = null;
+            resetClimateHighlight();
+        });
+    }
 });
