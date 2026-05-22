@@ -125,6 +125,39 @@ La instalación se divide en **cuatro diferenciales independientes** (segmentado
 3. **Protector contra Sobretensiones (Toscano Combi-PRO):** Blindaje contra subidas de tensión permanentes de la distribuidora y transitorias (rayos) en la entrada general, antes de la distribución de diferenciales.
 4. **Sonda de Nivel Hidrostático (Sonda TL-136 + Shelly Plus Uni + Buck Converter):** Convertidor DC-DC (Buck Converter) a carril DIN que estabiliza a 12V DC la alimentación de la placa Shelly Plus Uni. La sonda analógica lee el nivel freático y el Homey Pro corta la bomba al instante si baja del 15% (Protección contra cavitación / Dry-Run).
 
+### F. Modularidad Física DIN y Dimensionamiento Reglamentario (REBT)
+
+Para garantizar una correcta disipación térmica (evitando el recalentamiento de las bobinas de los contactores y los relés inteligentes en servicio continuo) y dar estricto cumplimiento a la instrucción técnica complementaria **ITC-BT-17 del Reglamento Electrotécnico para Baja Tensión (REBT)**, se ha diseñado una distribución física segmentada por carriles y funciones con un cálculo de espacios ocupados:
+
+1. **Cómputo Físico de Módulos Ocupados:**
+   * **CARRIL DIN 1: Protecciones y Medida de Cabecera (22 Módulos Ocupados):**
+     * **Toscano Combi-PRO (Protector Sobretensiones General):** 2 Módulos
+     * **Diferencial Domótica Clase A-SI (Dedicado de 40A/30mA):** 2 Módulos
+     * **Circutor REC4 (Diferencial Inteligente Re-armable Casa):** 3 Módulos
+     * **Diferencial Riego y Pozo 1 Clase A-SI (Dedicado de 25A/30mA):** 2 Módulos
+     * **Diferencial Exterior y Pozo 2 Clase A-SI (Dedicado de 25A/30mA):** 2 Módulos
+     * **Shelly Pro 3EM (Analizador de Red Trifásico en Monofásico):** 3 Módulos
+     * **Magnetotérmicos de Salida (6x DPN Estrechos de 1 Módulo):** 6 Módulos (C10 Domótica, C10 Alumbrado, C16 Enchufes, C25 Cocina, C20 Lavadora, C10 Riego)
+     * **Magnetotérmico Bipolar de Pozos (PIA 2P 16A General Pozos):** 2 Módulos
+   * **CARRIL DIN 2: Automatización, Control y Maniobra (10 Módulos Ocupados):**
+     * **Shelly Pro 1 (Relé de carril DIN para control del Termo ACS):** 1 Módulo
+     * **Shelly Pro EM-50 (Medidor de doble canal para Termo ACS):** 2 Módulos
+     * **Contactor Industrial Bipolar de Termo ACS (2P 25A 230V):** 1 Módulo
+     * **Shelly Pro 2 (Relé de doble canal para control de Bomba 1 y Bomba 2):** 2 Módulos
+     * **Contactor Industrial Bipolar de Pozo 1 (2P 25A 230V):** 1 Módulo
+     * **Contactor Industrial Bipolar de Pozo 2 (2P 25A 230V):** 1 Módulo
+     * **Caja de Telemetría Estanca a DIN (Shelly Plus Uni + Buck 12V):** 2 Módulos
+
+2. **Cálculo de Envolvente y Reserva Reglamentaria (REBT):**
+   * **Espacio Físico Útil Ocupado:** 32 Módulos DIN
+   * **Envolvente Prescrita para Obra:** Cuadro General de **48 Módulos DIN** (distribuidos en 4 filas de 12 módulos o 3 filas de 16 módulos).
+   * **Cálculo de Reserva Técnica:** 
+     $$\text{Reserva} = \frac{48 - 32}{48} \times 100 = 33.3\%$$
+   * **Justificación de Cumplimiento (REBT ITC-BT-17):** La reglamentación exige prever una reserva mínima de espacio del 20% para futuras ampliaciones y necesidades de ventilación. Con un **33.3% de reserva técnica real**, se excede el mínimo normativo. Esto garantiza:
+     * **Disipación Térmica Óptima:** Espacio de separación para mitigar el calentamiento por inducción en las bobinas de los 3 contactores bipolares y los módulos de potencia Shelly de servicio prolongado.
+     * **Facilidad de Peinado y Canalización:** Espacio suficiente para albergar los mazos de conductores de potencia y las canaletas ranuradas de cableado secundario de maniobra sin estrangulamientos.
+     * **Escalabilidad y Ampliaciones Futuras:** Capacidad directa de incorporar magnetotérmicos adicionales (como previsión para vehículo eléctrico, aerotermia adicional o cargador de batería solar en futuras fases del proyecto) sin tener que sustituir la caja empotrada actual de la vivienda.
+
 ---
 
 ## 6. Lógica de Riesgos Críticos en Homey Pro
