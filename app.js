@@ -42,24 +42,24 @@ document.addEventListener('DOMContentLoaded', () => {
         "1": {
             title: "Router GL.iNet Spitz AX (GL-X3000)",
             desc: "Router neutro de alta gama y procesador ARM. Gestiona la fibra de Movistar y, en caso de caídas físicas o sabotajes de la línea de calle, conmuta automáticamente en milisegundos a su módem celular 5G integrado. Soporta la segmentación por VLANs locales (Domótica, Seguridad, Gestión, Invitados).",
-            loc: "Salón (Planta Baja)",
-            pwr: "PoE Splitter a USB-C (Respaldado por el SAI del garaje)",
+            loc: "Hall Central (Planta Baja)",
+            pwr: "PoE+ Splitter activo a 12V DC (Respaldado por el SAI del garaje)",
             net: "Doble WAN activa (FTTH por cable + backup celular 5G)",
             fun: "Sistema nervioso de red, failover ultra rápido y cortafuegos SPI."
         },
         "2": {
             title: "Homey Pro (2023)",
             desc: "El cerebro domótico central de la vivienda. Coordina todas las antenas locales de radio Zigbee, Z-Wave, Thread/Matter e Infrarrojos para automatizar luces, clima y cierres.",
-            loc: "Salón (Planta Baja)",
-            pwr: "PoE Splitter a USB-C (Respaldado por el SAI del garaje)",
+            loc: "Hall Central (Planta Baja)",
+            pwr: "PoE Splitter activo a USB-C (Respaldado por el SAI del garaje)",
             net: "Red Local Inalámbrica WiFi & Zigbee Mesh",
             fun: "Procesador lógico, reglas de automatización y control local."
         },
         "3": {
             title: "Homey Bridge",
             desc: "Extensor de cobertura físico. Funciona como un satélite del Homey Pro para repetir y tejer la malla de señales Zigbee, Z-Wave e Infrarrojos en la planta superior.",
-            loc: "Dormitorio / Distribuidor (Planta 1)",
-            pwr: "PoE Splitter a USB-C (Respaldado por el SAI del garaje)",
+            loc: "Distribuidor (Planta Alta)",
+            pwr: "PoE Splitter activo a USB-C (Respaldado por el SAI del garaje)",
             net: "WiFi Mesh local conectado con Homey Pro",
             fun: "Repetidor de radiofrecuencias para evitar zonas ciegas por muros gruesos."
         },
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             fun: "Almacenamiento masivo, grabaciones de seguridad y servidor local."
         },
         "7": {
-            title: "AP Omada EAP653 WiFi 6",
-            desc: "Punto de acceso profesional WiFi 6 empotrado en techo. Ofrece cobertura inalámbrica de alta velocidad y gran densidad a todos los dormitorios, móviles y sensores de la planta alta, con soporte multi-VLAN.",
-            loc: "Techo del distribuidor (Planta 1)",
-            pwr: "Alimentado por cable PoE desde el Switch del garaje",
-            net: "Enlace de datos PoE Cat6",
-            fun: "Red WiFi 6 unificada de alta velocidad y Roaming activo sin cortes."
+            title: "2x AP Omada EAP773 WiFi 7",
+            desc: "Puntos de acceso profesionales WiFi 7 de triple banda (2.4/5/6 GHz) en techo. Uno en planta baja y otro en planta alta. Ofrecen máxima velocidad y descongestionan la banda de 2.4 GHz al derivar móviles y TVs a la banda de 6 GHz.",
+            loc: "Hall Central (Planta Baja) y Distribuidor (Planta Alta)",
+            pwr: "Alimentados por cables PoE+ directos desde el Switch del garaje (802.3at)",
+            net: "Enlaces de datos PoE+ Cat6A a 10Gbps físico",
+            fun: "Itinerancia activa (roaming) coordinada por controladora, banda de 6 GHz y WiFi 7 sin microcortes."
         },
         "8": {
             title: "Cámara Fachada Izquierda",
