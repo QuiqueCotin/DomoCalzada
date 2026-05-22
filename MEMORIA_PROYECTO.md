@@ -114,12 +114,12 @@ Este conjunto conserva tu Switch TL-SG2218P y el AP Exterior actual, pero eleva 
 *   **Alimentación ONT:** Alimentada en el Hall mediante PoE Splitter a 12V DC directo desde el switch del garaje. De esta forma, ONT y Router están respaldados por el SAI.
 *   **Switch Troncal:** TP-Link Omada TL-SG2218P (16 puertos Gigabit PoE+, 150W budget) [~220 €]. Ubicado en el rack del garaje.
     *   *Análisis PoE:* Carga total de red con APs, cámaras, WallPanel, Homey Pro/Bridge y la adición del Spitz AX + ONT es de ~128W típicos y ~142W de pico teórico simultáneo. Encaja con un margen seguro bajo el presupuesto de 150W del switch.
-*   **Puntos de Acceso Interiores (2x):** TP-Link Omada EAP773 WiFi 7 Tri-band (BE11000) [~180 €/unidad, total ~360 €]. Uno en techo de planta baja (Hall/pasillo) y otro en planta alta, alimentados por cable Cat6A PoE+ directo desde el garaje.
+*   **Puntos de Acceso Interiores (2x):** TP-Link Omada EAP773 WiFi 7 Tri-band (BE11000) [~210 €/unidad, total ~420 €]. Uno en techo de planta baja (Hall/pasillo) y otro en planta alta, alimentados por cable Cat6A PoE+ directo desde el garaje.
     *   *Alimentación:* Soportan alimentación PoE+ (802.3at) con consumo máximo de 24W por puerto (total ~48W).
 *   **Punto de Acceso Exterior (1x):** TP-Link Omada EAP610-Outdoor WiFi 6 (IP67) [~130 €]. Cobertura en patio y piscina a 2.4/5 GHz de alta potencia.
 *   **Controlador:** Software Omada Controller gratuito autohospedado en tu NAS Ugreen DXP2800 (en contenedor Docker/LXC), evitando comprar un controlador físico OC200 y centralizando la gestión.
 
-**Presupuesto Estimado de Red:** **~1.100 €** (incluyendo Router a precio de España de 390 €, Switch y 3 APs).
+**Presupuesto Estimado de Red:** **~1.160 €** (incluyendo Router a precio de España de 390 €, Switch y 3 APs).
 *Pros:* Escalabilidad, costes contenidos, software de gestión gratuito local en NAS, excelente presupuesto de potencia PoE (150W).
 *Contras:* Los puertos del Switch TL-SG2218P son Gigabit; para aprovechar la velocidad de 2.5G/10G física entre APs y NAS, se requeriría un switch Multi-Gigabit más costoso.
 <!-- slide -->
