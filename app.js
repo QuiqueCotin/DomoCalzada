@@ -467,7 +467,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        node.addEventListener('mouseover', updatePanelDetails);
+        node.addEventListener('mouseover', () => {
+            updatePanelDetails();
+            
+            const id = node.getAttribute('data-id');
+            if (id) {
+                const cables = document.querySelectorAll('.panel-cable');
+                cables.forEach(cable => {
+                    const devicesAttr = cable.getAttribute('data-devices');
+                    const devices = devicesAttr ? devicesAttr.split(/\s+/) : [];
+                    if (devices.includes(id)) {
+                        cable.classList.add('active-cable');
+                        cable.classList.remove('dimmed-cable');
+                    } else {
+                        cable.classList.add('dimmed-cable');
+                        cable.classList.remove('active-cable');
+                    }
+                });
+            }
+        });
+
+        node.addEventListener('mouseleave', () => {
+            const cables = document.querySelectorAll('.panel-cable');
+            cables.forEach(cable => {
+                cable.classList.remove('active-cable');
+                cable.classList.remove('dimmed-cable');
+            });
+        });
+
         node.addEventListener('click', () => {
             updatePanelDetails();
 

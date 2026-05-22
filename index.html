@@ -1359,8 +1359,8 @@
                 <div class="card-grid" style="grid-template-columns: 3fr 1fr; margin-bottom: 2rem;">
                     <!-- Interactive SVG Box -->
                     <div class="card accent-blue" style="padding: 1rem; overflow-x: auto;">
-                        <div class="svg-container" style="min-height: 520px;">
-                            <svg viewBox="0 0 1250 580" width="100%" height="100%" id="panel-svg" style="border-radius: 0.75rem; user-select: none;">
+                        <div class="svg-container" style="min-height: 1000px;">
+                            <svg viewBox="0 0 1250 1050" width="100%" height="100%" id="panel-svg" style="border-radius: 0.75rem; user-select: none;">
                                 <!-- DEFINITIONS -->
                                 <defs>
                                     <filter id="glow-orange" x="-20%" y="-20%" width="140%" height="140%">
@@ -1374,158 +1374,161 @@
                                 </defs>
 
                                 <!-- Outer Cabinet Box -->
-                                <rect x="5" y="5" width="1240" height="570" rx="15" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="2.5" />
+                                <rect x="5" y="5" width="1240" height="1040" rx="15" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="2.5" />
                                 <!-- Inner Cabinet Space -->
-                                <rect x="25" y="25" width="1200" height="530" rx="10" fill="var(--svg-bg)" stroke="var(--border-color)" stroke-width="1.5" />
+                                <rect x="25" y="25" width="1200" height="1000" rx="10" fill="var(--svg-bg)" stroke="var(--border-color)" stroke-width="1.5" />
 
                                 <!-- DIN Rails -->
                                 <rect x="40" y="125" width="1170" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
-                                <text x="50" y="146" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 1: PROTECCIÓN Y MEDIDA GENERAL</text>
+                                <text x="50" y="146" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 1: PROTECCIÓN Y MEDIDA GENERAL (22 MÓDULOS)</text>
 
-                                <rect x="40" y="375" width="1170" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
-                                <text x="50" y="396" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 2: AUTOMATIZACIÓN Y MANIOBRA</text>
+                                <rect x="40" y="545" width="1170" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+                                <text x="50" y="566" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 2: AUTOMATIZACIÓN Y MANIOBRA (10 MÓDULOS)</text>
 
                                 <!-- PHYSICAL BUSBARS -->
                                 <!-- Neutral Busbar (Top Right) -->
                                 <rect x="1050" y="35" width="140" height="15" rx="2" fill="#2563eb" opacity="0.8" />
                                 <text x="1120" y="46" fill="white" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR NEUTRO (N)</text>
 
-                                <!-- Ground Busbar (Bottom Right) -->
-                                <rect x="1050" y="530" width="140" height="15" rx="2" fill="#eab308" opacity="0.8" />
-                                <text x="1120" y="541" fill="black" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR TIERRA (PE)</text>
+                                <!-- Ground Busbar (Bottom Right - Relocated for space) -->
+                                <rect x="1050" y="990" width="140" height="15" rx="2" fill="#eab308" opacity="0.8" />
+                                <text x="1120" y="1001" fill="black" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR TIERRA (PE)</text>
 
                                 <!-- WIRING CONNECTIONS (BACKGROUND PATHS) -->
                                 <!-- Red de Acometida Entrada L/N (Top Left to Combi-PRO) -->
-                                <path d="M 110 25 L 110 60" fill="none" stroke="#8b5a2b" stroke-width="4.5" />
-                                <path d="M 130 25 L 130 60" fill="none" stroke="#2563eb" stroke-width="4.5" />
+                                <path class="panel-cable" data-devices="combi-pro" d="M 110 25 L 110 60" fill="none" stroke="#8b5a2b" stroke-width="4.5" />
+                                <path class="panel-cable" data-devices="combi-pro" d="M 130 25 L 130 60" fill="none" stroke="#2563eb" stroke-width="4.5" />
 
                                 <!-- Combi-PRO bottom out (L at 100, N at 130) to feed the four differentials in parallel -->
-                                <!-- Phase bus line (below devices at y=225) -->
-                                <path d="M 100 210 L 100 225 L 465 225" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- Phase bus line (below devices at y=230) -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 100 210 L 100 230 L 465 230" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
                                 <!-- Vertical taps to top Phase inputs of the four differentials -->
-                                <path d="M 185 225 L 185 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-domo top L -->
-                                <path d="M 272 225 L 272 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- rec4 top L -->
-                                <path d="M 380 225 L 380 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-pozo1 top L -->
-                                <path d="M 465 225 L 465 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-ext top L -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 185 230 L 185 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-domo top L -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 272 230 L 272 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- rec4 top L -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 380 230 L 380 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-pozo1 top L -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 465 230 L 465 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-ext top L -->
 
-                                <!-- Neutral bus line (below devices at y=220) -->
-                                <path d="M 130 210 L 130 220 L 500 220" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- Neutral bus line (below devices at y=245) -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 130 210 L 130 245 L 500 245" fill="none" stroke="#2563eb" stroke-width="3.5" />
                                 <!-- Vertical taps to top Neutral inputs of the four differentials -->
-                                <path d="M 220 220 L 220 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-domo top N -->
-                                <path d="M 328 220 L 328 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- rec4 top N -->
-                                <path d="M 415 220 L 415 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-pozo1 top N -->
-                                <path d="M 500 220 L 500 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-ext top N -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 220 245 L 220 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-domo top N -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 328 245 L 328 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- rec4 top N -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 415 245 L 415 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-pozo1 top N -->
+                                <path class="panel-cable" data-devices="combi-pro dif-domo rec4 dif-pozo1 dif-ext" d="M 500 245 L 500 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-ext top N -->
 
-                                <!-- Ground Wire from Combi-PRO down to Ground Busbar -->
-                                <path d="M 148 210 L 148 260 L 1120 260 L 1120 530" fill="none" stroke="#15803d" stroke-width="2.5" />
-                                <path d="M 148 210 L 148 260 L 1120 260 L 1120 530" fill="none" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,4" />
+                                <!-- Ground Wire from Combi-PRO down to relocated Ground Busbar -->
+                                <path class="panel-cable" data-devices="combi-pro" d="M 148 210 L 148 260 L 1120 260 L 1120 990" fill="none" stroke="#15803d" stroke-width="2.5" />
+                                <path class="panel-cable" data-devices="combi-pro" d="M 148 210 L 148 260 L 1120 260 L 1120 990" fill="none" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,4" />
 
                                 <!-- SEGMENT 1: DOMÓTICA & SEGURIDAD -->
                                 <!-- dif-domo output (L=185, N=220) -->
-                                <!-- Phase feeds pia-domo top L (665) and Shelly Pro 3EM VA (550) -->
-                                <path d="M 185 210 L 185 240 L 665 240 L 665 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <!-- VA voltage measurement tap line (thin orange/brown) -->
-                                <path d="M 550 240 L 550 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Phase feeds pia-domo top L (654) and Shelly Pro 3EM VA (550) -->
+                                <path class="panel-cable" data-devices="dif-domo pia-domo" d="M 185 210 L 185 275 L 654 275 L 654 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VA voltage measurement tap line -->
+                                <path class="panel-cable" data-devices="dif-domo pro3em" d="M 550 275 L 550 60" fill="none" stroke="#a855f7" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <text x="546" y="90" fill="#a855f7" font-size="6" font-weight="800" transform="rotate(-90 546,90)" text-anchor="middle">V_A (Medición Domótica)</text>
                                 <!-- Neutral feeds Domotics Neutral bus line at y=295 for rack and Shellys -->
-                                <path d="M 220 210 L 220 295 L 750 295" fill="none" stroke="#2563eb" stroke-width="2.5" />
-                                <!-- Domotics Neutral output to Rack -->
-                                <path d="M 220 295 L 685 295 L 685 520" fill="none" stroke="#2563eb" stroke-width="3" />
-                                <!-- Phase out of pia-domo to Rack -->
-                                <path d="M 665 210 L 665 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <path class="panel-cable" data-devices="dif-domo" d="M 220 210 L 220 295 L 750 295" fill="none" stroke="#2563eb" stroke-width="2.5" />
+                                <!-- Domotics Neutral output to Rack (extended downward to Y=920) -->
+                                <path class="panel-cable" data-devices="dif-domo" d="M 220 295 L 674 295 L 674 920" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Phase out of pia-domo to Rack (extended downward to Y=920) -->
+                                <path class="panel-cable" data-devices="pia-domo" d="M 654 210 L 654 920" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
 
-                                <!-- Shelly Control Modules auxiliary power (Phase) from pia-domo output at y=270 -->
-                                <path d="M 665 270 L 100 270 L 100 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 1 phase -->
-                                <path d="M 185 270 L 185 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro EM phase -->
-                                <path d="M 435 270 L 435 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 2 phase -->
-                                <path d="M 730 270 L 730 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Uni box phase -->
+                                <!-- Shelly Control Modules auxiliary power (Phase) from pia-domo output at y=350 -->
+                                <path class="panel-cable" data-devices="pia-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 654 350 L 100 350 L 100 480" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 1 phase -->
+                                <path class="panel-cable" data-devices="pia-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 160 350 L 160 480" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro EM phase -->
+                                <path class="panel-cable" data-devices="pia-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 305 350 L 305 480" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 2 phase -->
+                                <path class="panel-cable" data-devices="pia-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 505 350 L 505 480" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Uni box phase -->
 
-                                <!-- Shelly Control Modules auxiliary power (Neutral) from Domo Neutral bus line at y=295 -->
-                                <path d="M 125 295 L 125 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 1 neutral -->
-                                <path d="M 205 295 L 205 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro EM neutral -->
-                                <path d="M 455 295 L 455 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 2 neutral -->
-                                <path d="M 750 295 L 750 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Uni box neutral -->
+                                <!-- Shelly Control Modules auxiliary power (Neutral) from Domo Neutral bus line at y=375 -->
+                                <path class="panel-cable" data-devices="dif-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 220 375 L 525 375 L 525 480" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Uni box neutral -->
+                                <path class="panel-cable" data-devices="dif-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 120 375 L 120 480" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 1 neutral -->
+                                <path class="panel-cable" data-devices="dif-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 180 375 L 180 480" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro EM neutral -->
+                                <path class="panel-cable" data-devices="dif-domo shelly-pro1 pro-em50 shelly-pro2 shelly-uni-box" d="M 325 375 L 325 480" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 2 neutral -->
 
                                 <!-- SEGMENT 2: CONFORT VIVIENDA & TERMO ACS (under REC4) -->
                                 <!-- rec4 bottom output (L=272, N=328) -->
-                                <!-- Phase feeds all internal house breakers in parallel (y=250) -->
-                                <path d="M 272 210 L 272 250 L 965 250" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- Phase feeds all internal house breakers in parallel (y=285) -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 272 210 L 272 285 L 869 285" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
                                 <!-- Vertical taps to top Phase inputs of the breakers -->
-                                <path d="M 725 250 L 725 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-termo top L -->
-                                <path d="M 785 250 L 785 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz top L -->
-                                <path d="M 845 250 L 845 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes top L -->
-                                <path d="M 905 250 L 905 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina top L -->
-                                <path d="M 965 250 L 965 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora top L -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 697 285 L 697 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-termo top L -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 740 285 L 740 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz top L -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 783 285 L 783 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes top L -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 826 285 L 826 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina top L -->
+                                <path class="panel-cable" data-devices="rec4 pia-termo pia-luz pia-enchufes pia-cocina pia-lavadora" d="M 869 285 L 869 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora top L -->
 
                                 <!-- Neutral feeds Termo ACS and general house circuits through general Neutral Busbar -->
-                                <path d="M 328 210 L 328 245 L 1120 245 L 1120 50" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <path class="panel-cable" data-devices="rec4" d="M 328 210 L 328 310 L 1120 310 L 1120 50" fill="none" stroke="#2563eb" stroke-width="3" />
 
-                                <!-- Phase pia-termo out to Contactor Termo input at y=290 -->
-                                <path d="M 725 210 L 725 290 L 285 290 L 285 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <!-- Shelly Pro EM-50 CT Clamp around Termo Phase wire -->
-                                <circle cx="410" cy="290" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" />
-                                <path d="M 410 297 L 410 305 L 225 305 L 225 310" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
-                                <!-- Neutral from general Neutral Busbar to Contactor Termo input -->
-                                <path d="M 1120 240 L 1120 300 L 320 300 L 320 310" fill="none" stroke="#2563eb" stroke-width="3" />
-                                <!-- Contactor Termo Output: to Termo ACS load -->
-                                <path d="M 285 460 L 285 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <path d="M 320 460 L 320 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- Phase pia-termo out to Contactor Termo input at y=405 -->
+                                <path class="panel-cable" data-devices="pia-termo contactor-termo" d="M 697 210 L 697 405 L 245 405 L 245 480" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <!-- Shelly Pro EM-50 CT Clamp around Termo Phase wire at x=245 (moved for shifted contactor to cy=440) -->
+                                <circle cx="245" cy="440" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" />
+                                <path class="panel-cable" data-devices="pro-em50 contactor-termo" d="M 237.5 440 L 180 440 L 180 480" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Neutral from general Neutral Busbar to Contactor Termo input at y=425 -->
+                                <path class="panel-cable" data-devices="contactor-termo" d="M 1120 245 L 1120 425 L 265 425 L 265 480" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Contactor Termo Output: to Termo ACS load (extended to Y=920) -->
+                                <path class="panel-cable" data-devices="contactor-termo" d="M 245 630 L 245 920" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <path class="panel-cable" data-devices="contactor-termo" d="M 265 630 L 265 920" fill="none" stroke="#2563eb" stroke-width="3.5" />
 
-                                <!-- Phase outputs from traditional home breakers going to domestic distribution -->
-                                <path d="M 785 210 L 785 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz out -->
-                                <path d="M 845 210 L 845 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes out -->
-                                <path d="M 905 210 L 905 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina out -->
-                                <path d="M 965 210 L 965 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora out -->
+                                <!-- Phase outputs from traditional home breakers going to domestic distribution (extended to Y=920) -->
+                                <path class="panel-cable" data-devices="pia-luz" d="M 740 210 L 740 920" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz out -->
+                                <path class="panel-cable" data-devices="pia-enchufes" d="M 783 210 L 783 920" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes out -->
+                                <path class="panel-cable" data-devices="pia-cocina" d="M 826 210 L 826 920" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina out -->
+                                <path class="panel-cable" data-devices="pia-lavadora" d="M 869 210 L 869 920" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora out -->
 
                                 <!-- SEGMENT 3: RIEGO & POZO 1 (under dif-pozo1) -->
                                 <!-- dif-pozo1 bottom output (L=380, N=415) -->
-                                <!-- Phase feeds pia-pozos Pole 1 input (1015) and VB voltage tap (580) -->
-                                <path d="M 380 210 L 380 260 L 1015 260 L 1015 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <!-- VB voltage measurement tap line (thin orange/brown) -->
-                                <path d="M 580 260 L 580 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Phase feeds pia-pozos Pole 1 input (913) and VB voltage tap (580) -->
+                                <path class="panel-cable" data-devices="dif-pozo1 pia-pozos" d="M 380 210 L 380 325 L 913 325 L 913 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VB voltage measurement tap line -->
+                                <path class="panel-cable" data-devices="dif-pozo1 pro3em" d="M 580 325 L 580 60" fill="none" stroke="#a855f7" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <text x="576" y="90" fill="#a855f7" font-size="6" font-weight="800" transform="rotate(-90 576,90)" text-anchor="middle">V_B (Medición Pozo 1)</text>
                                 <!-- Phase output from pia-pozos Pole 1 to Contactor Pozo 1 input -->
-                                <path d="M 1015 210 L 1015 270 L 545 270 L 545 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <path class="panel-cable" data-devices="pia-pozos contactor-pozo1" d="M 913 210 L 913 445 L 390 445 L 390 480" fill="none" stroke="#8b5a2b" stroke-width="3" />
                                 <!-- Neutral output from dif-pozo1 to Contactor Pozo 1 Neutral input -->
-                                <path d="M 415 210 L 415 280 L 580 280 L 580 310" fill="none" stroke="#2563eb" stroke-width="3" />
-                                <!-- Contactor Pozo 1 Output: to Bomba Pozo 1 load -->
-                                <path d="M 545 460 L 545 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <path d="M 580 460 L 580 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
-                                <!-- CT Clamp B around Phase going to Pozo 1 (leads back to Shelly Pro 3EM) -->
-                                <circle cx="545" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
-                                <path d="M 545 497 L 545 505 L 580 505 L 580 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <path class="panel-cable" data-devices="dif-pozo1 contactor-pozo1" d="M 415 210 L 415 455 L 410 455 L 410 480" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Contactor Pozo 1 Output: to Bomba Pozo 1 load (extended to Y=920) -->
+                                <path class="panel-cable" data-devices="contactor-pozo1" d="M 390 630 L 390 920" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <path class="panel-cable" data-devices="contactor-pozo1" d="M 410 630 L 410 920" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- CT Clamp B around Phase going to Pozo 1 (leads back to Shelly Pro 3EM at 550, shifted to cy=700) -->
+                                <circle cx="390" cy="700" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
+                                <path class="panel-cable" data-devices="pro3em contactor-pozo1" d="M 390 707 L 390 715 L 550 715 L 550 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
 
                                 <!-- SEGMENT 4: EXTERIOR & POZO 2 (under dif-ext) -->
                                 <!-- dif-ext bottom output (L=465, N=500) -->
-                                <!-- Phase feeds pia-pozos Pole 2 input (1035) and VC voltage tap (610) -->
-                                <path d="M 465 210 L 465 265 L 1035 265 L 1035 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <!-- VC voltage measurement tap line (thin orange/brown) -->
-                                <path d="M 610 265 L 610 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Phase feeds pia-pozos Pole 2 input (948) and VC voltage tap (610) -->
+                                <path class="panel-cable" data-devices="dif-ext pia-pozos" d="M 465 210 L 465 340 L 948 340 L 948 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VC voltage measurement tap line -->
+                                <path class="panel-cable" data-devices="dif-ext pro3em" d="M 610 340 L 610 60" fill="none" stroke="#a855f7" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <text x="606" y="90" fill="#a855f7" font-size="6" font-weight="800" transform="rotate(-90 606,90)" text-anchor="middle">V_C (Medición Pozo 2)</text>
                                 <!-- Phase output from pia-pozos Pole 2 to Contactor Pozo 2 input -->
-                                <path d="M 1035 210 L 1035 275 L 635 275 L 635 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <path class="panel-cable" data-devices="pia-pozos contactor-pozo2" d="M 948 210 L 948 465 L 445 465 L 445 480" fill="none" stroke="#8b5a2b" stroke-width="3" />
                                 <!-- Neutral output from dif-ext to Contactor Pozo 2 Neutral input -->
-                                <path d="M 500 210 L 500 285 L 670 285 L 670 310" fill="none" stroke="#2563eb" stroke-width="3" />
-                                <!-- Contactor Pozo 2 Output: to Bomba Pozo 2 load -->
-                                <path d="M 635 460 L 635 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <path d="M 670 460 L 670 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
-                                <!-- CT Clamp C around Phase going to Pozo 2 (leads back to Shelly Pro 3EM) -->
-                                <circle cx="635" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
-                                <path d="M 635 497 L 635 513 L 610 513 L 610 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <path class="panel-cable" data-devices="dif-ext contactor-pozo2" d="M 500 210 L 500 475 L 465 475 L 465 480" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Contactor Pozo 2 Output: to Bomba Pozo 2 load (extended to Y=920) -->
+                                <path class="panel-cable" data-devices="contactor-pozo2" d="M 445 630 L 445 920" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <path class="panel-cable" data-devices="contactor-pozo2" d="M 465 630 L 465 920" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- CT Clamp C around Phase going to Pozo 2 (leads back to Shelly Pro 3EM at 565, shifted to cy=720) -->
+                                <circle cx="445" cy="720" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
+                                <path class="panel-cable" data-devices="pro3em contactor-pozo2" d="M 445 727 L 445 735 L 565 735 L 565 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
 
                                 <!-- MANIOBRA (RELAY PILOT WIRES IN RED) -->
                                 <!-- Shelly Pro 1 Output (O) to Contactor Termo Bobina A1 -->
-                                <path d="M 100 460 L 100 475 L 285 475 L 285 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <path class="panel-cable" data-devices="shelly-pro1 contactor-termo" d="M 100 630 L 100 645 L 245 645 L 245 480" fill="none" stroke="#ef4444" stroke-width="2.5" />
                                 <!-- Contactor Termo Bobina A2 connects to Domo Neutral -->
-                                <path d="M 305 310 L 305 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path class="panel-cable" data-devices="dif-domo contactor-termo" d="M 265 480 L 265 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
 
                                 <!-- Shelly Pro 2 Output 1 (O1) to Contactor Pozo 1 Bobina A1 -->
-                                <path d="M 435 460 L 435 475 L 545 475 L 545 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <path class="panel-cable" data-devices="shelly-pro2 contactor-pozo1" d="M 305 630 L 305 645 L 390 645 L 390 480" fill="none" stroke="#ef4444" stroke-width="2.5" />
                                 <!-- Shelly Pro 2 Output 2 (O2) to Contactor Pozo 2 Bobina A1 -->
-                                <path d="M 465 460 L 465 482 L 635 482 L 635 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <path class="panel-cable" data-devices="shelly-pro2 contactor-pozo2" d="M 340 630 L 340 655 L 445 655 L 445 480" fill="none" stroke="#ef4444" stroke-width="2.5" />
                                 <!-- Contactor Pozos Bobinas A2 connect to Domo Neutral -->
-                                <path d="M 565 310 L 565 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
-                                <path d="M 655 310 L 655 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path class="panel-cable" data-devices="dif-domo contactor-pozo1" d="M 410 480 L 410 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path class="panel-cable" data-devices="dif-domo contactor-pozo2" d="M 465 480 L 465 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
 
-                                <!-- Shelly Plus Uni Telemetry Line (Green/Teal) to Hydrostatic Probe -->
-                                <path d="M 770 460 L 770 520" fill="none" stroke="#10b981" stroke-width="2.5" filter="url(#glow-green)" />
+                                <!-- Shelly Plus Uni Telemetry Line (Green/Teal) to Hydrostatic Probe (extended to Y=920) -->
+                                <path class="panel-cable" data-devices="shelly-uni-box" d="M 532 630 L 532 920" fill="none" stroke="#10b981" stroke-width="2.5" filter="url(#glow-green)" />
 
                                 <!-- DYNAMIC INTERACTIVE COMPONENT GROUPS -->
                                 <!-- ROW 1 NODES -->
@@ -1578,19 +1581,21 @@
                                     <!-- Rearm handle motor -->
                                     <rect x="15" y="55" width="28" height="42" rx="3" fill="#1e293b" />
                                     <rect x="23" y="60" width="12" height="32" fill="#ef4444" rx="1.5" />
-                                    <!-- Status LCD -->
-                                    <rect x="52" y="55" width="32" height="28" rx="2" fill="#0f172a" stroke="#475569" />
-                                    <text x="68" y="68" fill="#22c55e" font-size="7.5" font-weight="800" text-anchor="middle" font-family="monospace">ON</text>
-                                    <text x="68" y="78" fill="#38bdf8" font-size="5.5" font-weight="600" text-anchor="middle" font-family="monospace">Auto</text>
-                                    <!-- Rearm button -->
-                                    <circle cx="68" cy="115" r="5" fill="#e2e8f0" stroke="#1e293b" />
-                                    <text x="68" y="117" fill="#1e293b" font-size="5.5" font-weight="800" text-anchor="middle">R</text>
+                                    <text x="29" y="80" fill="white" font-size="7" font-weight="900" text-anchor="middle">ON</text>
+                                    <!-- Status LED and Test -->
+                                    <circle cx="68" cy="65" r="4.5" fill="#22c55e" stroke="#15803d" stroke-width="1" />
+                                    <text x="78" y="67.5" fill="#334155" font-size="5.5" font-weight="800">Auto</text>
+                                    <rect x="55" y="80" width="26" height="14" rx="2" fill="#475569" />
+                                    <text x="68" y="89" fill="white" font-size="6" font-weight="900" text-anchor="middle">REARM</text>
+                                    <!-- Spec -->
+                                    <rect x="30" y="110" width="40" height="20" rx="2" fill="#475569" />
+                                    <text x="50" y="123" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">40A</text>
                                     <!-- Screws -->
-                                    <circle cx="22" cy="8" r="3" fill="#64748b" /><circle cx="78" cy="8" r="3" fill="#64748b" />
-                                    <circle cx="22" cy="142" r="3" fill="#64748b" /><circle cx="78" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="50" cy="8" r="3" fill="#64748b" /><circle cx="80" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="50" cy="142" r="3" fill="#64748b" /><circle cx="80" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 4. Diferencial Riego (dif-pozo1) -->
+                                <!-- 4. Diferencial Pozo 1 (dif-pozo1) -->
                                 <g class="panel-node" data-id="dif-pozo1" transform="translate(360, 60)">
                                     <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
@@ -1632,235 +1637,243 @@
                                     <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 6. Shelly Pro 3EM -->
+                                <!-- 6. Shelly Pro 3EM (Medida general y pozos) -->
                                 <g class="panel-node" data-id="pro3em" transform="translate(530, 60)">
-                                    <rect x="0" y="0" width="100" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
-                                    <rect x="5" y="10" width="90" height="130" rx="3" fill="#1e293b" />
-                                    <text x="50" y="30" fill="#38bdf8" font-size="9" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
-                                    <text x="50" y="42" fill="#ffffff" font-size="6.5" font-weight="700" text-anchor="middle">Pro 3EM (Monof.)</text>
-                                    <!-- Simulation screen -->
-                                    <rect x="12" y="52" width="76" height="48" rx="2.5" fill="#020617" stroke="#334155" />
-                                    <text x="18" y="65" fill="#eab308" font-size="6.5" font-family="monospace" font-weight="700">A: 5.21 kW</text>
-                                    <text x="18" y="77" fill="#38bdf8" font-size="6.5" font-family="monospace" font-weight="700">B: 1.20 kW</text>
-                                    <text x="18" y="89" fill="#10b981" font-size="6.5" font-family="monospace" font-weight="700">C: 0.00 kW</text>
-                                    <!-- LAN & WiFi -->
-                                    <circle cx="25" cy="118" r="3" fill="#22c55e" /><text x="32" y="120.5" fill="#94a3b8" font-size="5.5" font-weight="700">WiFi</text>
-                                    <circle cx="60" cy="118" r="3" fill="#22c55e" /><text x="67" y="120.5" fill="#94a3b8" font-size="5.5" font-weight="700">LAN</text>
+                                    <rect x="0" y="0" width="95" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                                    <rect x="5" y="10" width="85" height="130" rx="3" fill="#1e293b" />
+                                    <text x="47.5" y="24" fill="#ffffff" font-size="8" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
+                                    <text x="47.5" y="34" fill="#38bdf8" font-size="6.5" font-weight="700" text-anchor="middle">Pro 3EM (Monof.)</text>
+                                    <!-- Display simulation -->
+                                    <rect x="15" y="46" width="65" height="42" rx="2" fill="#020617" stroke="#334155" />
+                                    <text x="20" y="58" fill="#eab308" font-size="5" font-family="monospace" font-weight="700">A: 0.71kW</text>
+                                    <text x="20" y="68" fill="#eab308" font-size="5" font-family="monospace" font-weight="700">B: 1.25kW</text>
+                                    <text x="20" y="78" fill="#eab308" font-size="5" font-family="monospace" font-weight="700">C: 0.98kW</text>
+                                    <!-- LAN & WiFi Status -->
+                                    <circle cx="28" cy="104" r="3" fill="#22c55e" />
+                                    <text x="36" y="106.5" fill="#94a3b8" font-size="5" font-weight="800">WiFi</text>
+                                    <circle cx="60" cy="104" r="3" fill="#22c55e" />
+                                    <text x="68" y="106.5" fill="#94a3b8" font-size="5" font-weight="800">LAN</text>
                                     <!-- Screws -->
-                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="50" cy="8" r="2.5" fill="#475569" /><circle cx="80" cy="8" r="2.5" fill="#475569" />
-                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="50" cy="142" r="2.5" fill="#475569" /><circle cx="80" cy="142" r="2.5" fill="#475569" />
+                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="75" cy="8" r="2.5" fill="#475569" />
+                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="75" cy="142" r="2.5" fill="#475569" />
                                 </g>
 
-                                <!-- 7. PIA Domótica -->
-                                <g class="panel-node" data-id="pia-domo" transform="translate(640, 60)">
-                                    <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                    <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">DOMO</text>
-                                    <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C10</text>
-                                    <!-- Toggle lever -->
-                                    <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                    <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                    <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                <!-- PIAs DOMESTICAS (6x DPN PIAs + 1x PIA 2P Pozos) -->
+                                <!-- 7. PIA Domótica/Seguridad -->
+                                <g class="panel-node" data-id="pia-domo" transform="translate(635, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6.5" font-weight="800" text-anchor="middle" font-family="'Outfit'">DOMO</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C10</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
                                 <!-- 8. PIA Termo ACS -->
-                                <g class="panel-node" data-id="pia-termo" transform="translate(700, 60)">
-                                    <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                    <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">TERMO</text>
-                                    <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16</text>
-                                    <!-- Toggle lever -->
-                                    <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                    <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                    <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                <g class="panel-node" data-id="pia-termo" transform="translate(678, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6" font-weight="800" text-anchor="middle" font-family="'Outfit'">TERMO</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C16</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- 9. PIA Alumbrado Interior -->
-                                <g class="panel-node" data-id="pia-luz" transform="translate(760, 60)">
-                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">LUZ</text>
-                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C10</text>
-                                     <!-- Toggle lever -->
-                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
-                                     <!-- Screws -->
-                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
-                                </g>
-
-                                <!-- 10. PIA Enchufes Generales -->
-                                <g class="panel-node" data-id="pia-enchufes" transform="translate(820, 60)">
-                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">ENCH.</text>
-                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16</text>
-                                     <!-- Toggle lever -->
-                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
-                                     <!-- Screws -->
-                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
-                                </g>
-
-                                <!-- 11. PIA Cocina y Horno -->
-                                <g class="panel-node" data-id="pia-cocina" transform="translate(880, 60)">
-                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">COC.</text>
-                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C25</text>
-                                     <!-- Toggle lever -->
-                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
-                                     <!-- Screws -->
-                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
-                                </g>
-
-                                <!-- 12. PIA Lavadora y Lavavajillas -->
-                                <g class="panel-node" data-id="pia-lavadora" transform="translate(940, 60)">
-                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                     <text x="25" y="23" fill="#475569" font-size="5" font-weight="800" text-anchor="middle">LAVAD.</text>
-                                     <text x="25" y="31" fill="#475569" font-size="5" font-weight="800" text-anchor="middle">LAVAV.</text>
-                                     <text x="25" y="42" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C20</text>
-                                     <!-- Toggle lever -->
-                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
-                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
-                                     <!-- Screws -->
-                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
-                                </g>
-
-                                <!-- 13. PIA Pozos y Exterior -->
-                                <g class="panel-node" data-id="pia-pozos" transform="translate(1000, 60)">
-                                    <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                    <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">POZOS</text>
-                                    <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16 2P</text>
-                                    <!-- Toggle lever -->
-                                    <rect x="11" y="55" width="28" height="36" rx="2" fill="#475569" />
-                                    <rect x="11" y="55" width="28" height="18" rx="2" fill="#10b981" />
-                                    <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                <!-- 9. PIA Alumbrado -->
+                                <g class="panel-node" data-id="pia-luz" transform="translate(721, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6" font-weight="800" text-anchor="middle" font-family="'Outfit'">LUZ</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C10</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="15" cy="8" r="3" fill="#64748b" /><circle cx="35" cy="8" r="3" fill="#64748b" />
-                                    <circle cx="15" cy="142" r="3" fill="#64748b" /><circle cx="35" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- ROW 2 NODES -->
-                                <!-- 7. Shelly Pro 1 -->
-                                <g class="panel-node" data-id="shelly-pro1" transform="translate(80, 310)">
-                                    <rect x="0" y="0" width="65" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
-                                    <rect x="5" y="10" width="55" height="130" rx="3" fill="#1e293b" />
-                                    <text x="32.5" y="28" fill="#38bdf8" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
-                                    <text x="32.5" y="38" fill="#ffffff" font-size="6.5" font-weight="700" text-anchor="middle">Pro 1</text>
-                                    <!-- LEDs -->
-                                    <circle cx="20" cy="65" r="3.5" fill="#22c55e" /><text x="30" y="67.5" fill="#94a3b8" font-size="5.5" font-weight="700">PWR</text>
-                                    <circle cx="20" cy="80" r="3.5" fill="#ef4444" /><text x="30" y="82.5" fill="#94a3b8" font-size="5.5" font-weight="700">OUT</text>
-                                    <!-- RJ45 -->
-                                    <rect x="17.5" y="100" width="30" height="25" rx="1.5" fill="#020617" stroke="#334155" />
-                                    <rect x="23.5" y="102" width="18" height="8" fill="#cbd5e1" />
-                                    <text x="32.5" y="120" fill="#94a3b8" font-size="4.5" font-weight="700" text-anchor="middle">LAN</text>
+                                <!-- 10. PIA Enchufes -->
+                                <g class="panel-node" data-id="pia-enchufes" transform="translate(764, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6" font-weight="800" text-anchor="middle" font-family="'Outfit'">FASE</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C16</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="45" cy="8" r="2.5" fill="#475569" />
-                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="45" cy="142" r="2.5" fill="#475569" />
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- 8. Shelly Pro EM-50 -->
-                                <g class="panel-node" data-id="pro-em50" transform="translate(165, 310)">
-                                    <rect x="0" y="0" width="80" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
-                                    <rect x="5" y="10" width="70" height="130" rx="3" fill="#1e293b" />
-                                    <text x="40" y="28" fill="#38bdf8" font-size="8.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
-                                    <text x="40" y="38" fill="#ffffff" font-size="6.5" font-weight="700" text-anchor="middle">Pro EM-50</text>
-                                    <!-- Screen -->
-                                    <rect x="12" y="55" width="56" height="34" rx="2" fill="#020617" stroke="#334155" />
-                                    <text x="18" y="68" fill="#eab308" font-size="6" font-family="monospace" font-weight="700">T: 2.84 kW</text>
-                                    <text x="18" y="78" fill="#38bdf8" font-size="5" font-family="monospace" font-weight="700">231.5 VAC</text>
-                                    <!-- WiFi/LAN LEDs -->
-                                    <circle cx="22" cy="108" r="3" fill="#22c55e" /><text x="29" y="110" fill="#94a3b8" font-size="5.5" font-weight="700">WiFi</text>
-                                    <circle cx="48" cy="108" r="3" fill="#22c55e" /><text x="55" y="110" fill="#94a3b8" font-size="5.5" font-weight="700">LAN</text>
+                                <!-- 11. PIA Cocina -->
+                                <g class="panel-node" data-id="pia-cocina" transform="translate(807, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6" font-weight="800" text-anchor="middle" font-family="'Outfit'">COC</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C25</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="60" cy="8" r="2.5" fill="#475569" />
-                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="60" cy="142" r="2.5" fill="#475569" />
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- 9. Contactor Termo -->
-                                <g class="panel-node" data-id="contactor-termo" transform="translate(265, 310)">
+                                <!-- 12. PIA Lavadora -->
+                                <g class="panel-node" data-id="pia-lavadora" transform="translate(850, 60)">
+                                    <rect x="0" y="0" width="38" height="150" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5" />
+                                    <rect x="4" y="8" width="30" height="134" rx="2" fill="#cbd5e1" />
+                                    <text x="19" y="24" fill="#1e293b" font-size="6" font-weight="800" text-anchor="middle" font-family="'Outfit'">LAV</text>
+                                    <text x="19" y="34" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C20</text>
+                                    <!-- Lever -->
+                                    <rect x="10" y="55" width="18" height="30" rx="1.5" fill="#475569" />
+                                    <rect x="10" y="55" width="18" height="15" rx="1.5" fill="#10b981" />
+                                    <text x="19" y="65" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                    <!-- Screws -->
+                                    <circle cx="19" cy="8" r="2.5" fill="#64748b" /><circle cx="19" cy="142" r="2.5" fill="#64748b" />
+                                </g>
+
+                                <!-- 13. PIA 2P Pozos (Riego + Exterior) -->
+                                <g class="panel-node" data-id="pia-pozos" transform="translate(893, 60)">
                                     <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="37.5" y="28" fill="#475569" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">CONTACTOR</text>
-                                    <text x="37.5" y="38" fill="#0f172a" font-size="8" font-weight="800" text-anchor="middle">25A (Termo)</text>
+                                    <text x="37.5" y="28" fill="#1e293b" font-size="7" font-weight="800" text-anchor="middle" font-family="'Outfit'">POZOS</text>
+                                    <text x="37.5" y="38" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle">C10 2P</text>
+                                    <!-- Toggle lever -->
+                                    <rect x="25" y="55" width="25" height="36" rx="2" fill="#475569" />
+                                    <rect x="25" y="55" width="25" height="18" rx="2" fill="#10b981" />
+                                    <text x="37.5" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                    <!-- Spec -->
+                                    <rect x="17.5" y="110" width="40" height="20" rx="2" fill="#475569" />
+                                    <text x="37.5" y="123" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">10A</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+
+                                <!-- ROW 2 NODES (AUTOMATIZACIÓN EN CARRIL DIN 2) -->
+                                <!-- 1. Shelly Pro 1 -->
+                                <g class="panel-node" data-id="shelly-pro1" transform="translate(80, 480)">
+                                    <rect x="0" y="0" width="45" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                                    <rect x="4" y="10" width="37" height="130" rx="3" fill="#1e293b" />
+                                    <text x="22.5" y="24" fill="#ffffff" font-size="6.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
+                                    <text x="22.5" y="34" fill="#38bdf8" font-size="6" font-weight="700" text-anchor="middle">Pro 1</text>
+                                    <!-- Indicator LEDs -->
+                                    <circle cx="15" cy="65" r="3" fill="#22c55e" />
+                                    <text x="23" y="67.5" fill="#94a3b8" font-size="5" font-weight="800">PWR</text>
+                                    <circle cx="15" cy="80" r="3" fill="#22c55e" />
+                                    <text x="23" y="82.5" fill="#94a3b8" font-size="5" font-weight="800">OUT</text>
+                                    <!-- LAN Port Graphic -->
+                                    <rect x="12.5" y="102" width="20" height="18" rx="1" fill="#475569" />
+                                    <rect x="16.5" y="112" width="12" height="8" fill="#1e293b" />
+                                    <!-- Screws -->
+                                    <circle cx="22.5" cy="8" r="2.5" fill="#475569" /><circle cx="22.5" cy="142" r="2.5" fill="#475569" />
+                                </g>
+
+                                <!-- 2. Shelly Pro EM-50 -->
+                                <g class="panel-node" data-id="pro-em50" transform="translate(140, 480)">
+                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#1e293b" />
+                                    <text x="37.5" y="24" fill="#ffffff" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
+                                    <text x="37.5" y="34" fill="#38bdf8" font-size="6" font-weight="700" text-anchor="middle">Pro EM-50</text>
+                                    <!-- Display simulation screen -->
+                                    <rect x="12.5" y="46" width="50" height="32" rx="2" fill="#020617" stroke="#334155" />
+                                    <text x="17.5" y="58" fill="#38bdf8" font-size="5.5" font-family="monospace" font-weight="700">T: 2.84 kW</text>
+                                    <text x="17.5" y="70" fill="#22c55e" font-size="5" font-family="monospace" font-weight="600">CT: Termo</text>
+                                    <!-- Status LEDs -->
+                                    <circle cx="22" cy="100" r="3" fill="#22c55e" />
+                                    <text x="30" y="102.5" fill="#94a3b8" font-size="5" font-weight="800">WiFi</text>
+                                    <circle cx="22" cy="112" r="3" fill="#22c55e" />
+                                    <text x="30" y="114.5" fill="#94a3b8" font-size="5" font-weight="800">LAN</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="55" cy="8" r="2.5" fill="#475569" />
+                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="55" cy="142" r="2.5" fill="#475569" />
+                                </g>
+
+                                <!-- 3. Contactor Termo (25A) -->
+                                <g class="panel-node" data-id="contactor-termo" transform="translate(230, 480)">
+                                    <rect x="0" y="0" width="40" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="4" y="10" width="32" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="20" y="24" fill="#334155" font-size="5.5" font-weight="800" text-anchor="middle">CONTACTOR</text>
+                                    <text x="20" y="32" fill="#1e293b" font-size="7" font-weight="900" text-anchor="middle" font-family="'Outfit'">25A (Termo)</text>
+                                    <!-- Active/Inactive Flag -->
+                                    <rect x="10" y="45" width="20" height="14" rx="1.5" fill="#1e293b" />
+                                    <rect x="12" y="47" width="16" height="10" fill="#dc2626" rx="1" />
+                                    <text x="20" y="55" fill="white" font-size="6" font-weight="900" text-anchor="middle">ON</text>
+                                    <!-- Schematic marker -->
+                                    <path d="M 12 90 H 28 M 20 80 V 100" stroke="#64748b" stroke-width="1.2" />
+                                    <text x="20" y="115" fill="#475569" font-size="7.5" font-weight="800" text-anchor="middle">A1 - A2</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="2.5" fill="#64748b" /><circle cx="20" cy="142" r="2.5" fill="#64748b" />
+                                </g>
+
+                                <!-- 4. Shelly Pro 2 (Bomba 1 y Bomba 2) -->
+                                <g class="panel-node" data-id="shelly-pro2" transform="translate(285, 480)">
+                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#1e293b" />
+                                    <text x="37.5" y="24" fill="#ffffff" font-size="8" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
+                                    <text x="37.5" y="34" fill="#38bdf8" font-size="6.5" font-weight="700" text-anchor="middle">Pro 2 (Pozos)</text>
+                                    <!-- Indicator LEDs -->
+                                    <circle cx="20" cy="60" r="3" fill="#22c55e" />
+                                    <text x="28" y="62.5" fill="#94a3b8" font-size="5" font-weight="800">PWR</text>
+                                    <circle cx="20" cy="74" r="3" fill="#22c55e" />
+                                    <text x="28" y="76.5" fill="#94a3b8" font-size="5" font-weight="800">OUT1 (P1)</text>
+                                    <circle cx="20" cy="88" r="3" fill="#94a3b8" />
+                                    <text x="28" y="90.5" fill="#94a3b8" font-size="5" font-weight="800">OUT2 (P2)</text>
+                                    <!-- LAN Port -->
+                                    <rect x="27.5" y="105" width="20" height="18" rx="1" fill="#475569" />
+                                    <rect x="31.5" y="115" width="12" height="8" fill="#1e293b" />
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="2.5" fill="#475569" /><circle cx="55" cy="8" r="2.5" fill="#475569" />
+                                    <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="55" cy="142" r="2.5" fill="#475569" />
+                                </g>
+
+                                <!-- 5. Contactor Pozo 1 (25A) -->
+                                <g class="panel-node" data-id="contactor-pozo1" transform="translate(375, 480)">
+                                    <rect x="0" y="0" width="40" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="4" y="10" width="32" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="20" y="24" fill="#334155" font-size="5.5" font-weight="800" text-anchor="middle">CONTACTOR</text>
+                                    <text x="20" y="32" fill="#1e293b" font-size="7" font-weight="900" text-anchor="middle" font-family="'Outfit'">25A (Pozo 1)</text>
                                     <!-- Active Flag -->
-                                    <rect x="22.5" y="55" width="30" height="18" rx="2" fill="#475569" />
-                                    <rect x="25.5" y="57" width="24" height="14" fill="#ef4444" rx="1" />
-                                    <text x="37.5" y="67" fill="white" font-size="7.5" font-weight="900" text-anchor="middle">ON</text>
-                                    <!-- Schema graphics -->
-                                    <path d="M 27.5 95 L 47.5 95 M 37.5 85 L 37.5 105" stroke="#64748b" stroke-width="1" />
-                                    <text x="37.5" y="122" fill="#64748b" font-size="6" font-weight="600" text-anchor="middle">A1 - A2</text>
-                                    <!-- Screws -->
-                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
-                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
-                                </g>
-
-                                <!-- 10. Shelly Pro 2 -->
-                                <g class="panel-node" data-id="shelly-pro2" transform="translate(415, 310)">
-                                    <rect x="0" y="0" width="90" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
-                                    <rect x="5" y="10" width="80" height="130" rx="3" fill="#1e293b" />
-                                    <text x="45" y="28" fill="#38bdf8" font-size="9" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
-                                    <text x="45" y="38" fill="#ffffff" font-size="6.5" font-weight="700" text-anchor="middle">Pro 2 (Pozos)</text>
-                                    <!-- LEDs -->
-                                    <circle cx="22" cy="55" r="3.5" fill="#22c55e" /><text x="32" y="57.5" fill="#94a3b8" font-size="5.5" font-weight="700">PWR</text>
-                                    <circle cx="22" cy="70" r="3.5" fill="#ef4444" /><text x="32" y="72.5" fill="#94a3b8" font-size="5.5" font-weight="700">OUT1 (P1)</text>
-                                    <circle cx="22" cy="85" r="3.5" fill="#94a3b8" /><text x="32" y="87.5" fill="#94a3b8" font-size="5.5" font-weight="700">OUT2 (P2)</text>
-                                    <!-- RJ45 -->
-                                    <rect x="30" y="100" width="30" height="25" rx="1.5" fill="#020617" stroke="#334155" />
-                                    <rect x="36" y="102" width="18" height="8" fill="#cbd5e1" />
-                                    <text x="45" y="120" fill="#94a3b8" font-size="4.5" font-weight="700" text-anchor="middle">LAN</text>
-                                    <!-- Screws -->
-                                    <circle cx="22" cy="8" r="2.5" fill="#475569" /><circle cx="45" cy="8" r="2.5" fill="#475569" /><circle cx="68" cy="8" r="2.5" fill="#475569" />
-                                    <circle cx="22" cy="142" r="2.5" fill="#475569" /><circle cx="45" cy="142" r="2.5" fill="#475569" /><circle cx="68" cy="142" r="2.5" fill="#475569" />
-                                </g>
-
-                                <!-- 11. Contactor Pozo 1 -->
-                                <g class="panel-node" data-id="contactor-pozo1" transform="translate(525, 310)">
-                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="37.5" y="28" fill="#475569" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">CONTACTOR</text>
-                                    <text x="37.5" y="38" fill="#0f172a" font-size="8" font-weight="800" text-anchor="middle">25A (Pozo 1)</text>
-                                    <!-- Flag Active -->
-                                    <rect x="22.5" y="55" width="30" height="18" rx="2" fill="#475569" />
-                                    <rect x="25.5" y="57" width="24" height="14" fill="#ef4444" rx="1" />
-                                    <text x="37.5" y="67" fill="white" font-size="7.5" font-weight="900" text-anchor="middle">ON</text>
+                                    <rect x="10" y="45" width="20" height="14" rx="1.5" fill="#1e293b" />
+                                    <rect x="12" y="47" width="16" height="10" fill="#dc2626" rx="1" />
+                                    <text x="20" y="55" fill="white" font-size="6" font-weight="900" text-anchor="middle">ON</text>
                                     <!-- Schema -->
-                                    <path d="M 27.5 95 L 47.5 95 M 37.5 85 L 37.5 105" stroke="#64748b" stroke-width="1" />
+                                    <path d="M 12 90 H 28 M 20 80 V 100" stroke="#64748b" stroke-width="1.2" />
+                                    <text x="20" y="115" fill="#475569" font-size="7.5" font-weight="800" text-anchor="middle">A1 - A2</text>
                                     <!-- Screws -->
-                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
-                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="8" r="2.5" fill="#64748b" /><circle cx="20" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- 12. Contactor Pozo 2 -->
-                                <g class="panel-node" data-id="contactor-pozo2" transform="translate(615, 310)">
-                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
-                                    <text x="37.5" y="28" fill="#475569" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">CONTACTOR</text>
-                                    <text x="37.5" y="38" fill="#0f172a" font-size="8" font-weight="800" text-anchor="middle">25A (Pozo 2)</text>
+                                <!-- 6. Contactor Pozo 2 (25A) -->
+                                <g class="panel-node" data-id="contactor-pozo2" transform="translate(430, 480)">
+                                    <rect x="0" y="0" width="40" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="4" y="10" width="32" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="20" y="24" fill="#334155" font-size="5.5" font-weight="800" text-anchor="middle">CONTACTOR</text>
+                                    <text x="20" y="32" fill="#1e293b" font-size="7" font-weight="900" text-anchor="middle" font-family="'Outfit'">25A (Pozo 2)</text>
                                     <!-- Flag Inactive -->
-                                    <rect x="22.5" y="55" width="30" height="18" rx="2" fill="#475569" />
-                                    <rect x="25.5" y="57" width="24" height="14" fill="#22c55e" rx="1" />
-                                    <text x="37.5" y="67" fill="white" font-size="7.5" font-weight="900" text-anchor="middle">OFF</text>
+                                    <rect x="10" y="45" width="20" height="14" rx="1.5" fill="#475569" />
+                                    <rect x="12" y="47" width="16" height="10" fill="#22c55e" rx="1" />
+                                    <text x="20" y="55" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">OFF</text>
                                     <!-- Schema -->
-                                    <path d="M 27.5 95 L 47.5 95 M 37.5 85 L 37.5 105" stroke="#64748b" stroke-width="1" />
+                                    <path d="M 12 90 H 28 M 20 80 V 100" stroke="#64748b" stroke-width="1.2" />
                                     <!-- Screws -->
-                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
-                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="8" r="2.5" fill="#64748b" /><circle cx="20" cy="142" r="2.5" fill="#64748b" />
                                 </g>
 
-                                <!-- 13. Shelly Plus Uni Telemetría -->
-                                <g class="panel-node" data-id="shelly-uni-box" transform="translate(710, 310)">
+                                <!-- 7. Shelly Plus Uni Telemetría Box -->
+                                <g class="panel-node" data-id="shelly-uni-box" transform="translate(485, 480)">
                                     <rect x="0" y="0" width="95" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
                                     <rect x="5" y="10" width="85" height="130" rx="3" fill="#1e293b" />
                                     <text x="47.5" y="24" fill="#10b981" font-size="8" font-weight="800" text-anchor="middle" font-family="'Outfit'">TELEMETRÍA</text>
@@ -1868,7 +1881,7 @@
                                     <!-- Shelly Uni and Buck layout inside -->
                                     <rect x="10" y="46" width="35" height="42" rx="2" fill="#3b82f6" opacity="0.25" stroke="#3b82f6" />
                                     <text x="27.5" y="70" fill="#38bdf8" font-size="5" font-weight="800" text-anchor="middle">Uni</text>
-                                    
+
                                     <rect x="50" y="46" width="35" height="42" rx="2" fill="#eab308" opacity="0.25" stroke="#eab308" />
                                     <text x="67.5" y="70" fill="#eab308" font-size="4.5" font-weight="800" text-anchor="middle">DC-DC</text>
                                     <!-- Hydrostatic level screen simulation -->
@@ -1880,17 +1893,50 @@
                                     <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="75" cy="142" r="2.5" fill="#475569" />
                                 </g>
 
-                                <!-- Output Labels -->
-                                <text x="110" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ACOMETIDA (230V)</text>
-                                <text x="302" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">TERMO ACS (3kW)</text>
-                                <text x="562" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 1</text>
-                                <text x="652" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 2</text>
-                                <text x="770" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">SONDA FREÁTICA</text>
-                                <text x="675" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">C10 DOMÓTICA (SAI)</text>
-                                <text x="785" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ALUMBRADO (C10)</text>
-                                <text x="845" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ENCHUFES (C16)</text>
-                                <text x="905" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">COCINA/HORNO (C25)</text>
-                                <text x="965" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">LAVADORA (C20)</text>
+                                <!-- Output Labels (Staggered and enriched to clarify what feeds what) -->
+                                <!-- ROW A - High Power and Telemetry -->
+                                <g>
+                                    <text x="110" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="middle">ACOMETIDA (230V)</text>
+                                    <text x="110" y="946" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="middle">Entrada Red Eléctrica Viv.</text>
+                                </g>
+                                <g>
+                                    <text x="255" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="middle">TERMO ACS (3kW)</text>
+                                    <text x="255" y="946" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="middle">Agua Caliente por Excedentes</text>
+                                </g>
+                                <g>
+                                    <text x="400" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="middle">BOMBA POZO 1</text>
+                                    <text x="400" y="946" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="middle">Bomba Principal (Suministro)</text>
+                                </g>
+                                <g>
+                                    <text x="455" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="middle">BOMBA POZO 2</text>
+                                    <text x="455" y="946" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="middle">Bomba Auxiliar (Llenado)</text>
+                                </g>
+                                <g>
+                                    <text x="532" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="middle">SONDA FREÁTICA</text>
+                                    <text x="532" y="946" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="middle">Nivel Hidrostático (0-10V)</text>
+                                </g>
+
+                                <!-- ROW B - General House Distribution (Rotated clockwise 90 degrees to eliminate overlap) -->
+                                <g>
+                                    <text x="664" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="start" transform="rotate(90 664,935)">C10 DOMÓTICA (SAI)</text>
+                                    <text x="674" y="935" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="start" transform="rotate(90 674,935)">Rack, APs, ONT y Homey Bridge</text>
+                                </g>
+                                <g>
+                                    <text x="740" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="start" transform="rotate(90 740,935)">ALUMBRADO (C10)</text>
+                                    <text x="750" y="935" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="start" transform="rotate(90 750,935)">Iluminación Interior Viv.</text>
+                                </g>
+                                <g>
+                                    <text x="783" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="start" transform="rotate(90 783,935)">ENCHUFES (C16)</text>
+                                    <text x="793" y="935" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="start" transform="rotate(90 793,935)">Tomas Fuerza General</text>
+                                </g>
+                                <g>
+                                    <text x="826" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="start" transform="rotate(90 826,935)">COCINA/HORNO (C25)</text>
+                                    <text x="836" y="935" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="start" transform="rotate(90 836,935)">Placa Cocina y Horno</text>
+                                </g>
+                                <g>
+                                    <text x="869" y="935" fill="#0f172a" font-size="8.5" font-weight="800" text-anchor="start" transform="rotate(90 869,935)">LAVADORA (C20)</text>
+                                    <text x="879" y="935" fill="#64748b" font-size="6.5" font-weight="600" text-anchor="start" transform="rotate(90 879,935)">Lavadora y Secadora</text>
+                                </g>
                             </svg>
                         </div>
                     </div>
@@ -1944,6 +1990,53 @@
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
                             <span style="display: inline-block; width: 14px; height: 14px; border: 2px solid #eab308; border-radius: 50%; background-color: rgba(234, 179, 8, 0.1);"></span>
                             <span>Pinza Amperométrica (CT Clamp)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physical Sizing & DIN Modularity (REBT Compliance) Card -->
+                <div class="card accent-purple" style="margin-bottom: 2rem;">
+                    <h3 style="font-family: 'Outfit'; font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Dimensionamiento Físico del Cuadro y Modularidad Carril DIN (Cumplimiento REBT)</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.5;">
+                        Para garantizar una correcta disipación térmica (evitando el recalentamiento de las bobinas de los contactores y los relés inteligentes) y cumplir con la instrucción técnica del <strong>REBT ITC-BT-17</strong>, se realiza el siguiente cómputo de modularidad física:
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                            <h4 style="font-family: 'Outfit'; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; justify-content: space-between;">
+                                <span>CARRIL DIN 1: Protecciones y Medida</span>
+                                <span style="color: var(--accent-blue); font-weight: 700;">22 Módulos</span>
+                            </h4>
+                            <ul style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 1.2rem; line-height: 1.6;">
+                                <li><strong>Toscano Combi-PRO (Sobretensiones):</strong> 2 Módulos</li>
+                                <li><strong>Diferencial Domótica Clase A-SI (Domo):</strong> 2 Módulos</li>
+                                <li><strong>Circutor REC4 (Diferencial Inteligente Casa):</strong> 3 Módulos</li>
+                                <li><strong>Diferencial Pozo 1 Clase A-SI (Riego):</strong> 2 Módulos</li>
+                                <li><strong>Diferencial Exterior Clase A-SI (Fuerza Ext):</strong> 2 Módulos</li>
+                                <li><strong>Shelly Pro 3EM (Medición de Red y Pozos):</strong> 3 Módulos</li>
+                                <li><strong>Magnetotérmicos (6x DPN de 1 Módulo):</strong> 6 Módulos</li>
+                                <li><strong>Magnetotérmico Pozos (PIA 2P 16A):</strong> 2 Módulos</li>
+                            </ul>
+                        </div>
+                        <div style="background: var(--bg-tertiary); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                            <h4 style="font-family: 'Outfit'; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 0.75rem; display: flex; justify-content: space-between;">
+                                <span>CARRIL DIN 2: Automatización y Maniobra</span>
+                                <span style="color: var(--accent-purple); font-weight: 700;">10 Módulos</span>
+                            </h4>
+                            <ul style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 1.2rem; line-height: 1.6;">
+                                <li><strong>Shelly Pro 1 (Relé de Maniobra Termo):</strong> 1 Módulo</li>
+                                <li><strong>Shelly Pro EM-50 (Medidor Termo):</strong> 2 Módulos</li>
+                                <li><strong>Contactor Termo (Bipolar 2P 25A):</strong> 1 Módulo</li>
+                                <li><strong>Shelly Pro 2 (Relé Maniobra Pozos):</strong> 2 Módulos</li>
+                                <li><strong>Contactor Pozo 1 (Bipolar 2P 25A):</strong> 1 Módulo</li>
+                                <li><strong>Contactor Pozo 2 (Bipolar 2P 25A):</strong> 1 Módulo</li>
+                                <li><strong>Caja Telemetría Shelly Plus Uni + Buck:</strong> 2 Módulos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: rgba(124, 58, 237, 0.04); border: 1px dashed var(--accent-purple); padding: 1rem; border-radius: 0.75rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="font-size: 1.75rem; color: var(--accent-purple); line-height: 1;">⚙️</div>
+                        <div style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary);">
+                            <strong>Cómputo Total y Dimensionamiento Reglamentario (REBT):</strong> El total de dispositivos instalados en el cuadro general ocupa exactamente <strong>32 módulos DIN</strong> (22 en Carril 1 y 10 en Carril 2). De acuerdo con el reglamento electrotécnico, se prescribe la instalación de una envolvente de <strong>48 módulos DIN</strong> (4 filas de 12 módulos o 3 de 16 módulos), garantizando una **reserva de espacio técnica del 33.3%**. Esta reserva es indispensable para permitir futuras ampliaciones, facilitar el peinado de cables de potencia y asegurar una correcta disipación del calor generado por bobinas y relés.
                         </div>
                     </div>
                 </div>
