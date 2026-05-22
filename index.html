@@ -52,7 +52,7 @@
             </div>
             <div class="nav-item" data-tab="tab-access">
                 <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Doble Barrera / Videoportero
+                Doble Barrera / VideoTimbre y WallPanel
             </div>
             <div class="nav-item" data-tab="tab-panel">
                 <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
@@ -197,7 +197,7 @@
                                 <td>Wall Panel Geekland 10"</td>
                                 <td>Pasillo (Baja)</td>
                                 <td>PoE Encastrado</td>
-                                <td>Pantalla Táctil Videoportero e Intercom (Sin Batería, widgets senior)</td>
+                                <td>WallPanel de Control e Intercom (Sin Batería, widgets senior)</td>
                             </tr>
                             <tr>
                                 <td>12</td>
@@ -355,7 +355,7 @@
                             <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">Arquitectura Aplicada:</p>
                             <ul style="color: var(--text-secondary); padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.4rem;">
                                 <li><strong>Inversión Rentable en Obra:</strong> Canalizaciones con tubo de 60mm y cable neutro general en interruptores. Pantalla Geekland PoE encastrada sin batería (seguridad indestructible ante veranos cálidos).</li>
-                                <li><strong>Protecciones Eléctricas e Industriales:</strong> Diferencial auto-rearmable Circutor REC4 y Toscano Combi-PRO en carril DIN. Shelly Pro 2 comandando contactores de 25A para alargar infinitamente la vida de las bombas de los pozos.</li>
+                                <li><strong>Protecciones Eléctricas e Industriales:</strong> Arquitectura de 4 diferenciales segmentados (REC4 auto-rearmable para casa, Clase A-SI dedicados para Domótica, Riego y Exterior) y protección Combi-PRO. Bombas de pozo controladas por contactores bipolares 2P con aislamiento Fase/Neutro en reposo.</li>
                                 <li><strong>Retorno de Inversión Energético (30%):</strong> Shelly Pro 1PM encendiendo el termo eléctrico prioritariamente cuando las placas solares generan un excedente de más de 2500W.</li>
                             </ul>
                         </div>
@@ -1231,15 +1231,15 @@
                 </div>
             </div>
 
-            <!-- TAB 5: Doble Barrera / Videoportero -->
+            <!-- TAB 5: Doble Barrera / VideoTimbre y WallPanel -->
             <div id="tab-access" class="tab-content">
-                <h2>Control de Accesos Integrado, Seguridad Perimetral y Videoportero</h2>
+                <h2>Control de Accesos Integrado, Seguridad Perimetral, VideoTimbre y WallPanel</h2>
                 <p class="tab-desc">Diseño de seguridad de doble barrera, videovigilancia ultra-HD local y blindaje físico contra sabotajes en Calzada de Oropesa.</p>
 
                 <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));">
                     <!-- Access Control Flow Card -->
                     <div class="card accent-purple" style="grid-column: 1 / -1;">
-                        <h3>Lógica del Videoportero e Intercom en Pantalla PoE</h3>
+                        <h3>Lógica de VideoTimbre e Intercom en WallPanel PoE</h3>
                         <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
                             Proceso de automatización en tiempo real desde que el visitante llama a la puerta exterior del muro:
                         </p>
@@ -1360,7 +1360,7 @@
                     <!-- Interactive SVG Box -->
                     <div class="card accent-blue" style="padding: 1rem; overflow-x: auto;">
                         <div class="svg-container" style="min-height: 520px;">
-                            <svg viewBox="0 0 1000 580" width="100%" height="100%" id="panel-svg" style="border-radius: 0.75rem; user-select: none;">
+                            <svg viewBox="0 0 1250 580" width="100%" height="100%" id="panel-svg" style="border-radius: 0.75rem; user-select: none;">
                                 <!-- DEFINITIONS -->
                                 <defs>
                                     <filter id="glow-orange" x="-20%" y="-20%" width="140%" height="140%">
@@ -1374,113 +1374,155 @@
                                 </defs>
 
                                 <!-- Outer Cabinet Box -->
-                                <rect x="5" y="5" width="990" height="570" rx="15" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="2.5" />
+                                <rect x="5" y="5" width="1240" height="570" rx="15" fill="var(--bg-secondary)" stroke="var(--border-color)" stroke-width="2.5" />
                                 <!-- Inner Cabinet Space -->
-                                <rect x="25" y="25" width="950" height="530" rx="10" fill="var(--svg-bg)" stroke="var(--border-color)" stroke-width="1.5" />
+                                <rect x="25" y="25" width="1200" height="530" rx="10" fill="var(--svg-bg)" stroke="var(--border-color)" stroke-width="1.5" />
 
                                 <!-- DIN Rails -->
-                                <rect x="40" y="125" width="920" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+                                <rect x="40" y="125" width="1170" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
                                 <text x="50" y="146" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 1: PROTECCIÓN Y MEDIDA GENERAL</text>
 
-                                <rect x="40" y="375" width="920" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+                                <rect x="40" y="375" width="1170" height="35" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
                                 <text x="50" y="396" fill="#64748b" font-size="9" font-weight="700" letter-spacing="0.05em">CARRIL DIN 2: AUTOMATIZACIÓN Y MANIOBRA</text>
 
                                 <!-- PHYSICAL BUSBARS -->
                                 <!-- Neutral Busbar (Top Right) -->
-                                <rect x="800" y="35" width="140" height="15" rx="2" fill="#2563eb" opacity="0.8" />
-                                <text x="870" y="46" fill="white" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR NEUTRO (N)</text>
+                                <rect x="1050" y="35" width="140" height="15" rx="2" fill="#2563eb" opacity="0.8" />
+                                <text x="1120" y="46" fill="white" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR NEUTRO (N)</text>
 
                                 <!-- Ground Busbar (Bottom Right) -->
-                                <rect x="800" y="530" width="140" height="15" rx="2" fill="#eab308" opacity="0.8" />
-                                <text x="870" y="541" fill="black" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR TIERRA (PE)</text>
+                                <rect x="1050" y="530" width="140" height="15" rx="2" fill="#eab308" opacity="0.8" />
+                                <text x="1120" y="541" fill="black" font-size="8" font-weight="700" text-anchor="middle">REPARTIDOR TIERRA (PE)</text>
 
                                 <!-- WIRING CONNECTIONS (BACKGROUND PATHS) -->
                                 <!-- Red de Acometida Entrada L/N (Top Left to Combi-PRO) -->
                                 <path d="M 110 25 L 110 60" fill="none" stroke="#8b5a2b" stroke-width="4.5" />
                                 <path d="M 130 25 L 130 60" fill="none" stroke="#2563eb" stroke-width="4.5" />
 
-                                <!-- Combi-PRO bottom out to REC4 bottom in -->
-                                <path d="M 100 210 L 100 230 L 195 230 L 195 210" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 130 210 L 130 220 L 225 220 L 225 210" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Combi-PRO bottom out (L at 100, N at 130) to feed the four differentials in parallel -->
+                                <!-- Phase bus line (below devices at y=225) -->
+                                <path d="M 100 210 L 100 225 L 465 225" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- Vertical taps to top Phase inputs of the four differentials -->
+                                <path d="M 185 225 L 185 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-domo top L -->
+                                <path d="M 272 225 L 272 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- rec4 top L -->
+                                <path d="M 380 225 L 380 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-pozo1 top L -->
+                                <path d="M 465 225 L 465 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- dif-ext top L -->
 
-                                <!-- REC4 Neutral Out (bottom) to Neutral Busbar -->
-                                <path d="M 245 210 L 245 240 L 920 240 L 920 50" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Neutral bus line (below devices at y=220) -->
+                                <path d="M 130 210 L 130 220 L 500 220" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- Vertical taps to top Neutral inputs of the four differentials -->
+                                <path d="M 220 220 L 220 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-domo top N -->
+                                <path d="M 328 220 L 328 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- rec4 top N -->
+                                <path d="M 415 220 L 415 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-pozo1 top N -->
+                                <path d="M 500 220 L 500 60" fill="none" stroke="#2563eb" stroke-width="3" /> <!-- dif-ext top N -->
 
-                                <!-- REC4 Phase Out (bottom) to general Distribution Line (top) -->
-                                <path d="M 210 210 L 210 250 L 35 250 L 35 40 L 440 40 L 440 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <!-- Loop from the distribution path splits to feed PIAs -->
-                                <path d="M 440 40 L 580 40" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 510 40 L 510 60" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 580 40 L 580 60" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <!-- Ground Wire from Combi-PRO down to Ground Busbar -->
+                                <path d="M 148 210 L 148 260 L 1120 260 L 1120 530" fill="none" stroke="#15803d" stroke-width="2.5" />
+                                <path d="M 148 210 L 148 260 L 1120 260 L 1120 530" fill="none" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,4" />
 
-                                <!-- general Phase Clamp A (Ring around Phase after REC4 output) -->
-                                <circle cx="122" cy="250" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
-                                <!-- CT Clamp A wire leading to Shelly Pro 3EM clamp terminals -->
-                                <path d="M 122 257 L 122 265 L 315 265 L 315 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- SEGMENT 1: DOMÓTICA & SEGURIDAD -->
+                                <!-- dif-domo output (L=185, N=220) -->
+                                <!-- Phase feeds pia-domo top L (665) and Shelly Pro 3EM VA (550) -->
+                                <path d="M 185 210 L 185 240 L 665 240 L 665 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VA voltage measurement tap line (thin orange/brown) -->
+                                <path d="M 550 240 L 550 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Neutral feeds Domotics Neutral bus line at y=295 for rack and Shellys -->
+                                <path d="M 220 210 L 220 295 L 750 295" fill="none" stroke="#2563eb" stroke-width="2.5" />
+                                <!-- Domotics Neutral output to Rack -->
+                                <path d="M 220 295 L 685 295 L 685 520" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Phase out of pia-domo to Rack -->
+                                <path d="M 665 210 L 665 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
 
-                                <!-- Shelly Pro 3EM auxiliary power lines from phase/neutral -->
-                                <path d="M 345 40 L 345 60" fill="none" stroke="#8b5a2b" stroke-width="1.5" />
-                                <path d="M 365 240 L 365 210" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <!-- Shelly Control Modules auxiliary power (Phase) from pia-domo output at y=270 -->
+                                <path d="M 665 270 L 100 270 L 100 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 1 phase -->
+                                <path d="M 185 270 L 185 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro EM phase -->
+                                <path d="M 435 270 L 435 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 2 phase -->
+                                <path d="M 730 270 L 730 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Uni box phase -->
 
-                                <!-- Ground Wire from Combi-PRO down to Ground Busbar (Green/Yellow striped representation) -->
-                                <path d="M 148 210 L 148 260 L 870 260 L 870 530" fill="none" stroke="#15803d" stroke-width="2.5" />
-                                <path d="M 148 210 L 148 260 L 870 260 L 870 530" fill="none" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,4" />
+                                <!-- Shelly Control Modules auxiliary power (Neutral) from Domo Neutral bus line at y=295 -->
+                                <path d="M 125 295 L 125 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 1 neutral -->
+                                <path d="M 205 295 L 205 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro EM neutral -->
+                                <path d="M 455 295 L 455 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Pro 2 neutral -->
+                                <path d="M 750 295 L 750 310" fill="none" stroke="#2563eb" stroke-width="1.5" /> <!-- Shelly Uni box neutral -->
 
-                                <!-- PIA Domótica (C10) Out: powers the Rack Domótico -->
-                                <path d="M 440 210 L 440 270 M 440 270 L 440 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
-                                <path d="M 910 240 L 910 278 L 452 278 L 452 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
+                                <!-- SEGMENT 2: CONFORT VIVIENDA & TERMO ACS (under REC4) -->
+                                <!-- rec4 bottom output (L=272, N=328) -->
+                                <!-- Phase feeds all internal house breakers in parallel (y=250) -->
+                                <path d="M 272 210 L 272 250 L 965 250" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- Vertical taps to top Phase inputs of the breakers -->
+                                <path d="M 725 250 L 725 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-termo top L -->
+                                <path d="M 785 250 L 785 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz top L -->
+                                <path d="M 845 250 L 845 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes top L -->
+                                <path d="M 905 250 L 905 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina top L -->
+                                <path d="M 965 250 L 965 60" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora top L -->
 
-                                <!-- auxiliary power branches for Shelly Pro Modules in Row 2 -->
-                                <path d="M 440 270 L 112 270 L 112 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 1 phase -->
-                                <path d="M 205 270 L 205 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro EM phase -->
-                                <path d="M 455 270 L 455 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Pro 2 phase -->
-                                <path d="M 755 270 L 755 310" fill="none" stroke="#8b5a2b" stroke-width="1.5" /> <!-- Shelly Uni box phase -->
+                                <!-- Neutral feeds Termo ACS and general house circuits through general Neutral Busbar -->
+                                <path d="M 328 210 L 328 245 L 1120 245 L 1120 50" fill="none" stroke="#2563eb" stroke-width="3" />
 
-                                <!-- PIA Termo (C16) Out: goes to Contactor Termo input -->
-                                <path d="M 510 210 L 510 290 L 302 290 L 302 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 920 240 L 920 298 L 320 298 L 320 310" fill="none" stroke="#2563eb" stroke-width="3" />
-                                
+                                <!-- Phase pia-termo out to Contactor Termo input at y=290 -->
+                                <path d="M 725 210 L 725 290 L 285 290 L 285 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
                                 <!-- Shelly Pro EM-50 CT Clamp around Termo Phase wire -->
                                 <circle cx="410" cy="290" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" />
                                 <path d="M 410 297 L 410 305 L 225 305 L 225 310" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
-
+                                <!-- Neutral from general Neutral Busbar to Contactor Termo input -->
+                                <path d="M 1120 240 L 1120 300 L 320 300 L 320 310" fill="none" stroke="#2563eb" stroke-width="3" />
                                 <!-- Contactor Termo Output: to Termo ACS load -->
-                                <path d="M 302 460 L 302 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <path d="M 285 460 L 285 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
                                 <path d="M 320 460 L 320 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
 
-                                <!-- PIA Pozos (C16) Out: splits to Contactor Pozo 1 and Contactor Pozo 2 inputs -->
-                                <path d="M 580 210 L 580 270 L 562 270 L 562 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 580 270 L 652 270 L 652 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
-                                <path d="M 920 240 L 920 280 L 580 280 L 580 310" fill="none" stroke="#2563eb" stroke-width="3" />
-                                <path d="M 580 280 L 670 280 L 670 310" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Phase outputs from traditional home breakers going to domestic distribution -->
+                                <path d="M 785 210 L 785 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-luz out -->
+                                <path d="M 845 210 L 845 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-enchufes out -->
+                                <path d="M 905 210 L 905 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-cocina out -->
+                                <path d="M 965 210 L 965 520" fill="none" stroke="#8b5a2b" stroke-width="3" /> <!-- pia-lavadora out -->
 
-                                <!-- Contactor Pozo 1 Output: to Bomba Pozo 1 -->
-                                <path d="M 562 460 L 562 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- SEGMENT 3: RIEGO & POZO 1 (under dif-pozo1) -->
+                                <!-- dif-pozo1 bottom output (L=380, N=415) -->
+                                <!-- Phase feeds pia-pozos Pole 1 input (1015) and VB voltage tap (580) -->
+                                <path d="M 380 210 L 380 260 L 1015 260 L 1015 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VB voltage measurement tap line (thin orange/brown) -->
+                                <path d="M 580 260 L 580 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Phase output from pia-pozos Pole 1 to Contactor Pozo 1 input -->
+                                <path d="M 1015 210 L 1015 270 L 545 270 L 545 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <!-- Neutral output from dif-pozo1 to Contactor Pozo 1 Neutral input -->
+                                <path d="M 415 210 L 415 280 L 580 280 L 580 310" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Contactor Pozo 1 Output: to Bomba Pozo 1 load -->
+                                <path d="M 545 460 L 545 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
                                 <path d="M 580 460 L 580 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
                                 <!-- CT Clamp B around Phase going to Pozo 1 (leads back to Shelly Pro 3EM) -->
-                                <circle cx="562" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
-                                <path d="M 562 497 L 562 505 L 345 505 L 345 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <circle cx="545" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
+                                <path d="M 545 497 L 545 505 L 580 505 L 580 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
 
-                                <!-- Contactor Pozo 2 Output: to Bomba Pozo 2 -->
-                                <path d="M 652 460 L 652 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- SEGMENT 4: EXTERIOR & POZO 2 (under dif-ext) -->
+                                <!-- dif-ext bottom output (L=465, N=500) -->
+                                <!-- Phase feeds pia-pozos Pole 2 input (1035) and VC voltage tap (610) -->
+                                <path d="M 465 210 L 465 265 L 1035 265 L 1035 60" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
+                                <!-- VC voltage measurement tap line (thin orange/brown) -->
+                                <path d="M 610 265 L 610 60" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <!-- Phase output from pia-pozos Pole 2 to Contactor Pozo 2 input -->
+                                <path d="M 1035 210 L 1035 275 L 635 275 L 635 310" fill="none" stroke="#8b5a2b" stroke-width="3" />
+                                <!-- Neutral output from dif-ext to Contactor Pozo 2 Neutral input -->
+                                <path d="M 500 210 L 500 285 L 670 285 L 670 310" fill="none" stroke="#2563eb" stroke-width="3" />
+                                <!-- Contactor Pozo 2 Output: to Bomba Pozo 2 load -->
+                                <path d="M 635 460 L 635 520" fill="none" stroke="#8b5a2b" stroke-width="3.5" />
                                 <path d="M 670 460 L 670 520" fill="none" stroke="#2563eb" stroke-width="3.5" />
                                 <!-- CT Clamp C around Phase going to Pozo 2 (leads back to Shelly Pro 3EM) -->
-                                <circle cx="652" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
-                                <path d="M 652 497 L 652 513 L 365 513 L 365 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
+                                <circle cx="635" cy="490" r="7.5" fill="rgba(234, 179, 8, 0.15)" stroke="#eab308" stroke-width="2" filter="url(#glow-orange)" />
+                                <path d="M 635 497 L 635 513 L 610 513 L 610 210" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3,2" />
 
                                 <!-- MANIOBRA (RELAY PILOT WIRES IN RED) -->
                                 <!-- Shelly Pro 1 Output (O) to Contactor Termo Bobina A1 -->
-                                <path d="M 112 460 L 112 475 L 248 475 L 248 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
-                                <!-- Contactor Termo Bobina A2 connects to Neutral (blue) -->
-                                <path d="M 282 310 L 282 305 L 180 305 L 180 310" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path d="M 100 460 L 100 475 L 285 475 L 285 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <!-- Contactor Termo Bobina A2 connects to Domo Neutral -->
+                                <path d="M 305 310 L 305 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
 
                                 <!-- Shelly Pro 2 Output 1 (O1) to Contactor Pozo 1 Bobina A1 -->
-                                <path d="M 435 460 L 435 475 L 538 475 L 538 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <path d="M 435 460 L 435 475 L 545 475 L 545 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
                                 <!-- Shelly Pro 2 Output 2 (O2) to Contactor Pozo 2 Bobina A1 -->
-                                <path d="M 465 460 L 465 482 L 628 482 L 628 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
-                                <!-- Contactor Pozos Bobinas A2 connect to Neutral (blue) -->
-                                <path d="M 550 310 L 550 302 L 485 302 L 485 310" fill="none" stroke="#2563eb" stroke-width="1.5" />
-                                <path d="M 640 310 L 640 302" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path d="M 465 460 L 465 482 L 635 482 L 635 310" fill="none" stroke="#ef4444" stroke-width="2.5" />
+                                <!-- Contactor Pozos Bobinas A2 connect to Domo Neutral -->
+                                <path d="M 565 310 L 565 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
+                                <path d="M 655 310 L 655 295" fill="none" stroke="#2563eb" stroke-width="1.5" />
 
                                 <!-- Shelly Plus Uni Telemetry Line (Green/Teal) to Hydrostatic Probe -->
                                 <path d="M 770 460 L 770 520" fill="none" stroke="#10b981" stroke-width="2.5" filter="url(#glow-green)" />
@@ -1506,8 +1548,29 @@
                                     <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 2. Circutor REC4 -->
-                                <g class="panel-node" data-id="rec4" transform="translate(175, 60)">
+                                <!-- 2. Diferencial Domótica (dif-domo) -->
+                                <g class="panel-node" data-id="dif-domo" transform="translate(165, 60)">
+                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="37.5" y="28" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">DOMÓTICA</text>
+                                    <text x="37.5" y="38" fill="#ef4444" font-size="6.5" font-weight="700" text-anchor="middle">Clase A-SI</text>
+                                    <!-- Toggle lever -->
+                                    <rect x="15" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                    <rect x="15" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                    <text x="24" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                    <!-- Test Button -->
+                                    <circle cx="50" cy="73" r="6" fill="#1e293b" stroke="#475569" />
+                                    <text x="50" y="75.5" fill="#ffffff" font-size="7" font-weight="800" text-anchor="middle">T</text>
+                                    <!-- Spec -->
+                                    <rect x="17.5" y="110" width="40" height="20" rx="2" fill="#475569" />
+                                    <text x="37.5" y="123" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">40A</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 3. Circutor REC4 -->
+                                <g class="panel-node" data-id="rec4" transform="translate(250, 60)">
                                     <rect x="0" y="0" width="100" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="5" y="10" width="90" height="130" rx="3" fill="#cbd5e1" />
                                     <text x="50" y="30" fill="#1e293b" font-size="8.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">CIRCUTOR</text>
@@ -1527,8 +1590,50 @@
                                     <circle cx="22" cy="142" r="3" fill="#64748b" /><circle cx="78" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 3. Shelly Pro 3EM -->
-                                <g class="panel-node" data-id="pro3em" transform="translate(295, 60)">
+                                <!-- 4. Diferencial Riego (dif-pozo1) -->
+                                <g class="panel-node" data-id="dif-pozo1" transform="translate(360, 60)">
+                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="37.5" y="28" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">RIEGO</text>
+                                    <text x="37.5" y="38" fill="#ef4444" font-size="6.5" font-weight="700" text-anchor="middle">Clase A-SI</text>
+                                    <!-- Toggle lever -->
+                                    <rect x="15" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                    <rect x="15" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                    <text x="24" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                    <!-- Test Button -->
+                                    <circle cx="50" cy="73" r="6" fill="#1e293b" stroke="#475569" />
+                                    <text x="50" y="75.5" fill="#ffffff" font-size="7" font-weight="800" text-anchor="middle">T</text>
+                                    <!-- Spec -->
+                                    <rect x="17.5" y="110" width="40" height="20" rx="2" fill="#475569" />
+                                    <text x="37.5" y="123" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">25A</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 5. Diferencial Exterior (dif-ext) -->
+                                <g class="panel-node" data-id="dif-ext" transform="translate(445, 60)">
+                                    <rect x="0" y="0" width="75" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                    <rect x="5" y="10" width="65" height="130" rx="3" fill="#cbd5e1" />
+                                    <text x="37.5" y="28" fill="#1e293b" font-size="7.5" font-weight="900" text-anchor="middle" font-family="'Outfit'">EXTERIOR</text>
+                                    <text x="37.5" y="38" fill="#ef4444" font-size="6.5" font-weight="700" text-anchor="middle">Clase A-SI</text>
+                                    <!-- Toggle lever -->
+                                    <rect x="15" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                    <rect x="15" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                    <text x="24" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                    <!-- Test Button -->
+                                    <circle cx="50" cy="73" r="6" fill="#1e293b" stroke="#475569" />
+                                    <text x="50" y="75.5" fill="#ffffff" font-size="7" font-weight="800" text-anchor="middle">T</text>
+                                    <!-- Spec -->
+                                    <rect x="17.5" y="110" width="40" height="20" rx="2" fill="#475569" />
+                                    <text x="37.5" y="123" fill="#ffffff" font-size="8" font-weight="800" text-anchor="middle">25A</text>
+                                    <!-- Screws -->
+                                    <circle cx="20" cy="8" r="3" fill="#64748b" /><circle cx="55" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="20" cy="142" r="3" fill="#64748b" /><circle cx="55" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 6. Shelly Pro 3EM -->
+                                <g class="panel-node" data-id="pro3em" transform="translate(530, 60)">
                                     <rect x="0" y="0" width="100" height="150" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
                                     <rect x="5" y="10" width="90" height="130" rx="3" fill="#1e293b" />
                                     <text x="50" y="30" fill="#38bdf8" font-size="9" font-weight="900" text-anchor="middle" font-family="'Outfit'">SHELLY</text>
@@ -1546,8 +1651,8 @@
                                     <circle cx="20" cy="142" r="2.5" fill="#475569" /><circle cx="50" cy="142" r="2.5" fill="#475569" /><circle cx="80" cy="142" r="2.5" fill="#475569" />
                                 </g>
 
-                                <!-- 4. PIA Domótica -->
-                                <g class="panel-node" data-id="pia-domo" transform="translate(415, 60)">
+                                <!-- 7. PIA Domótica -->
+                                <g class="panel-node" data-id="pia-domo" transform="translate(640, 60)">
                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">DOMO</text>
@@ -1560,8 +1665,8 @@
                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 5. PIA Termo ACS -->
-                                <g class="panel-node" data-id="pia-termo" transform="translate(485, 60)">
+                                <!-- 8. PIA Termo ACS -->
+                                <g class="panel-node" data-id="pia-termo" transform="translate(700, 60)">
                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">TERMO</text>
@@ -1574,18 +1679,76 @@
                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
                                 </g>
 
-                                <!-- 6. PIA Pozos -->
-                                <g class="panel-node" data-id="pia-pozos" transform="translate(555, 60)">
+                                <!-- 9. PIA Alumbrado Interior -->
+                                <g class="panel-node" data-id="pia-luz" transform="translate(760, 60)">
+                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
+                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">LUZ</text>
+                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C10</text>
+                                     <!-- Toggle lever -->
+                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                     <!-- Screws -->
+                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 10. PIA Enchufes Generales -->
+                                <g class="panel-node" data-id="pia-enchufes" transform="translate(820, 60)">
+                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
+                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">ENCH.</text>
+                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16</text>
+                                     <!-- Toggle lever -->
+                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                     <!-- Screws -->
+                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 11. PIA Cocina y Horno -->
+                                <g class="panel-node" data-id="pia-cocina" transform="translate(880, 60)">
+                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
+                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">COC.</text>
+                                     <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C25</text>
+                                     <!-- Toggle lever -->
+                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                     <!-- Screws -->
+                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 12. PIA Lavadora y Lavavajillas -->
+                                <g class="panel-node" data-id="pia-lavadora" transform="translate(940, 60)">
+                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
+                                     <text x="25" y="23" fill="#475569" font-size="5" font-weight="800" text-anchor="middle">LAVAD.</text>
+                                     <text x="25" y="31" fill="#475569" font-size="5" font-weight="800" text-anchor="middle">LAVAV.</text>
+                                     <text x="25" y="42" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C20</text>
+                                     <!-- Toggle lever -->
+                                     <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
+                                     <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
+                                     <!-- Screws -->
+                                     <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                </g>
+
+                                <!-- 13. PIA Pozos y Exterior -->
+                                <g class="panel-node" data-id="pia-pozos" transform="translate(1000, 60)">
                                     <rect x="0" y="0" width="50" height="150" rx="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
                                     <rect x="4" y="10" width="42" height="130" rx="3" fill="#cbd5e1" />
                                     <text x="25" y="26" fill="#475569" font-size="6.5" font-weight="800" text-anchor="middle">POZOS</text>
-                                    <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16</text>
+                                    <text x="25" y="38" fill="#0f172a" font-size="9" font-weight="900" text-anchor="middle">C16 2P</text>
                                     <!-- Toggle lever -->
-                                    <rect x="16" y="55" width="18" height="36" rx="2" fill="#475569" />
-                                    <rect x="16" y="55" width="18" height="18" rx="2" fill="#10b981" />
+                                    <rect x="11" y="55" width="28" height="36" rx="2" fill="#475569" />
+                                    <rect x="11" y="55" width="28" height="18" rx="2" fill="#10b981" />
                                     <text x="25" y="67" fill="white" font-size="6.5" font-weight="900" text-anchor="middle">I</text>
                                     <!-- Screws -->
-                                    <circle cx="25" cy="8" r="3" fill="#64748b" /><circle cx="25" cy="142" r="3" fill="#64748b" />
+                                    <circle cx="15" cy="8" r="3" fill="#64748b" /><circle cx="35" cy="8" r="3" fill="#64748b" />
+                                    <circle cx="15" cy="142" r="3" fill="#64748b" /><circle cx="35" cy="142" r="3" fill="#64748b" />
                                 </g>
 
                                 <!-- ROW 2 NODES -->
@@ -1719,11 +1882,15 @@
 
                                 <!-- Output Labels -->
                                 <text x="110" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ACOMETIDA (230V)</text>
-                                <text x="445" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">SALIDA RACK (SAI)</text>
-                                <text x="311" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">TERMO ACS (3kW)</text>
-                                <text x="571" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 1</text>
-                                <text x="661" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 2</text>
+                                <text x="302" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">TERMO ACS (3kW)</text>
+                                <text x="562" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 1</text>
+                                <text x="652" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">BOMBA POZO 2</text>
                                 <text x="770" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">SONDA FREÁTICA</text>
+                                <text x="675" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">C10 DOMÓTICA (SAI)</text>
+                                <text x="785" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ALUMBRADO (C10)</text>
+                                <text x="845" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">ENCHUFES (C16)</text>
+                                <text x="905" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">COCINA/HORNO (C25)</text>
+                                <text x="965" y="555" fill="#64748b" font-size="8" font-weight="800" text-anchor="middle">LAVADORA (C20)</text>
                             </svg>
                         </div>
                     </div>
@@ -1792,9 +1959,16 @@
                         
                         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                             <div style="border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
-                                <h4 style="color: var(--text-primary); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 0.25rem;">Diferencial Auto-rearmable (Circutor REC4)</h4>
+                                <h4 style="color: var(--text-primary); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 0.25rem;">Diferencial Auto-rearmable de la Vivienda (Circutor REC4)</h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    Evita que la vivienda quede sin refrigeración, seguridad ni domótica por saltos intempestivos del diferencial debidos a tormentas eléctricas o humedad en el terreno de Toledo. Se rearma automáticamente en 3 segundos.
+                                    Dedicado en exclusiva al confort interior de la casa (termo, tomas de corriente y alumbrado). Evita la desconexión prolongada por saltos intempestivos debidos a tormentas eléctricas rurales, rearmándose automáticamente tras verificar el aislamiento.
+                                </p>
+                            </div>
+
+                            <div style="border-left: 3px solid var(--accent-blue); padding-left: 1rem;">
+                                <h4 style="color: var(--text-primary); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 0.25rem;">Diferenciales Segmentados Superinmunizados (Clase A-SI)</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                    Tres diferenciales independientes dedicados a Domótica, Riego y Exterior. Su inmunidad mejorada evita falsos disparos por arranques inductivos. Al estar segmentados, un fallo de humedad en el exterior jamás afectará a la domótica o la casa.
                                 </p>
                             </div>
 
@@ -1825,7 +1999,7 @@
                             <div style="border-left: 3px solid var(--accent-purple); padding-left: 1rem;">
                                 <h4 style="color: var(--text-primary); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 0.25rem;">Orquestación Hidráulica por Contactores (Shelly Pro 2)</h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
-                                    El módulo en carril DIN **Shelly Pro 2** enciende las bobinas de **dos contactores industriales de 25A** en lugar de alimentar directamente los motores de las bombas de los pozos. Esto absorbe el pico inductivo de arranque y alarga infinitamente la vida útil de los relés domóticos.
+                                    El módulo en carril DIN **Shelly Pro 2** activa las bobinas de **dos contactores industriales bipolares (2P 25A)**. Al conmutar simultáneamente tanto Fase como Neutro, se aíslan completamente los motores cuando están apagados, impidiendo derivaciones y disparos imprevistos de los diferenciales asociados.
                                 </p>
                             </div>
 
@@ -2270,8 +2444,8 @@
                                 <label class="budget-item-label">
                                     <input type="checkbox" class="budget-checkbox" data-price="80" checked>
                                     <div class="item-details">
-                                        <span class="item-name">Control de Pozos (Shelly Pro 2 + 2x Contactores de 25A)</span>
-                                        <span class="item-protocol">Control y conmutación de bombas de pozo con amortiguación de pico inductivo en cuadro</span>
+                                        <span class="item-name">Control de Pozos (Shelly Pro 2 + 2x Contactores Bipolares 2P 25A)</span>
+                                        <span class="item-protocol">Conmutación omnipolar de Fase y Neutro para aislar por completo las bombas apagadas en reposo</span>
                                     </div>
                                 </label>
                                 <div class="budget-qty-container">
@@ -2334,25 +2508,10 @@
 
                             <div class="budget-item">
                                 <label class="budget-item-label">
-                                    <input type="checkbox" class="budget-checkbox" data-price="110" checked>
-                                    <div class="item-details">
-                                        <span class="item-name">Diferencial Auto-rearmable Circutor REC4 2P-40-30</span>
-                                        <span class="item-protocol">Protección diferencial inteligente y test auto-rearmable tras caídas por tormentas</span>
-                                    </div>
-                                </label>
-                                <div class="budget-qty-container">
-                                    <span class="qty-label">Cant:</span>
-                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
-                                    <span class="item-price">110 €</span>
-                                </div>
-                            </div>
-
-                            <div class="budget-item">
-                                <label class="budget-item-label">
                                     <input type="checkbox" class="budget-checkbox" data-price="80" checked>
                                     <div class="item-details">
                                         <span class="item-name">Protector Sobretensiones Toscano Combi-PRO 2P40</span>
-                                        <span class="item-protocol">Protección de carril DIN permanente/transitoria contra impactos de rayos en línea rural</span>
+                                        <span class="item-protocol">Protección general permanente y transitoria contra rayos y variaciones de tensión en red rural</span>
                                     </div>
                                 </label>
                                 <div class="budget-qty-container">
@@ -2364,10 +2523,70 @@
 
                             <div class="budget-item">
                                 <label class="budget-item-label">
+                                    <input type="checkbox" class="budget-checkbox" data-price="110" checked>
+                                    <div class="item-details">
+                                        <span class="item-name">Diferencial Auto-rearmable Circutor REC4 2P-40-30</span>
+                                        <span class="item-protocol">Rearme inteligente automático dedicado en exclusiva a circuitos interiores y confort de vivienda</span>
+                                    </div>
+                                </label>
+                                <div class="budget-qty-container">
+                                    <span class="qty-label">Cant:</span>
+                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
+                                    <span class="item-price">110 €</span>
+                                </div>
+                            </div>
+
+                            <div class="budget-item">
+                                <label class="budget-item-label">
+                                    <input type="checkbox" class="budget-checkbox" data-price="65" checked>
+                                    <div class="item-details">
+                                        <span class="item-name">Diferencial Domótica y Seguridad Clase A-SI 2P-40-30</span>
+                                        <span class="item-protocol">Diferencial superinmunizado independiente para router, Homey Pro, Homey Bridge y sistemas críticos</span>
+                                    </div>
+                                </label>
+                                <div class="budget-qty-container">
+                                    <span class="qty-label">Cant:</span>
+                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
+                                    <span class="item-price">65 €</span>
+                                </div>
+                            </div>
+
+                            <div class="budget-item">
+                                <label class="budget-item-label">
+                                    <input type="checkbox" class="budget-checkbox" data-price="60" checked>
+                                    <div class="item-details">
+                                        <span class="item-name">Diferencial Riego y Pozo 1 Clase A-SI 2P-25-30</span>
+                                        <span class="item-protocol">Protección superinmunizada inmune a transitorios para bomba principal de riego y piscina</span>
+                                    </div>
+                                </label>
+                                <div class="budget-qty-container">
+                                    <span class="qty-label">Cant:</span>
+                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
+                                    <span class="item-price">60 €</span>
+                                </div>
+                            </div>
+
+                            <div class="budget-item">
+                                <label class="budget-item-label">
+                                    <input type="checkbox" class="budget-checkbox" data-price="60" checked>
+                                    <div class="item-details">
+                                        <span class="item-name">Diferencial Exterior y Pozo 2 Clase A-SI 2P-25-30</span>
+                                        <span class="item-protocol">Aislamiento contra derivaciones de humedad en farolas de jardín y bomba de fuente</span>
+                                    </div>
+                                </label>
+                                <div class="budget-qty-container">
+                                    <span class="qty-label">Cant:</span>
+                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
+                                    <span class="item-price">60 €</span>
+                                </div>
+                            </div>
+
+                            <div class="budget-item">
+                                <label class="budget-item-label">
                                     <input type="checkbox" class="budget-checkbox" data-price="120" checked>
                                     <div class="item-details">
                                         <span class="item-name">Medidor Trifásico Shelly Pro 3EM (Monofásico)</span>
-                                        <span class="item-protocol">Analizador eléctrico profesional y telemetría de 3 pinzas (Consumo general + 2 pozos)</span>
+                                        <span class="item-protocol">Medidor con pinzas amperimétricas y telemetría cruzada de corte para alertas a Madrid</span>
                                     </div>
                                 </label>
                                 <div class="budget-qty-container">

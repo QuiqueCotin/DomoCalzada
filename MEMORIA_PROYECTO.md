@@ -41,8 +41,8 @@ graph TD
     D -->|PoE 15.4W| G(AP Techo Omada EAP653)
     D -->|PoE 15.4W| H(AP Ext Omada EAP610-Outdoor)
     D -->|PoE 15.4W| I(3x Cámaras Reolink Duo 3 PoE 16MP)
-    D -->|PoE 15.4W| J(Video Timbre Reolink PoE)
-    D -->|PoE 15.4W| K(Wall Panel Geekland 10/13.3")
+    D -->|PoE 15.4W| J(VideoTimbre Reolink PoE)
+    D -->|PoE 15.4W| K(WallPanel Geekland 10/13.3")
     D -->|PoE Splitter 12V| B
     D -->|PoE Splitters 5V| L(Cerebro Homey Pro + Satélite Bridge)
 ```
@@ -67,26 +67,63 @@ graph TD
 
 ### Barrera 1: Valla Peatonal del Muro Exterior
 *   **Hardware:** Abrepuertas eléctrico de 12V AC/DC en contacto seco permanente + transformador de carril DIN 230V a 12V + relé **Shelly Plus 1** configurado en modo **Momentary** con **Auto Off tras 2 segundos**.
-*   **Operativa:** Al pulsar el Video Timbre Reolink PoE en la valla, la señal viaja localmente a Homey Pro, que despierta el **Wall Panel Geekland** del pasillo (vía Fully Kiosk API). En la pantalla se pulsa el botón *"Abrir Puerta Exterior"* para dar paso al jardín.
+*   **Operativa:** Al pulsar el VideoTimbre Reolink PoE en la valla, la señal viaja localmente a Homey Pro, que despierta el **WallPanel Geekland** del pasillo (vía Fully Kiosk API). En la pantalla se pulsa el botón *"Abrir Puerta Exterior"* para dar paso al jardín.
 
 ### Barrera 2: Entrada Principal de la Vivienda
 *   **Cerradura:** **Nuki Smart Lock Pro (5.ª Generación)** ya en propiedad del usuario.
 *   **Innegociable Técnico:** Obligatoria instalación de un **cilindro de alta seguridad de doble embrague**. Permite abrir físicamente con llave tradicional desde fuera en caso de fallo electrónico, batería agotada o bloqueo lógico.
 *   **Acceso Familiar:** Se instala el **Nuki Keypad 2.0** en el exterior para entrada biométrica por huella dactilar (ideal para evitar que familiares mayores luchen con llaves o el móvil).
-*   **Integración:** Conectada localmente a Homey Pro por **Matter-over-Thread** para una respuesta instantánea (<1s) y total autonomía offline.
+*   **Integración:** Conectada localmente a Homey Pro por **Matter-over-Thread** para una respuesta instantánea (<1s) y total autonomía offline. Al funcionar exclusivamente con baterías/Powerpack, **no requiere cableado físico de alimentación**.
 
 ---
 
-## 5. Diseño del Cuadro Eléctrico Inteligente Monofásico
+## 5. Diseño del Cuadro Eléctrico Inteligente Monofásico: Arquitectura de Tres Pilares de Alta Resiliencia
 
-Ubicado en el garaje de la vivienda en carril DIN, utiliza protecciones y relés profesionales cableados con secciones seguras:
+Ubicado en el garaje de la vivienda en carril DIN, el cuadro eléctrico se estructura bajo una **filosofía de segmentación total y aislamiento proactivo de fallos**, diseñada específicamente para mitigar las fugas de corriente (derivaciones) sin comprometer el funcionamiento de la domótica ni de la seguridad de la vivienda.
 
-1.  **Diferencial Auto-rearmable (Circutor REC4):** Asegura que ante caídas intempestivas de diferencial (humedad del riego, tormentas en Toledo), la vivienda recupere el suministro en 3 segundos, protegiendo la nevera, el router y la seguridad.
-2.  **Protector contra Sobretensiones (Toscano Combi-PRO):** Blindaje contra subidas de tensión permanentes de la distribuidora y transitorias (rayos).
-3.  **Medidor Shelly Pro 3EM (Monofásico):** Medición con tres pinzas amperométricas: Pinza A (Consumo General), Pinza B (Fuerza Pozo 1), Pinza C (Fuerza Pozo 2).
-4.  **Desvío de Excedentes Fotovoltaicos (Termo ACS):** Termo de 3kW controlado por un **contactor industrial de 25A** accionado por un **Shelly Pro 1** en carril DIN. La medición de carga la realiza un **Shelly Pro EM-50** dedicado. Homey Pro regula el encendido según la telemetría del inversor Huawei FusionSolar.
-5.  **Control de Motores de Pozos (Shelly Pro 2 + 2x Contactores de 25A):** Los motores de las bombas tienen picos inductivos de arranque que quemarían relés comunes. Los Shelly Pro 2 comandan únicamente las bobinas (A1-A2) de los contactores de 25A, a través de los cuales fluye la potencia hacia las bombas.
-6.  **Sonda de Nivel Hidrostático (Sonda TL-136 + Shelly Plus Uni + Buck Converter):** Para evitar que el Shelly Plus Uni se dañe debido a fluctuaciones eléctricas del entorno rural, se instala un **convertidor DC-DC (Buck Converter)** para estabilizar a 12V la tensión de alimentación de la placa. La sonda analógica lee el nivel freático y Homey Pro corta la bomba al instante si baja del 15% (Protección contra cavitación / Dry-Run).
+La instalación se divide en **cuatro diferenciales independientes** (segmentados en tres pilares de resiliencia) e incluye la totalidad de magnetotérmicos de consumo doméstico para proporcionar una imagen de cuadro completo y realista:
+
+### A. Pilar 1: Seguridad y Domótica (100% Ininterrumpido)
+1. **Diferencial Independiente de Domótica (Clase A-SI 2P 40A 30mA):**
+   * *Función:* Protege exclusivamente la línea `C10 Domótica y Red` que alimenta el Armario Rack y los elementos críticos de red y domótica (SAI, APs, ONT, Router GL.iNet 5G, Switch TP-Link Omada PoE, Cerebro Homey Pro, Homey Bridge, NVR NAS Ugreen, VideoTimbre y WallPanel).
+   * *Aislamiento de Nuki:* La cerradura inteligente Nuki Smart Lock Pro funciona con baterías y tecnología inalámbrica (Matter-over-Thread). **No va cableada a la línea de fuerza**, lo que elimina cualquier riesgo de derivación en esta cerradura. Sin embargo, su infraestructura inalámbrica y el cerebro (Homey Pro) sí están cableados y protegidos por este diferencial dedicado.
+   * *Ventaja:* Al estar físicamente separado del resto de circuitos de la casa y del exterior, este diferencial es completamente inmune a las fugas y ruidos provocados por electrodomésticos, tormentas o la humedad exterior.
+   * *Respaldo:* Protegido aguas abajo por el **SAI Salicru SPS 900 ONE**, garantizando que el sistema de seguridad y comunicaciones siga online al 100% incluso en cortes de larga duración.
+
+### B. Pilar 2: Suministro Doméstico e Interior (Confort y Rearme)
+2. **Diferencial Auto-rearmable (Circutor REC4 2P 40A 30mA):**
+   * *Función:* Protege todos los circuitos de consumo interior y confort de la vivienda. Para reflejar la imagen del cuadro completo, aguas abajo de este diferencial REC4 se sitúan los siguientes interruptores magnetotérmicos (PIAs):
+     * **C10 Alumbrado Interior (`pia-luz`):** Protección general de luminarias y puntos de luz interiores de la casa.
+     * **C16 Enchufes de Uso General (`pia-enchufes`):** Protección de tomas de corriente convencionales para electrodomésticos portátiles y ocio.
+     * **C25 Cocina y Horno (`pia-cocina`):** Línea de alta potencia dedicada a la vitrocerámica, el horno y el frigorífico combi de alta eficiencia.
+     * **C20 Lavadora y Lavavajillas (`pia-lavadora`):** Línea dedicada a electrodomésticos con resistencia de agua.
+     * **C16 Termo ACS (`pia-termo`):** Línea dedicada al termo de agua caliente de 3kW de potencia.
+   * *Rearme Proactivo:* En caso de saltar por un microcorte, tormenta o fuga transitoria interna, el motor inteligente del REC4 realiza tests de aislamiento y reestablece el suministro de forma segura en solo 3 segundos, protegiendo los alimentos del frigorífico durante las ausencias largas sin requerir desplazamientos.orma segura en solo 3 segundos, protegiendo los alimentos del frigorífico durante las ausencias largas sin requerir desplazamientos.
+
+### C. Pilar 3: Fuerza Hidráulica Crítica (Riego y Pozo 1)
+3. **Diferencial de Riego y Pozo 1 (Clase A-SI 2P 40A 30mA independiente):**
+   * *Función:* Protege en exclusiva la bomba sumergible del Pozo 1 (crítica para el riego de la finca y el llenado de la piscina).
+   * *Aislamiento Bipolar Proactivo (Innegociable de Seguridad):* Las bombas de agua sumergidas son propensas a sufrir microderivaciones de Neutro a Tierra debido a la humedad constante. Si el contactor corta únicamente la Fase, el Neutro sigue conectado y provocará saltos intempestivos del diferencial incluso con la bomba apagada. Por ello, se implementa un **contactor industrial de 2 polos (bipolar 2P de 25A)** comandado por la salida `O1` del Shelly Pro 2. Al apagarse, corta simultáneamente **Fase y Neutro**, aislando físicamente el motor al 100% y neutralizando cualquier fuga de Neutro en reposo.
+
+### D. Pilar 4: Exterior No Crítico (Fuente y Alumbrado de Jardín)
+4. **Diferencial de Fuerza/Alumbrado Exterior y Pozo 2 (Clase A-SI 2P 40A 30mA independiente):**
+   * *Función:* Protege en exclusiva la bomba decorativa del Pozo 2 (Fuente), la iluminación del jardín y los enchufes de intemperie.
+   * *Resiliencia de Aislamiento:* La intemperie y la humedad exterior son la fuente número uno de fugas eléctricas (por lluvia, riego directo o insectos en farolas). Al aislar este circuito en su propio diferencial y usar un **contactor bipolar (2P de 25A)** para la bomba de la fuente (comandado por la salida `O2` del Shelly Pro 2), cualquier fuga o cortocircuito exterior **solo** tirará esta línea no crítica, manteniendo el riego del jardín (Pozo 1), la domótica y toda la casa en pleno funcionamiento.
+
+---
+
+### E. Medida y Telemetría Inteligente Cruzada (Shelly Pro 3EM y Shelly Pro EM-50)
+
+1. **Monitoreo y Alerta de Disparos con Shelly Pro 3EM (Voltajes VA, VB, VC):**
+   * *Cableado Cruzado:* El analizador de energía Shelly Pro 3EM está alimentado por el circuito de Domótica (C10), pero sus tres terminales de medición de tensión están puenteados de forma segmentada a la salida de cada diferencial:
+     - **Terminal VA:** Medición del voltaje del circuito de Domótica (Pilar 1).
+     - **Terminal VB:** Medición del voltaje del circuito del Riego / Pozo 1 (Pilar 3).
+     - **Terminal VC:** Medición del voltaje del circuito de Fuerza Exterior / Pozo 2 (Pilar 4).
+   * *Lógica de Alarmas:* Si un diferencial salta (por ejemplo, el del exterior por una lluvia fuerte), el Shelly Pro 3EM detectará instantáneamente que la tensión en el canal correspondiente (`VB` o `VC`) cae a `0V`. El Homey Pro procesará este evento offline y enviará de inmediato una notificación Push/Telegram a Madrid: *“⚠️ ¡Alerta Eléctrica! Ha saltado el diferencial de Fuerza Exterior/Pozo 2. El resto de la vivienda, domótica y riego principal continúan operativos al 100%.”*
+   * *Medida de Corriente:* Sus tres pinzas amperométricas se distribuyen para medir de forma independiente: Pinza A (Consumo General tras el REC4), Pinza B (Fase de fuerza del Pozo 1) y Pinza C (Fase de fuerza del Pozo 2).
+2. **Medidor Shelly Pro EM-50 (Termo ACS):** Medidor de doble canal con pinza dedicado exclusivamente a medir la potencia demandada por el Termo ACS de 3kW, facilitando la lógica de excedentes y detectando si la resistencia calefactora está activa o el termostato ha cortado (0W).
+3. **Protector contra Sobretensiones (Toscano Combi-PRO):** Blindaje contra subidas de tensión permanentes de la distribuidora y transitorias (rayos) en la entrada general, antes de la distribución de diferenciales.
+4. **Sonda de Nivel Hidrostático (Sonda TL-136 + Shelly Plus Uni + Buck Converter):** Convertidor DC-DC (Buck Converter) a carril DIN que estabiliza a 12V DC la alimentación de la placa Shelly Plus Uni. La sonda analógica lee el nivel freático y el Homey Pro corta la bomba al instante si baja del 15% (Protección contra cavitación / Dry-Run).
 
 ---
 
