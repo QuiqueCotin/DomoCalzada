@@ -139,21 +139,21 @@
                             <tr>
                                 <td>1</td>
                                 <td>Router GL.iNet Spitz AX (GL-X3000)</td>
-                                <td>Salón (Baja)</td>
-                                <td>PoE Splitter USB-C</td>
+                                <td>Hall Central (Baja)</td>
+                                <td>PoE+ Splitter 12V DC</td>
                                 <td>Router central, VLANs y Failover 5G automático</td>
                             </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Homey Pro (2023)</td>
-                                <td>Salón (Baja)</td>
+                                <td>Hall Central (Baja)</td>
                                 <td>PoE Splitter USB-C</td>
                                 <td>Coordinador Principal Domótico (Procesamiento Local)</td>
                             </tr>
                             <tr>
                                 <td>3</td>
                                 <td>Homey Bridge</td>
-                                <td>Planta 1 (Alta)</td>
+                                <td>Distribuidor (Alta)</td>
                                 <td>PoE Splitter USB-C</td>
                                 <td>Extensor Zigbee/Z-Wave/IR en Dormitorios (Planta Alta)</td>
                             </tr>
@@ -179,11 +179,11 @@
                                 <td>NVR local continuo (2.5GbE y caché NVMe para evitar saturación)</td>
                             </tr>
                             <tr>
-                                <td>7</td>
-                                <td>AP Omada EAP653 WiFi 6</td>
-                                <td>Planta 1 (Alta)</td>
-                                <td>PoE (Switch Garaje)</td>
-                                <td>Cobertura Inalámbrica Planta Superior integrada en Omada SDN</td>
+                                <td>7, 7b</td>
+                                <td>2x AP Omada EAP773 WiFi 7</td>
+                                <td>Planta Baja y Alta (Hall y Distribuidor)</td>
+                                <td>PoE+ (Switch Garaje)</td>
+                                <td>WiFi 7 Tri-banda (6GHz) con roaming rápido coordinado (sin microcortes)</td>
                             </tr>
                             <tr>
                                 <td>8,9,10</td>
@@ -2136,7 +2136,7 @@
 
                             <div class="budget-item">
                                 <label class="budget-item-label">
-                                    <input type="checkbox" class="budget-checkbox" data-price="280" checked>
+                                    <input type="checkbox" class="budget-checkbox" data-price="390" checked>
                                     <div class="item-details">
                                         <span class="item-name">Router Central 5G GL.iNet Spitz AX (GL-X3000)</span>
                                         <span class="item-protocol">Redes / Failover Celular Activo Industrial con Antena Externa</span>
@@ -2145,13 +2145,13 @@
                                 <div class="budget-qty-container">
                                     <span class="qty-label">Cant:</span>
                                     <input type="number" class="budget-qty" value="1" min="1" max="99">
-                                    <span class="item-price">280 €</span>
+                                    <span class="item-price">390 €</span>
                                 </div>
                             </div>
 
                             <div class="budget-item">
                                 <label class="budget-item-label">
-                                    <input type="checkbox" class="budget-checkbox" data-price="190" checked>
+                                    <input type="checkbox" class="budget-checkbox" data-price="220" checked>
                                     <div class="item-details">
                                         <span class="item-name">Switch PoE+ Gestionable TP-Link Omada (TL-SG2218P)</span>
                                         <span class="item-protocol">Distribuidor Troncal de 16 Puertos Gigabit PoE+ y 2 slots SFP (150W)</span>
@@ -2160,22 +2160,22 @@
                                 <div class="budget-qty-container">
                                     <span class="qty-label">Cant:</span>
                                     <input type="number" class="budget-qty" value="1" min="1" max="99">
-                                    <span class="item-price">190 €</span>
+                                    <span class="item-price">220 €</span>
                                 </div>
                             </div>
 
                             <div class="budget-item">
                                 <label class="budget-item-label">
-                                    <input type="checkbox" class="budget-checkbox" data-price="110" checked>
+                                    <input type="checkbox" class="budget-checkbox" data-price="210" checked>
                                     <div class="item-details">
-                                        <span class="item-name">Punto de Acceso Techo Omada EAP653 WiFi 6</span>
-                                        <span class="item-protocol">Punto de Acceso Profesional empotrable en interior con Multi-VLAN</span>
+                                        <span class="item-name">Punto de Acceso Techo Omada EAP773 WiFi 7</span>
+                                        <span class="item-protocol">Tri-banda (2.4/5/6 GHz) Profesional, ultradelgado, itinerancia sin cortes</span>
                                     </div>
                                 </label>
                                 <div class="budget-qty-container">
                                     <span class="qty-label">Cant:</span>
-                                    <input type="number" class="budget-qty" value="1" min="1" max="99">
-                                    <span class="item-price">110 €</span>
+                                    <input type="number" class="budget-qty" value="2" min="1" max="99">
+                                    <span class="item-price">210 €</span>
                                 </div>
                             </div>
 
@@ -2775,15 +2775,15 @@
                         <div class="comparison-cols">
                             <div class="comparison-side old-side">
                                 <div class="side-badge badge-old">ANTES: TP-Link Omada (TL-SG3210XHP-M2)</div>
-                                <p>Un switch gestionable Omada con puertos de 2.5 Gbps, pero con una gran limitación física: solo dispone de 8 puertos RJ45 PoE+, lo cual es totalmente insuficiente para cubrir tus 10 dispositivos PoE actuales, obligándote a añadir switches secundarios o inyectores adicionales.</p>
+                                <p>Un switch gestionable Omada con puertos de 2.5 Gbps, pero con una gran limitación física: solo dispone de 8 puertos RJ45 PoE+, lo cual es totalmente insuficiente para cubrir tus 12 dispositivos PoE actuales, obligándote a añadir switches secundarios o inyectores adicionales.</p>
                             </div>
                             <div class="comparison-side new-side">
                                 <div class="side-badge badge-new">AHORA (SELECCIONADO): TP-Link Omada (TL-SG2218P) 16x PoE+ y 2x SFP</div>
-                                <p><strong>¿Por qué es mejor?</strong> Proporciona <strong>16 puertos Gigabit PoE+</strong> (todos con capacidad PoE+) con un presupuesto de potencia de <strong>150W</strong> y 2 ranuras SFP. Es una alternativa extremadamente económica y eficiente que cubre de sobra tu consumo total proyectado (~108W) y te otorga 6 puertos de expansión PoE libres para el futuro.</p>
+                                <p><strong>¿Por qué es mejor?</strong> Proporciona <strong>16 puertos Gigabit PoE+</strong> (todos con capacidad PoE+) con un presupuesto de potencia de <strong>150W</strong> y 2 ranuras SFP. Es una alternativa extremadamente económica y eficiente que cubre de sobra tu consumo total proyectado (~128W) y te otorga 4 puertos de expansión PoE libres para el futuro.</p>
                             </div>
                         </div>
                         <div class="engineering-rationale">
-                            <strong>Razón de Ingeniería Rural:</strong> El TL-SG2218P es la solución óptima y más económica para tu requerimiento de 12-16 puertos. Al contar con 16 puertos PoE+, acomoda de forma nativa tus 10 dispositivos (AP de techo, AP exterior, 3 cámaras Reolink Duo, videotimbre, Wall Panel y splitters de router y Homey Pro). Su presupuesto de 150W asegura el funcionamiento estable continuo sin pagar de más por un costoso switch de 24 puertos y 384W que no aprovecharías.
+                            <strong>Razón de Ingeniería Rural:</strong> El TL-SG2218P es la solución óptima y más económica para tu requerimiento de 12-16 puertos. Al contar con 16 puertos PoE+, acomoda de forma nativa tus 12 dispositivos PoE (APs de interior, AP exterior, 3 cámaras Reolink Duo, videotimbre, Wall Panel y los 4 splitters de alimentación del router Spitz AX, ONT, Homey Pro y Homey Bridge). Su presupuesto de 150W asegura el funcionamiento estable continuo sin pagar de más por un costoso switch de 24 puertos y 384W que no aprovecharías.
                         </div>
                     </div>
 
@@ -2805,12 +2805,12 @@
                                 <p>Mezclar marcas de puntos de acceso provoca cortes al moverte por la casa (pérdida de roaming) y obliga a usar múltiples interfaces de configuración o controladores por software pesados instalados localmente.</p>
                             </div>
                             <div class="comparison-side new-side">
-                                <div class="side-badge badge-new">AHORA (SELECCIONADO): APs TP-Link Omada (EAP653 + EAP610-Outdoor IP67)</div>
-                                <p><strong>¿Por qué es mejor?</strong> Al integrar todo el ecosistema de red bajo TP-Link Omada, logramos una gestión centralizada y unificada SDN. El Switch y los APs se comunican de forma transparente. Los APs profesionales Omada manejan roaming activo sin saltos (802.11k/v/r) y soportan múltiples VLANs virtuales. La versión EAP610-Outdoor cuenta con certificación IP67 hermética para soportar los gélidos inviernos y abrasadores veranos de Toledo sin fallar.</p>
+                                <div class="side-badge badge-new">AHORA (SELECCIONADO): APs TP-Link Omada (2x EAP773 WiFi 7 + EAP610-Outdoor IP67)</div>
+                                <p><strong>¿Por qué es mejor?</strong> Al integrar todo el ecosistema de red bajo TP-Link Omada, logramos una gestión centralizada y unificada SDN. El Switch y los APs se comunican de forma transparente. Los APs profesionales Omada manejan roaming activo sin saltos (802.11k/v/r). Usando dos EAP773 habilitamos **WiFi 7 Tri-banda** con la banda de 6 GHz, lo que descongestiona la de 2.4 GHz dejándola exclusiva para domótica Shelly. La versión EAP610-Outdoor cuenta con certificación IP67 hermética para soportar los gélidos inviernos y abrasadores veranos de Toledo sin fallar.</p>
                             </div>
                         </div>
                         <div class="engineering-rationale">
-                            <strong>Razón de Ingeniería Rural:</strong> La estructura rústica y los gruesos muros dividen la finca en bloques de gran sombra inalámbrica. Usando un AP de interior en planta alta (EAP653) de perfil plano y un AP direccional exterior de gran potencia (EAP610-Outdoor), garantizamos cobertura fluida en la piscina, las compuertas de pozos y portones sin zonas muertas.
+                            <strong>Razón de Ingeniería Rural:</strong> La estructura rústica y los gruesos muros dividen la finca en bloques de gran sombra inalámbrica. Usando dos APs de interior de triple banda EAP773 (uno por planta en pasillos centrales) y un AP de exterior de gran potencia (EAP610-Outdoor), garantizamos cobertura fluida de alta velocidad y roaming coordinado sin microcortes tanto dentro como fuera de la casa.
                         </div>
                     </div>
 
