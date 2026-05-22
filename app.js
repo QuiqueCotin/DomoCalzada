@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "11": {
             title: "Wall Panel PoE Encastrado",
-            desc: "Pantalla táctil Android de 10.1\" o 13.3\" sin batería. Totalmente encastrada en obra. Se enciende y suena automáticamente cuando tocan el videoportero de la valla.",
+            desc: "Pantalla táctil Android de 10.1\" o 13.3\" sin batería. Totalmente encastrada en obra. Se enciende y suena automáticamente cuando tocan el Video Timbre de la valla.",
             loc: "Pasillo Central (Planta Baja)",
             pwr: "Alimentación exclusiva PoE (Cat6) (Cero baterías)",
             net: "Conexión estable por cable RJ45 Cat6",
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "12": {
             title: "Video Timbre Reolink PoE",
-            desc: "Videoportero exterior con lente gran angular, audio bidireccional y pulsador físico. Envía la señal instantánea a la pantalla de casa al ser pulsado.",
+            desc: "Video Timbre exterior con lente gran angular, audio bidireccional y pulsador físico. Envía la señal instantánea a la pantalla de casa al ser pulsado.",
             loc: "Muro de la Valla Peatonal Exterior",
             pwr: "Alimentación PoE (Cat6)",
             net: "Cable de red Ethernet de cobre",
@@ -310,49 +310,97 @@ document.addEventListener('DOMContentLoaded', () => {
     const panelSpecElec = document.getElementById('panel-spec-elec');
     const panelSpecDomo = document.getElementById('panel-spec-domo');
     const panelSpecBlock = document.getElementById('panel-details-specs');
-
     const panelData = {
         "combi-pro": {
             title: "Protección Sobretensiones Toscano Combi-PRO 2P40",
             desc: "Protector inteligente contra sobretensiones transitorias y permanentes con reconexión automática integrada. Protege de forma infalible toda la electrónica de control y la domótica contra los impactos de rayos en las líneas aéreas rurales y variaciones de tensión extremas de hasta 320V.",
             fun: "Protección física integral contra picos eléctricos críticos.",
-            elec: "Entrada superior directa L/N (230V AC - Fase marrón, Neutro azul). Conexión a tierra (PE - Verde/Amarillo) y salida hacia el diferencial REC4.",
+            elec: "Entrada superior directa L/N (230V AC - Fase marrón, Neutro azul). Conexión a tierra (PE - Verde/Amarillo) y salidas independientes hacia el diferencial de Domótica, el REC4 y los diferenciales de Riego y Exterior.",
             domo: "OK LED verde encendido indica correcto estado de protección. Aislamiento físico de red en milisegundos ante anomalías de voltaje."
+        },
+        "dif-domo": {
+            title: "Diferencial Domótica y Seguridad Clase A-SI 2P-40-30",
+            desc: "Interruptor diferencial independiente de clase A Superinmunizado de 40A y sensibilidad de 30mA. Dedicado en exclusiva a proteger la línea C10 Domótica y Red (que alimenta el Rack, SAI, APs, ONT, Router 5G, Switch Omada PoE, Cerebro Homey Pro, Homey Bridge, NVR NAS, VideoTimbre y WallPanel). Su total independencia respecto al resto de la casa y del exterior garantiza inmunidad absoluta contra disparos indeseados por derivaciones secundarias.",
+            fun: "Protección diferencial superinmunizada y blindada para el núcleo domótico.",
+            elec: "Entrada directa desde Combi-PRO. Salida directa que alimenta al magnetotérmico C10 Domótica y sirve de referencia al canal de medición VA del Shelly Pro 3EM.",
+            domo: "Evita que un fallo en cualquier electrodoméstico o la lluvia en el jardín apaguen las cámaras, la red WiFi o la supervisión local y remota desde Madrid."
         },
         "rec4": {
             title: "Diferencial Auto-rearmable Circutor REC4 2P-40-30",
-            desc: "Interruptor diferencial autorearmable e inteligente de 2 polos y 40A con sensibilidad de 30mA. En caso de salto accidental por tormenta o humedad en los circuitos de exterior, realiza automáticamente una serie de test de aislamiento y reestablece la corriente de forma segura en solo 3 segundos.",
-            fun: "Protección diferencial de personas y rearme proactivo del suministro.",
-            elec: "Entrada fase/neutro desde Combi-PRO. Salida directa al repartidor general y las fases que alimentan a los magnetotérmicos C10 y C16.",
-            domo: "Garantiza que la casa, cámaras, neveras y domótica no queden inoperativas durante ausencias largas por saltos intempestivos."
+            desc: "Interruptor diferencial inteligente y auto-rearmable de 2 polos y 40A con sensibilidad de 30mA. Dedicado a proteger todos los circuitos de consumo interior y confort de la vivienda (PIAs de Alumbrado, Enchufes, Cocina, Lavadora y Termo ACS). Si salta por un factor transitorio (humedad interior o tormenta), analiza el aislamiento y se rearma de forma 100% segura en 3 segundos.",
+            fun: "Protección diferencial inteligente de la vivienda con restablecimiento automático.",
+            elec: "Entrada fase/neutro desde Combi-PRO. Salida directa al repartidor general que alimenta los magnetotérmicos de la casa (C10, C16, C20, C25).",
+            domo: "Evita pérdidas de alimentos en el frigorífico combi por disparos silenciosos durante ausencias largas sin requerir intervención manual."
+        },
+        "dif-pozo1": {
+            title: "Diferencial de Riego y Pozo 1 Clase A-SI 2P-25-30",
+            desc: "Interruptor diferencial independiente de clase A Superinmunizado con sensibilidad de 30mA. Protege específicamente el circuito de fuerza de la bomba de agua del Pozo 1 (riego y piscina). Su inmunidad evita disparos indeseados por armónicos de arranque del motor.",
+            fun: "Protección dedicada para la bomba principal de riego de la finca.",
+            elec: "Entrada desde Combi-PRO. Salida directa hacia el contactor bipolar 2P del Pozo 1 y al borne de medición de tensión VB del Shelly Pro 3EM.",
+            domo: "Garantiza que el riego y llenado de la piscina no se interrumpan si se produce un fallo o fuga en el alumbrado de jardín o en la fuente."
+        },
+        "dif-ext": {
+            title: "Diferencial de Exterior y Pozo 2 Clase A-SI 2P-25-30",
+            desc: "Interruptor diferencial independiente de clase A Superinmunizado con sensibilidad de 30mA. Protege el circuito de fuerza exterior: la bomba de la fuente (Pozo 2), el alumbrado de jardín y los enchufes de intemperie. Aísla las fugas típicas de la humedad exterior.",
+            fun: "Protección perimetral húmeda aislada para el alumbrado y fuerza del jardín.",
+            elec: "Entrada desde Combi-PRO. Salida directa hacia el contactor bipolar 2P del Pozo 2, alumbrado exterior y al borne de medición de tensión VC del Shelly Pro 3EM.",
+            domo: "Cualquier derivación por lluvia o humedad en farolas exteriores solo tirará este diferencial, sin perturbar el interior ni la domótica."
         },
         "pro3em": {
             title: "Medidor Trifásico Shelly Pro 3EM (Monofásico)",
-            desc: "Analizador de energía profesional para carril DIN con conexión por cable Ethernet LAN físico. Aunque está alimentado en monofásico, utiliza sus tres pinzas amperimétricas (CT clamps) independientes para monitorizar simultáneamente tres puntos neurálgicos de la instalación.",
-            fun: "Telemetría eléctrica en tiempo real de toda la vivienda.",
-            elec: "Alimentación de tensión protegida por el PIA de domótica. Pinza A colocada tras el REC4 (General), Pinza B en fase de Bomba Pozo 1, Pinza C en fase de Bomba Pozo 2.",
-            domo: "Transmite consumo instantáneo (W), potencia acumulada (kWh), tensión de red y factor de potencia vía WebSockets a Homey Pro localmente."
+            desc: "Analizador de energía profesional para carril DIN con puerto LAN Ethernet. Aunque funciona en monofásico, aprovecha sus tres entradas de voltaje (VA, VB, VC) de forma cruzada para monitorizar si salta algún diferencial individual en tiempo real y enviar alertas instantáneas.",
+            fun: "Telemetría eléctrica en tiempo real de consumo y detección de disparos.",
+            elec: "Alimentación protegida por C10. Voltajes cruzados: VA lee tras el diferencial de Domótica, VB tras el diferencial de Riego (Pozo 1) y VC tras el diferencial de Exterior (Pozo 2). Pinzas: Pinza A (Consumo General Casa), Pinza B (Fase Pozo 1), Pinza C (Fase Pozo 2).",
+            domo: "Informa de potencias, tensiones y factor de potencia a Homey Pro. Si la lectura de VB o VC cae a 0V, Homey Pro alerta inmediatamente a Madrid de la caída del diferencial correspondiente."
         },
         "pia-domo": {
-            title: "Magnetotérmico C10 Domótica",
-            desc: "Interruptor magnetotérmico monofásico de 10A dedicado en exclusiva a salvaguardar la línea del armario rack de comunicaciones (router 5G, switch PoE y cerebro Homey Pro) y la alimentación lógica de los módulos de control Shelly.",
-            fun: "Protección de sobrecarga del núcleo domótico y red local.",
-            elec: "Entrada desde fase general de REC4. Salida directa a la acometida de corriente protegida por el SAI (UPS) del garaje.",
-            domo: "Aísla eléctricamente el cerebro y red de datos de cualquier avería o cortocircuito de fuerza o motores de la vivienda."
+            title: "Magnetotérmico C10 Domótica y Red",
+            desc: "Interruptor magnetotérmico de 10A dedicado a salvaguardar la línea del armario rack (SAI, APs, ONT, Router 5G, Switch Omada PoE, Cerebro Homey Pro, Homey Bridge, NVR NAS, VideoTimbre y WallPanel). La cerradura Nuki Smart Lock es inalámbrica y va a baterías, por lo que no va cableada aquí, pero su puente y red sí quedan respaldados.",
+            fun: "Protección magnetotérmica del núcleo lógico de comunicaciones y control.",
+            elec: "Entrada desde la fase protegida por el diferencial de Domótica. Salida directa hacia la entrada de alimentación del SAI Salicru SPS 900 ONE.",
+            domo: "Aísla por completo el cerebro, la red local y los módulos domóticos de cualquier cortocircuito o sobrecarga del resto de la vivienda."
         },
         "pia-termo": {
             title: "Magnetotérmico C16 Termo ACS",
             desc: "Interruptor magnetotérmico monofásico de 16A dimensionado específicamente para proteger la línea eléctrica exclusiva del termo de agua caliente de 3kW.",
             fun: "Protección térmica y magnética de la línea de agua caliente.",
-            elec: "Entrada desde fase general de REC4. Salida hacia el contactor de fuerza del termo, cruzando la pinza del Shelly Pro EM-50.",
+            elec: "Entrada desde fase de la salida del diferencial auto-rearmable REC4. Salida hacia el contactor de fuerza del termo, cruzando la pinza del Shelly Pro EM-50.",
             domo: "Aísla la línea de fuerza en caso de avería en la resistencia eléctrica calefactora del termo de agua caliente."
         },
+        "pia-luz": {
+            title: "Magnetotérmico C10 Alumbrado Interior",
+            desc: "Interruptor magnetotérmico de 10A que protege la línea general de iluminación interior (dormitorios, salón, cocina y baños).",
+            fun: "Protección de sobrecargas y cortocircuitos de la red de luces interiores.",
+            elec: "Entrada desde la salida de fase del diferencial auto-rearmable REC4. Salida directa a la red de iluminación interior.",
+            domo: "Mantiene la iluminación separada del núcleo domótico para que una bombilla fundida no afecte a las cámaras o al router."
+        },
+        "pia-enchufes": {
+            title: "Magnetotérmico C16 Enchufes Generales",
+            desc: "Interruptor magnetotérmico de 16A que protege las líneas de tomas de corriente convencionales de toda la vivienda.",
+            fun: "Protección magnetotérmica de tomas generales de 16A.",
+            elec: "Entrada desde la salida de fase del diferencial auto-rearmable REC4. Salida hacia la distribución de enchufes interiores.",
+            domo: "Protección estándar de tomas de corriente; los módulos Shelly ocultos en cajetín profundo son protegidos por este interruptor."
+        },
+        "pia-cocina": {
+            title: "Magnetotérmico C25 Cocina y Horno",
+            desc: "Interruptor magnetotérmico de 25A diseñado para proteger la línea de alta potencia que alimenta la vitrocerámica, el horno y el frigorífico combi.",
+            fun: "Protección térmica de alta capacidad (hasta 25A) para elementos de cocina.",
+            elec: "Entrada desde la salida de fase del diferencial auto-rearmable REC4. Salida directa a la cocina.",
+            domo: "Garantiza la alimentación del frigorífico, respaldada aguas arriba por la capacidad de rearme automático de seguridad del REC4."
+        },
+        "pia-lavadora": {
+            title: "Magnetotérmico C20 Lavadora y Lavavajillas",
+            desc: "Interruptor magnetotérmico de 20A para salvaguardar los circuitos dedicados a electrodomésticos húmedos de la zona de lavado.",
+            fun: "Protección de circuitos de fuerza húmedos interiores de 20A.",
+            elec: "Entrada desde la salida de fase del diferencial auto-rearmable REC4. Salida a la lavadora y lavavajillas.",
+            domo: "Aislamiento individual para el mantenimiento seguro de lavadora/lavavajillas sin comprometer el suministro del resto del hogar."
+        },
         "pia-pozos": {
-            title: "Magnetotérmico C16 Pozos",
-            desc: "Interruptor magnetotérmico de 16A para proteger el circuito eléctrico y de fuerza de las potentes bombas de agua de los dos pozos exteriores de la propiedad.",
-            fun: "Protección contra sobrecargas de fuerza hidráulica exterior.",
-            elec: "Entrada desde fase de REC4. Salida en paralelo directa a los bornes principales de entrada de los contactores 1 y 2 de las bombas.",
-            domo: "Aísla por completo la potencia exterior ante derivaciones de agua en los motores sin cortar el suministro eléctrico del resto de la vivienda."
+            title: "Magnetotérmicos C16 Pozos y Exterior",
+            desc: "Interruptores de protección magnetotérmica C16 dedicados a proteger los circuitos de potencia de las bombas de agua (Pozo 1 y Pozo 2) y la fuerza/alumbrado exterior.",
+            fun: "Protección de las líneas de motores hidráulicos y elementos de jardín.",
+            elec: "Entradas independientes alimentadas desde los diferenciales segmentados de Riego (Pozo 1) y Exterior (Pozo 2). Salidas directas a los contactores bipolares 2P correspondientes.",
+            domo: "Evita que un agarrotamiento o cortocircuito de motores exteriores afecte al suministro doméstico de la vivienda."
         },
         "shelly-pro1": {
             title: "Actuador Domótico Shelly Pro 1",
@@ -379,22 +427,22 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Actuador Domótico Shelly Pro 2",
             desc: "Relé inteligente profesional para carril DIN con dos canales independientes de control de maniobra y puerto Ethernet LAN. Gestiona secuencialmente las bombas.",
             fun: "Control de maniobra e intercomunicación para las bombas de pozo.",
-            elec: "Alimentación L/N a 230V. Salida O1 (Canal 1) a bobina A1 del contactor del Pozo 1, Salida O2 (Canal 2) a bobina A1 del contactor del Pozo 2.",
+            elec: "Alimentación L/N a 230V protegida por C10. Salida O1 (Canal 1) a bobina A1 del contactor del Pozo 1, Salida O2 (Canal 2) a bobina A1 del contactor del Pozo 2.",
             domo: "Permite temporizar riegos, llenados de piscina y la parada protectora inmediata si la sonda detecta bajo nivel de agua en el pozo."
         },
         "contactor-pozo1": {
-            title: "Contactor de Potencia 25A (Bomba Pozo 1)",
-            desc: "Contactor industrial robusto de 25A. Diseñado específicamente para conmutar cargas muy inductivas y motores de bomba con picos de arranque elevados.",
-            fun: "Conmutador de fuerza para la Bomba del Pozo 1 (Riego y Piscina).",
-            elec: "Bobina de control en A1-A2 (A1 conectado a salida roja O1 del Shelly Pro 2). Bornes principales conmutan fase de fuerza de la bomba desde el magnetotérmico.",
-            domo: "Absorbe con total seguridad el enorme pico de corriente inductiva en el arranque del motor, garantizando la fiabilidad de los mandos."
+            title: "Contactor Bipolar 2P 25A (Bomba Pozo 1)",
+            desc: "Contactor industrial robusto de 2 polos y 25A. Conmuta simultáneamente tanto la Fase como el Neutro de la bomba de agua del Pozo 1 (Riego y Piscina) de forma coordinada por el Shelly Pro 2.",
+            fun: "Conmutador bipolar de fuerza para la Bomba del Pozo 1.",
+            elec: "Bobina A1-A2 (A1 conectado a salida O1 del Shelly Pro 2, A2 a neutro). Bornes de fuerza conmutan Fase y Neutro simultáneamente desde el circuito protegido por su diferencial dedicado.",
+            domo: "Garantiza un aislamiento total (100%) de la bomba al estar apagada, evitando que derivaciones silenciosas de Neutro a Tierra tiren el diferencial."
         },
         "contactor-pozo2": {
-            title: "Contactor de Potencia 25A (Bomba Pozo 2)",
-            desc: "Contactor industrial idéntico de 25A dedicado al control de potencia de la bomba del Pozo 2 que alimenta la fuente decorativa exterior de la finca.",
-            fun: "Conmutador de fuerza para la Bomba del Pozo 2 (Fuente Exterior).",
-            elec: "Bobina A1-A2 (A1 conectado a salida roja O2 de Shelly Pro 2). Bornes de fuerza conmutan la fase activa del motor de la fuente exterior.",
-            domo: "Permite al sistema cortar por completo la fuente exterior cuando no hay nadie en la finca, previniendo vandalismo y derroche."
+            title: "Contactor Bipolar 2P 25A (Bomba Pozo 2)",
+            desc: "Contactor industrial bipolar idéntico de 25A dedicado al control de potencia de la bomba del Pozo 2 (Fuente). Conmuta simultáneamente tanto la Fase como el Neutro del motor.",
+            fun: "Conmutador bipolar de fuerza para la Bomba del Pozo 2 (Fuente Decorativa).",
+            elec: "Bobina A1-A2 (A1 conectado a salida O2 del Shelly Pro 2, A2 a neutro). Bornes de fuerza conmutan Fase y Neutro simultáneamente desde el circuito protegido por el diferencial de exterior.",
+            domo: "Permite al sistema aislar eléctricamente por completo la bomba de la fuente al estar apagada, neutralizando cualquier fuga de Neutro en reposo."
         },
         "shelly-uni-box": {
             title: "Caja de Telemetría Shelly Plus Uni + Convertidor Buck",
@@ -569,9 +617,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const defaultNotes = `[Notas de Planificación - Calzada de Oropesa]\n\n` +
         `- Canalización: Asegurar que el electricista coloque cajetines profundos de 60mm en los interruptores para albergar los Shelly Plus 2PM.\n` +
-        `- Movistar FTTH: Pedir ONT independiente al instalador durante la visita de puesta en marcha. Si no, poner el HGU en Monopuesto.\n` +
-        `- Videoportero: La pantalla Geekland se empotrará en el pasillo. Debe encenderse sola cuando suene el timbre de valla y accionar la cerradura exterior a 12V.\n` +
-        `- Cuadro Eléctrico: Instalar el diferencial REC4 auto-rearmable y Shelly Pro 3EM en carril DIN con pinzas para monitorizar las bombas de los pozos.\n` +
+        `- Cuadro Eléctrico: Implementar la 'Arquitectura de Tres Pilares':\n` +
+        `  * Diferencial Domótica (Clase A-SI dedicado) + SAI para inmunidad total de seguridad y red.\n` +
+        `  * Diferencial Casa (REC4 Auto-rearmable) para confort y protección automática del frigo combi.\n` +
+        `  * Diferencial Riego y Pozo 1 (Clase A-SI dedicado) + Contactor bipolar 2P para aislamiento total en reposo.\n` +
+        `  * Diferencial Exterior, Alumbrado y Pozo 2 (Clase A-SI dedicado) + Contactor bipolar 2P para aislar humedad del jardín.\n` +
+        `- Telemetría Shelly Pro 3EM: Cablear tensiones VA/VB/VC de forma segmentada tras cada diferencial para detectar disparos instantáneamente desde Madrid.\n` +
+        `- VideoTimbre y WallPanel: La pantalla Geekland se empotrará en el pasillo. Debe encenderse sola cuando suene el timbre de valla y accionar la cerradura exterior a 12V.\n` +
         `- Climatización: Airzone centralizado con compuertas proporcionales e interfaz simplificada para familiares.`;
 
     if (notepadArea) {
