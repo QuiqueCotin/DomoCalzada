@@ -47,8 +47,14 @@
                 Red y Energía (SAI)
             </div>
             <div class="nav-item" data-tab="tab-climate">
-                <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                Clima Proporcional
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 12c0-3 1.5-6 4-6s2 2.5.5 4.5S12 12 12 12z"></path>
+                    <path d="M12 12c3 0 6 1.5 6 4s-2.5 2-.5-1.5S12 12 12 12z"></path>
+                    <path d="M12 12c0 3-1.5 6-4 6s-2-2.5-.5-4.5S12 12 12 12z"></path>
+                    <path d="M12 12c-3 0-6-1.5-6-4s2.5-2 .5 1.5S12 12 12 12z"></path>
+                </svg>
+                Clima Zonificado
             </div>
             <div class="nav-item" data-tab="tab-access">
                 <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -1670,6 +1676,181 @@
                                 </h4>
                                 <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
                                     El termo ACS (3kW) se utiliza como batería térmica. Un relé <strong>Shelly Pro 1</strong> activa un <strong>contactor industrial de 25A</strong> (carga inductiva), cerrando el bucle con un <strong>Shelly Pro EM-50</strong> (pinza amperométrica) para un control de excedentes hiperpreciso.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLAN MAESTRO INTEGRADO Y MAPA CONCEPTUAL (AÑADIDO PARA LA PUESTA EN MARCHA RÁPIDA) -->
+                <div class="card accent-blue" style="grid-column: 1 / -1; margin-top: 1.5rem; padding: 1.5rem;">
+                    <h3 style="font-family: 'Outfit'; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-blue);">
+                            <path d="M9 18l6-6-6-6"></path>
+                        </svg>
+                        Mapa Conceptual de la Climatización (Flujo Físico y de Control)
+                    </h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Sigue de forma visual cómo viaja el aire acondicionado (flujo físico) y cómo viaja la información (flujo de control inteligente) desde los termostatos Think de pared o tu móvil en Madrid hasta tu casa en Toledo.
+                    </p>
+
+                    <!-- Mapa Conceptual Visual en Dos Columnas -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                        
+                        <!-- Flujo Físico (El Aire) -->
+                        <div style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                            <h4 style="color: var(--accent-blue); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                ❄️ FLUJO FÍSICO (El viaje del aire)
+                            </h4>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">1. Compresores Exteriores (Tejado)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">2x Unidades de gran potencia que enfrían o calientan el gas refrigerante ecológico R32.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Tuberías de cobre aisladas)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">2. Unidades Interiores (Falso Techo de Baños)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Reciben el refrigerante, aspiran el aire de la casa, lo filtran y lo impulsan con fuerza.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Acoplado de salida directo)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">3. Plenum de Obra (Fibra Climaver Neto)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Caja distribuidora hecha a mano por el instalador en obra. Divide el aire en ramales independientes.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Dentro de cada boca de salida del plenum)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center; border-left: 3px solid var(--accent-blue);">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">4. Compuertas Motorizadas Proporcionales Rint 12V</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Los motores de tu web (80€ c/u). Modulan el aire de 0% a 100%, eliminando soplidos y corrientes.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Tubos rígidos por falso techo)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">5. Rejillas Normales de Pared (Tu Habitación)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">El aire sale de forma suave, estética y silenciosa. Son rejillas estándar económicas.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flujo de Control (La Inteligencia) -->
+                        <div style="background: var(--bg-tertiary); padding: 1.25rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                            <h4 style="color: var(--accent-purple); font-family: 'Outfit'; font-size: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                🧠 FLUJO DE CONTROL (La toma de decisiones)
+                            </h4>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">1. Termostatos Think (Tinta Electrónica) / Tu Móvil</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Subes o bajas grados con flechas simples (apto senior) o pides encendido de camino a Toledo.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Bus de control físico cableado)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center; border-left: 3px solid var(--accent-purple);">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">2. Airzone Webserver HUB (220 € en tu Web)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Recibe tus órdenes, habla con las máquinas por puerto Domo y las expone en tu red local.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Cable Ethernet de red local Cat6A)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">3. Switch PoE+ Omada en Rack del Garaje</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Canaliza las órdenes de red local a velocidad Gigabit de forma aislada y ultraestable.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Conexión directa local offline)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center; border-left: 3px solid var(--accent-purple);">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">4. Cerebro Central Homey Pro (2023)</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Aplica las automatizaciones avanzadas de Confort Invisible de forma local e offline.</span>
+                                </div>
+                                <div style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin: -0.25rem 0;">⬇️ (Control instantáneo e inteligente)</div>
+                                <div style="background: var(--bg-primary); padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border-color); text-align: center;">
+                                    <strong style="color: var(--text-primary); font-size: 0.85rem; display: block;">5. Ajuste Dinámico de Compuertas y Compresor</strong>
+                                    <span style="font-size: 0.75rem; color: var(--text-secondary);">Ajusta la velocidad del compresor Inverter exterior y abre solo las compuertas Rint deseadas.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guía de Obra y Presupuestos Comparativos -->
+                    <h3 style="font-family: 'Outfit'; font-size: 1.25rem; margin-bottom: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                        Guía Paso a Paso de Planificación e Hitos de Obra
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                        <!-- El Plan de Obra Explicado -->
+                        <div>
+                            <h4 style="font-family: 'Outfit'; margin-bottom: 0.75rem; color: var(--text-primary);">Fases del Proyecto (De 0 a Puesta en Marcha)</h4>
+                            <div class="flow-diagram-wrapper" style="margin-top: 0.5rem;">
+                                <div class="flow-step active">
+                                    <div class="flow-number">1</div>
+                                    <div class="flow-body">
+                                        <h4 style="margin-bottom: 0.15rem;">Cálculo y Elección (Día 1)</h4>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                            Selección de <strong>dos máquinas de conductos de ~7 kW independientes</strong> (una por planta) de Mitsubishi o Daikin. Reservar mínimo 30 cm de altura libre en los falsos techos de pasillos y baños.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flow-step active">
+                                    <div class="flow-number">2</div>
+                                    <div class="flow-body">
+                                        <h4 style="margin-bottom: 0.15rem;">Pre-instalación Física (Días 2-5)</h4>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                            Se cuelgan las máquinas en los techos de los baños. Se tiran tubos de cobre de gas refrigerante, desagües y alimentación eléctrica. El instalador fabrica el plenum repartidor con fibra de vidrio <strong>Climaver Neto</strong> directamente en la obra.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flow-step active">
+                                    <div class="flow-number">3</div>
+                                    <div class="flow-body">
+                                        <h4 style="margin-bottom: 0.15rem;">Montaje de las Compuertas Rint (Día 6)</h4>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                            El instalador encaja tus <strong>4 Compuertas Motorizadas Rint 12V (320 € en total)</strong> en los cuellos de salida de la caja de fibra Climaver. Se cablean a los termostatos táctiles Think de cada habitación.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flow-step active">
+                                    <div class="flow-number">4</div>
+                                    <div class="flow-body">
+                                        <h4 style="margin-bottom: 0.15rem;">Yeso, Pladur y Rejillas de Pared (Días 7-9)</h4>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                            Se cierran los falsos techos de pladur. Se colocan las rejillas fijas estándar (económicas) en la pared. <strong>Imprescindible dejar trampillas de registro estéticas de 60x60cm en el techo de los baños</strong> justo debajo de la máquina interior.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flow-step active">
+                                    <div class="flow-number">5</div>
+                                    <div class="flow-body">
+                                        <h4 style="margin-bottom: 0.15rem;">Carga de Gas y Domotización (Día 10)</h4>
+                                        <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                                            Se realiza el vacío del gas. Se enciende el aire. Se conecta tu <strong>Webserver HUB (220 €)</strong> a tu red Omada y se enlaza localmente con tu cerebro domótico <strong>Homey Pro</strong>. ¡Listo para automatizar con geofencing de Madrid!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- El Desglose Económico de Decisiones -->
+                        <div>
+                            <h4 style="font-family: 'Outfit'; margin-bottom: 0.75rem; color: var(--text-primary);">Comparativa de Costes e Inversión</h4>
+                            
+                            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem;">
+                                <h5 style="color: var(--text-primary); font-family: 'Outfit'; margin-bottom: 0.25rem;">🏠 Opción A: Instalación Base (Analógica)</h5>
+                                <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">~8.200 €</div>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin: 0;">
+                                    Incluye las 2 máquinas de aire de conductos (~7 kW), conductos Climaver, rejillas normales de pared, mano de obra básica de instalación, tuberías y falsos techos de pladur de la reforma.
+                                    <br><em>(Se controla con un termostato general único por planta. Todo encendido o todo apagado).</em>
+                                </p>
+                            </div>
+
+                            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem; border-left: 3px solid var(--accent-blue);">
+                                <h5 style="color: var(--accent-blue); font-family: 'Outfit'; margin-bottom: 0.25rem;">🌡️ Opción B: Zonificación (Airzone)</h5>
+                                <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">~11.100 € <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">(Base + 2.900 €)</span></div>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin: 0;">
+                                    Añade las compuertas motorizadas Rint de tu web (320 € por las 4), termostatos Think, placas electrónicas de Airzone y mano de obra de configuración. 
+                                    <br><strong>Nota importante: Evitas el plenum metálico premontado de fábrica de 1.500 € por planta usando plenum artesanal de Climaver hecho por el instalador en obra.</strong>
+                                    <br><em>(Permite elegir la temperatura independiente de cada estancia y apagar zonas no usadas ahorrando un 50% de luz).</em>
+                                </p>
+                            </div>
+
+                            <div style="background: var(--bg-primary); border: 1px solid var(--border-color); padding: 1rem; border-radius: 0.75rem; border-left: 3px solid var(--accent-purple);">
+                                <h5 style="color: var(--accent-purple); font-family: 'Outfit'; margin-bottom: 0.25rem;">🧠 Opción C: Domótica Local Premium</h5>
+                                <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-purple); margin-bottom: 0.5rem;">~11.450 € <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">(Base + 3.250 €)</span></div>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; margin: 0;">
+                                    Añade el <strong>Webserver HUB (220 € en tu web)</strong> para integrar todo localmente y offline con tu switch Omada y tu <strong>Homey Pro</strong>.
+                                    <br><em>(Habilita geofencing predictivo de Madrid, apagado por ventanas abiertas de forma inmediata, y confinamiento hermético por alarma de incendios).</em>
                                 </p>
                             </div>
                         </div>
