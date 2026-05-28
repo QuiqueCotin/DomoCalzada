@@ -562,31 +562,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const budgetQtyInputs = document.querySelectorAll('.budget-qty');
 
     function calculateTotalBudget() {
-        let total = 0;
-        const budgetItems = document.querySelectorAll('.budget-item');
-        budgetItems.forEach(item => {
-            const checkbox = item.querySelector('.budget-checkbox');
-            const qtyInput = item.querySelector('.budget-qty');
-            const priceEl = item.querySelector('.item-price');
-            
-            if (checkbox && qtyInput && priceEl) {
-                const unitPrice = parseFloat(checkbox.getAttribute('data-price') || 0);
-                let qty = parseInt(qtyInput.value);
-                if (isNaN(qty) || qty < 1) {
-                    qty = 1;
-                }
-                const subtotal = unitPrice * qty;
-                
-                // Update item's price display in the UI dynamically
-                priceEl.textContent = `${subtotal.toLocaleString('es-ES')} €`;
-                
-                if (checkbox.checked) {
-                    total += subtotal;
+        let grandTotal = 0;
+        const categoryTotals = [0, 0, 0, 0, 0, 0];
+        let currentCategoryIndex = -1;
+        
+        const budgetListEl = document.querySelector('.budget-list');
+        if (budgetListEl) {
+            const budgetListChildren = budgetListEl.children;
+            for (let i = 0; i < budgetListChildren.length; i++) {
+                const child = budgetListChildren[i];
+                if (child.classList.contains('budget-category-header')) {
+                    currentCategoryIndex++;
+                } else if (child.classList.contains('budget-item') && currentCategoryIndex >= 0) {
+                    const checkbox = child.querySelector('.budget-checkbox');
+                    const qtyInput = child.querySelector('.budget-qty');
+                    const priceEl = child.querySelector('.item-price');
+                    
+                    if (checkbox && qtyInput && priceEl) {
+                        const unitPrice = parseFloat(checkbox.getAttribute('data-price') || 0);
+                        let qty = parseInt(qtyInput.value);
+                        if (isNaN(qty) || qty < 1) {
+                            qty = 1;
+                        }
+                        const subtotal = unitPrice * qty;
+                        
+                        // Update item's price display in the UI dynamically
+                        priceEl.textContent = `${subtotal.toLocaleString('es-ES')} €`;
+                        
+                        if (checkbox.checked) {
+                            categoryTotals[currentCategoryIndex] += subtotal;
+                            grandTotal += subtotal;
+                        }
+                    }
                 }
             }
-        });
+        }
+        
+        // Update category headers and breakdown items
+        for (let idx = 0; idx < 6; idx++) {
+            const catTotalEl = document.getElementById(`cat-total-${idx + 1}`);
+            if (catTotalEl) {
+                catTotalEl.textContent = `${categoryTotals[idx].toLocaleString('es-ES')} €`;
+            }
+            
+            const breakdownEl = document.getElementById(`breakdown-cat-${idx + 1}`);
+            if (breakdownEl) {
+                breakdownEl.textContent = `${categoryTotals[idx].toLocaleString('es-ES')} €`;
+            }
+        }
+        
         if (budgetTotalEl) {
-            budgetTotalEl.textContent = `${total.toLocaleString('es-ES')} €`;
+            budgetTotalEl.textContent = `${grandTotal.toLocaleString('es-ES')} €`;
         }
     }
 
